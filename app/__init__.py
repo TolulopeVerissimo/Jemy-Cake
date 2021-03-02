@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from .models import db, User, Post
+from .models import db, User, Recipe
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 
@@ -48,12 +48,6 @@ Migrate(app, db)
 
 # Application Security
 CORS(app)
-
-# Since we are deploying with Docker and Flask,
-# we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any
-# request made over http is redirected to https.
-# Well.........
 
 
 @app.before_request
