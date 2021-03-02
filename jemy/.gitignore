@@ -6,7 +6,12 @@
 .flaskenv
 /.pnp
 .pnp.js
-
+.env
+__pycache__/
+*.py[cod]
+.venv
+.DS_Store
+ 
 # testing
 /coverage
 
