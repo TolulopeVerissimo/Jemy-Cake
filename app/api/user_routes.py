@@ -25,13 +25,13 @@ def user(id):
 @login_required
 def profileGet(id):
     user = User.query.get(id)
-    post_count = len(Post.query.filter(Post.userId == id).all())
+    recipe_counter = len(Recipe.query.filter(Recipe.userId == id).all())
     follower_count = len(user.followers.all())
     following_count = len(user.follows.all())
     profile = user.to_dict()
     profile['followerCount'] = follower_count
     profile['followingCount'] = following_count
-    profile['postCount'] = post_count
+    profile['postCount'] = recipe_counter
     return profile
 
 
