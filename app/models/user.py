@@ -20,13 +20,16 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(30), unique=True, nullable=False)
     biography = db.Column(db.String(200))
     profilePicture = db.Column(db.String(255))
-    skillLevel = db.Column(db.Integer())
+    skillLevel = db.Column(db.Integer)
     date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
 
-    recipe = db.relationship("Post", back_populates="user")
-    likes = db.relationship("PostLike", back_populates="user")
+    recipe = db.relationship("Recipe", back_populates="user")
+    likes = db.relationship("RecipeLike", back_populates="user")
+    pantries = db.relationship("Pantry", back_populates="user")
+    
+
     followers = db.relationship(
         "User",
         secondary=follows,
