@@ -8,7 +8,7 @@ class RecipeItem(db.Model):
     ingredientId = db.Column(db.Integer, db.ForeignKey("ingredients.id"), nullable=False)
     recipeId = db.Column(db.Integer, db.ForeignKey("recipes.id"), nullable=False)
 
-    ingredient = db.relationship("Ingredient", back_populates="ingredients")
+    ingredients = db.relationship("Ingredient", back_populates="recipeItems")
     recipe = db.relationship("Recipe", back_populates="recipe_items")
 
     def to_list(self):

@@ -6,3 +6,5 @@ from .recipeLike import RecipeLike
 from .pantry import Pantry
 from .pantryItem import PantryItem
 from .ingredient import Ingredient
+from .share import Share
+from .notification import Notification

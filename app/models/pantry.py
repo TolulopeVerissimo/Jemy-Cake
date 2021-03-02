@@ -10,6 +10,9 @@ class Pantry(db.Model):
     name = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="pantries")
+    ingredients = db.relationship("Ingredient", back_populates="pantries")
+    pantry_item = db.relationship("PantryItem", back_populates="pantries")
+    
 
     def to_dict(self):
         return {

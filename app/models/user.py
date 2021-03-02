@@ -28,7 +28,12 @@ class User(db.Model, UserMixin):
     recipe = db.relationship("Recipe", back_populates="user")
     likes = db.relationship("RecipeLike", back_populates="user")
     pantries = db.relationship("Pantry", back_populates="user")
-    
+
+    Send = db.relationship("Share", back_populates="userSend", lazy='dynamic')
+    Receive = db.relationship("Notification", back_populates="userReceive", lazy='dynamic')
+
+    notifications = db.relationship('Notification', back_populates='user', lazy='dynamic')
+
 
     followers = db.relationship(
         "User",
@@ -58,3 +63,6 @@ class User(db.Model, UserMixin):
             "profilePicture": self.profilePicture,
             "biography":self.biography,
         }
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
+        return Message.query.filter_by(recipient=self).filter(Share.timestamp > last_read_time).count()

@@ -15,10 +15,10 @@ class Recipe(db.Model):
 
 
 
-    users = db.relationship("User", back_populates="recipe")
-    recipe_like = db.relationship("Like", back_populates="recipe")
-    recipe_items = db.relationship("User", back_populates="recipe")
-    ingredient = db.relationship("User", back_populates="ingredient")
+    user = db.relationship("User", back_populates="recipe")
+    recipe_like = db.relationship("RecipeLike", back_populates="recipe")
+    recipe_items = db.relationship("RecipeItem", back_populates="recipe")
+    ingredients = db.relationship("Ingredient", back_populates="recipe")
    
 
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())

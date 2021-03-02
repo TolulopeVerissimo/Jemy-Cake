@@ -8,8 +8,8 @@ class PantryItem(db.Model):
     ingredientId = db.Column(db.Integer, db.ForeignKey("ingredients.id"), nullable=False)
     pantryId = db.Column(db.Integer, db.ForeignKey("pantries.id"), nullable=False)
 
-    ingredient = db.relationship("Ingredient", back_populates="ingredients")
-    pantry = db.relationship("Pantry", back_populates="pantries")
+    ingredients = db.relationship("Ingredient", back_populates="pantryItems")
+    pantry_item = db.relationship("Pantry", back_populates="pantries")
 
     def to_list(self):
         return {self.ingredientId, self.pantryId}
