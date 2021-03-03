@@ -6,9 +6,11 @@ class Recipe(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    name = db.Column(db.String(2000))
+    type = db.Column(db.String(10))
     description = db.Column(db.String(2000))
-    album = db.Column(db.String(2000))
-    private = db.Column(db.Boolean, nullable=False)
+    instructions = db.Column(db.String(2000))
+    steps = db.Column(db.String(5000))
     ingredientId = db.Column(db.Integer)
     imagePath = db.Column(db.String(255))
     videoPath = db.Column(db.String(255))

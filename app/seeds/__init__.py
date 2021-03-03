@@ -40,16 +40,13 @@ def undo():
     undo_postLikes()
     undo_posts()
     undo_more_posts()
-    undo_commentLikes()
-    undo_comments()
     # Add other undo functions here
 
 
 @seed_commands.command('data')
 def seed_data():
     seed_posts()
-    seed_comments()
-    seed_commentLikes()
+
     seed_postLikes()
 
 
