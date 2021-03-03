@@ -38,4 +38,22 @@ def seed_randomRecipe():
 
 
 def seed_randomIngredients():
+    for i in range(11):
+        ingredientArray = randomRecipe.recipes.extendedIngredients
+        for i in ingredientArray:
+            list = {
+                "id":i.id,
+                "name":i.name
+                }
 
+        ingredients = [Ingredient(
+            name=,
+            content= list,
+            pantryId=,
+            recipeId=
+            )]
+
+
+def undo_recipes&ingredients():
+    db.session.execute('TRUNCATE posts CASCADE;')
+    db.session.commit()
