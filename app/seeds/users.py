@@ -39,3 +39,7 @@ def seed_users():
     db.session.add(ed)
 
     db.session.commit()
+
+def undo_users():
+    db.session.execute('TRUNCATE posts CASCADE;')
+    db.session.commit()

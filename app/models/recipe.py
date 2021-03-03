@@ -1,11 +1,16 @@
 from .db import db
 
+recipeItems = db.Table(
+    "recipeItems",
+    db.Column("ingredientId",db.Integer, db.ForeignKey("ingredients.id")),
+    db.Column("recipeId",db.Integer, db.ForeignKey("recipes.id"))
+)
 
 class Recipe(db.Model):
     __tablename__ = 'recipes'
 
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String(2000))
     type = db.Column(db.String(10))
     description = db.Column(db.String(2000))
@@ -16,10 +21,8 @@ class Recipe(db.Model):
     videoPath = db.Column(db.String(255))
 
 
-
     user = db.relationship("User", back_populates="recipe")
     recipe_like = db.relationship("RecipeLike", back_populates="recipe")
-    recipe_items = db.relationship("RecipeItem", back_populates="recipe")
     ingredients = db.relationship("Ingredient", back_populates="recipe")
    
 
@@ -27,6 +30,14 @@ class Recipe(db.Model):
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
 
+
+    recipe_item = db.relationship(
+        "Recipe",
+        secondary=recipeItems,
+        primaryjoin=(recipeItems.c.ingredientId == id),
+        secondaryjoin=(recipeItems.c.recipeId == id),
+        backref=db.backref("recipeItems")
+    )
     def to_dict(self):
         user = self.user.to_dict()
         username = user["username"]
