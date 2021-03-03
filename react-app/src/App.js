@@ -44,6 +44,7 @@ function App() {
       <BrowserRouter>
         {/* <SmoothProvider skew={false}> */}
         {authenticated && <Nav setAuthenticated={setAuthenticated} />}
+        <Toast />
         <CookingPromo />
         <ProfileIntro />
         <WeeklyTrends />
