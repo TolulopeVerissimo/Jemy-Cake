@@ -11,12 +11,12 @@ import User from "./components/User";
 // import { SmoothProvider } from 'react-smooth-scrolling'
 import Nav from './components/Nav'
 import Toast from './components/Toast'
-// import CookingPromo from './components/CookingPromo'
-// import ProfileIntro from './components/ProfileIntro'
-// import WeeklyTrends from './components/WeeklyTrends'
-// import LeaderBoards from './components/LeaderBoards'
-// import ContactInfo from './components/ContactInfo'
-// import PCaro from './components/Carousel';
+import CookingPromo from './components/CookingPromo'
+import ProfileIntro from './components/ProfileIntro'
+import WeeklyTrends from './components/WeeklyTrends'
+import LeaderBoards from './components/LeaderBoards'
+import ContactInfo from './components/ContactInfo'
+import PCaro from './components/Carousel';
 // import NavTransitions from './components/NavTransitions';
 // import PersonalProfile from './components/PersonalProfile';
 
@@ -37,9 +37,9 @@ function App() {
     })();
   }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -48,12 +48,12 @@ function App() {
         <Nav />
         {/* {authenticated && <Nav setAuthenticated={setAuthenticated} />} */}
         <Toast />
-        {/* <CookingPromo />
+        <CookingPromo />
         <ProfileIntro />
         <WeeklyTrends />
         <LeaderBoards />
         <PCaro />
-        <ContactInfo /> */}
+        <ContactInfo />
 
         <Switch>
           <Route path='/' exact={true}>

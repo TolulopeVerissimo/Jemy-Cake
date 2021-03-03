@@ -7,11 +7,13 @@
 }
 .toastContainer {
     overflow-x: hidden;
+    height: 90vh;
 }
 
 .Opening {
     display: flex;
-    margin-top: 16rem;
+    /* margin-top: 50rem; */
+    margin-top: 35rem;
     margin-left: 10.5rem;
 }
 

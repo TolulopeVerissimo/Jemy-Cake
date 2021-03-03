@@ -1,0 +1,32 @@
+.jumbotron {
+    padding: 20px;
+    background: #337ab7;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 6px 3px 15px 0px rgba(0, 0, 0, 0.55);
+
+    position: relative;
+    z-index: 1;
+}
+.jumbotron h1 {
+    margin-bottom: 30px;
+    color: white;
+}
+.btn {
+    margin: 0 10px;
+}
+
+.modal-content {
+    box-shadow: none;
+    padding: 10px;
+    border: none;
+}
+.modal-footer {
+    border: none;
+}
+.modal-header {
+    border: none;
+}
+label {
+    margin-top: 15px;
+}

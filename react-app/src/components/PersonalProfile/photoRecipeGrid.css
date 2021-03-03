@@ -1,0 +1,87 @@
+figure {
+    position: relative;
+    margin: 0;
+    z-index: 1;
+}
+
+img,
+figure::after {
+    border-radius: 4rem;
+}
+
+figure::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: -1rem;
+    z-index: -1;
+    background-image: var(--image);
+    background-size: cover;
+    transform: scale(0.9, 1);
+    filter: blur(1rem);
+}
+.grid {
+    border-radius: 10px;
+}
+:root {
+    box-sizing: border-box;
+    font-size: 125%;
+    height: 100%;
+    --image: linear-gradient(
+        90deg,
+        #aa9 0%,
+        #dd9 30%,
+        #99a 70%,
+        #dd9 90%,
+        #a99 100%
+    );
+}
+
+.gradientSpace {
+    width: 100%;
+    overflow-x: hidden;
+}
+.swiper-slide {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.PhotoGridsContainer {
+    background: #ded;
+    margin: 0;
+    text-align: center;
+    height: 100%;
+    border-radius: 1px, 1px, 0, 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.PhotoGrid {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1px, 1px, 0, 0;
+
+    @media screen and (min-width: 30rem) {
+        display: inline-block;
+        border-radius: 10rem;
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+        margin: 1rem 0;
+        /* margin-left: 100px; */
+        padding: 2rem;
+    }
+}
+.card {
+    margin-bottom: 4rem;
+    margin-left: 1px;
+}
+
+.card:last-child {
+    margin-bottom: 1rem;
+}

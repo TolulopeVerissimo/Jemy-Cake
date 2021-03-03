@@ -1,0 +1,160 @@
+.bodyDiv {
+    /* color: black; */
+    /* background-color: black; */
+    overflow-x: hidden;
+}
+.cirContainer {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.centerCircle {
+    margin-left: 75rem;
+    margin-top: 5%;
+    /* z-index: 1; */
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    -moz-border-radius: 170px;
+    -webkit-border-radius: 170px;
+    border-radius: 170px;
+}
+.centerCircle button {
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+}
+
+.One {
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: One 100s infinite linear;
+    animation: One 72s infinite linear;
+}
+
+.Two {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: Two 100s infinite linear;
+    animation: Two 100s infinite linear;
+}
+.Three {
+    background-color: yellow;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: Three 100s infinite linear;
+    animation: Three 116s infinite linear;
+}
+.Four {
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: Four 100s infinite linear;
+    animation: Four 132s infinite linear;
+}
+.Five {
+    background-color: orange;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: Five 100s infinite linear;
+    animation: Five 150s infinite linear;
+}
+.spinner {
+    margin-left: 85rem;
+    margin-top: 20%;
+    width: 5rem;
+    height: 5rem;
+    border-style: solid;
+    border-color: white;
+    -moz-border-radius: 500px;
+    -webkit-border-radius: 500px;
+    border-radius: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+@keyframes One {
+    from {
+        transform: rotateZ(0deg) translateX(280px);
+    }
+    to {
+        transform: rotateZ(-360deg) translateX(280px);
+    }
+}
+@keyframes Two {
+    from {
+        transform: rotateZ(72deg) translateX(280px);
+    }
+    to {
+        transform: rotateZ(-432deg) translateX(280px);
+    }
+}
+@keyframes Three {
+    from {
+        transform: rotateZ(144deg) translateX(280px);
+    }
+    to {
+        transform: rotateZ(-504deg) translateX(280px);
+    }
+}
+@keyframes Four {
+    from {
+        transform: rotateZ(216deg) translateX(280px);
+    }
+    to {
+        transform: rotateZ(-576deg) translateX(280px);
+    }
+}
+@keyframes Five {
+    from {
+        transform: rotateZ(288deg) translateX(280px);
+    }
+    to {
+        transform: rotateZ(-648deg) translateX(280px);
+    }
+}
+@-webkit-keyframes One {
+    from {
+        -webkit-transform: rotateZ(0deg) translateX(280px);
+    }
+    to {
+        -webkit-transform: rotateZ(-360deg) translateX(280px);
+    }
+}
+@-webkit-keyframes Two {
+    from {
+        -webkit-transform: rotateZ(72deg) translateX(280px);
+    }
+    to {
+        -webkit-transform: rotateZ(-360deg) translateX(280px);
+    }
+}
+@-webkit-keyframes Three {
+    from {
+        -webkit-transform: rotateZ(144deg) translateX(280px);
+    }
+    to {
+        -webkit-transform: rotateZ(-360deg) translateX(280px);
+    }
+}
+@-webkit-keyframes Four {
+    from {
+        -webkit-transform: rotateZ(216deg) translateX(280px);
+    }
+    to {
+        -webkit-transform: rotateZ(-360deg) translateX(280px);
+    }
+}
+@-webkit-keyframes Five {
+    from {
+        -webkit-transform: rotateZ(288deg) translateX(280px);
+    }
+    to {
+        -webkit-transform: rotateZ(-360deg) translateX(280px);
+    }
+}

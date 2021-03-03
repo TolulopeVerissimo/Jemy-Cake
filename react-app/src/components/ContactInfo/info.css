@@ -1,0 +1,16 @@
+.overflowBuffer {
+    height: 5vh;
+    width: 100%;
+    z-index: 1;
+    /* background-color: purple; */
+    background-color: black;
+    /* overflow: hidden; */
+}
+
+.InfoContainer {
+    height: 86vh;
+    width: 100%;
+    background-color: white;
+    color: black;
+    /* overflow: hidden; */
+}
