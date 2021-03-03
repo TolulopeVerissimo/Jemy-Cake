@@ -7,18 +7,16 @@ import { restoreUser } from "./Store/session";
 
 
 
-import CookingPromo from './components/CookingPromo'
-import Nav from './components/Hamburger'
-import Toast from './components/TopPage'
-import ProfileIntro from './components/ProfileIntro'
-import WeeklyTrends from './components/WeeklyTrends'
-import LeaderBoards from './components/LeaderBoards'
-import ContactInfo from './components/ContactInfo'
-import PCaro from './components/Carousel';
+import Nav from './components/Nav'
+import Toast from './components/Toast'
+// import CookingPromo from './components/CookingPromo'
+// import ProfileIntro from './components/ProfileIntro'
+// import WeeklyTrends from './components/WeeklyTrends'
+// import LeaderBoards from './components/LeaderBoards'
+// import ContactInfo from './components/ContactInfo'
+// import PCaro from './components/Carousel';
 
-
-import './App.css';
-
+// import './App.css';
 function App() {
   const dispatch = useDispatch()
   const [authenticated, setAuthenticated] = useState(false);
@@ -43,14 +41,15 @@ function App() {
     <>
       <BrowserRouter>
         {/* <SmoothProvider skew={false}> */}
-        {authenticated && <Nav setAuthenticated={setAuthenticated} />}
+        {/* <Nav /> */}
+        {/* {authenticated && <Nav setAuthenticated={setAuthenticated} />} */}
         <Toast />
-        <CookingPromo />
+        {/* <CookingPromo />
         <ProfileIntro />
         <WeeklyTrends />
         <LeaderBoards />
         <PCaro />
-        <ContactInfo />
+        <ContactInfo /> */}
 
         <Switch>
           <Route path='/' exact={true}>

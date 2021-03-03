@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './Store'
 import './index.css';
 import App from './App';
-import { ModalProvider } from './Context/Modal';
+import { ModalProvider } from './Context/Modal.js';
 
 function Root() {
   return (
