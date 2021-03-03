@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import ProtectedRoute from "./components/auth/ProtectedRoute.js";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
+import SignUpForm from "./components/auth/SignUpForm";
+import UsersList from "./components/UsersList";
+import User from "./components/User";
+
+
 // import { SmoothProvider } from 'react-smooth-scrolling'
-
-
-
 import Nav from './components/Nav'
 import Toast from './components/Toast'
 // import CookingPromo from './components/CookingPromo'
@@ -15,6 +17,8 @@ import Toast from './components/Toast'
 // import LeaderBoards from './components/LeaderBoards'
 // import ContactInfo from './components/ContactInfo'
 // import PCaro from './components/Carousel';
+// import NavTransitions from './components/NavTransitions';
+// import PersonalProfile from './components/PersonalProfile';
 
 // import './App.css';
 function App() {
@@ -41,7 +45,7 @@ function App() {
     <>
       <BrowserRouter>
         {/* <SmoothProvider skew={false}> */}
-        {/* <Nav /> */}
+        <Nav />
         {/* {authenticated && <Nav setAuthenticated={setAuthenticated} />} */}
         <Toast />
         {/* <CookingPromo />
@@ -53,18 +57,18 @@ function App() {
 
         <Switch>
           <Route path='/' exact={true}>
-            {authenticated && <LandingPage />}
-            {!authenticated && (
+            {/* {authenticated && <LandingPage />} */}
+            {/* {!authenticated && (
               <Splash
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}
               />
-            )}
+            )} */}
           </Route>
 
-          <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}>
-            <Profile />
-          </ProtectedRoute>
+          {/* <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}>
+            <PersonalProfile />
+          </ProtectedRoute> */}
 
           <Route path='/sign-up' exact={true}>
             <SignUpForm

@@ -8,6 +8,8 @@ import './index.css';
 import App from './App';
 import { ModalProvider } from './Context/Modal.js';
 
+const store = configureStore()
+
 function Root() {
   return (
     <Provider store={store}>
