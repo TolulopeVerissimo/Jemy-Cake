@@ -74,24 +74,14 @@ function ProfileIntro() {
                     </div>
                 </div>
 
-                {/* 
+
                 {showModal &&
                     (
                         <Modal onClose={() => setShowModal(false)}>
-                            //!Transition not working
-                            <ReactCSSTG transitionName="animation"
-                                transitionAppear={true}
-                                transitionAppearTimeout={500}
-                                transitionEnterTimeout={500}
-                                transitionLeaveTimeout={300}
-                                {...component}
-                            >
-
-                                <LoginFormModal />
-                            </ReactCSSTG>
+                            <LoginFormModal />
                         </Modal>
                     )
-                } */}
+                }
 
 
 

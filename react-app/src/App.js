@@ -8,7 +8,6 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 
 
-// import { SmoothProvider } from 'react-smooth-scrolling'
 import Nav from './components/Nav'
 import Toast from './components/Toast'
 import CookingPromo from './components/CookingPromo'
@@ -18,7 +17,7 @@ import LeaderBoards from './components/LeaderBoards'
 import ContactInfo from './components/ContactInfo'
 import PCaro from './components/Carousel';
 // import NavTransitions from './components/NavTransitions';
-// import PersonalProfile from './components/PersonalProfile';
+import PersonalProfile from './components/PersonalProfile';
 
 // import './App.css';
 function App() {
@@ -44,7 +43,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <SmoothProvider skew={false}> */}
         {/* {authenticated && <Nav setAuthenticated={setAuthenticated} />} */}
         <Nav />
         <Toast />
@@ -53,7 +51,7 @@ function App() {
         <WeeklyTrends />
         <LeaderBoards />
         <PCaro />
-        <ContactInfo />
+        {/* <ContactInfo /> */}
 
         <Switch>
           <Route path='/' exact={true}>
@@ -66,9 +64,9 @@ function App() {
             )} */}
           </Route>
 
-          {/* <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}>
+          <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}>
             <PersonalProfile />
-          </ProtectedRoute> */}
+          </ProtectedRoute>
 
           <Route path='/sign-up' exact={true}>
             <SignUpForm
@@ -91,12 +89,11 @@ function App() {
           {/* <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
           </ProtectedRoute> */}
-          <Route path="*">
+          {/* <Route exact={true} path="*">
             <h1 style={{ color: "white" }}>404</h1>
-          </Route>
+          </Route> */}
 
         </Switch>
-        {/* </SmoothProvider> */}
       </BrowserRouter>
     </>
   );

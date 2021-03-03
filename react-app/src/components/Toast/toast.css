@@ -1,7 +1,7 @@
 .Opening h1 {
     /* Change to UltraThin Sans Serif */
     font-size: 90.1192px;
-    font-family: Plain-Thin, sans-serif;
+    font-family: UPlain-Thin, sans-serif;
     height: 90%;
     color: white;
 }
@@ -12,8 +12,7 @@
 
 .Opening {
     display: flex;
-    /* margin-top: 50rem; */
-    margin-top: 35rem;
+    margin-top: 25rem;
     margin-left: 10.5rem;
 }
 
