@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Modal } from '../../context/Modal';
+import { Modal } from '../../Context/Modal';
 // import SVG from './SVG.js'
 import gif from './../../saltbae.webp'
 import './intro.css'
 import ModalBack from '../../components/Modals/ModalBack.js'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import LoginFormModal from './../Modals/LoginFormModal.js'
 // https://labs.loupbrun.ca/buttons/
 // https://codepen.io/vanderlanth/pen/LZWyGg
-const ReactCSSTG = CSSTransitionGroup;
+// const ReactCSSTG = CSSTransitionGroup;
 
 
 
@@ -74,7 +74,7 @@ function ProfileIntro() {
                     </div>
                 </div>
 
-
+                {/* 
                 {showModal &&
                     (
                         <Modal onClose={() => setShowModal(false)}>
@@ -91,7 +91,7 @@ function ProfileIntro() {
                             </ReactCSSTG>
                         </Modal>
                     )
-                }
+                } */}
 
 
 

@@ -9,7 +9,7 @@ import './styles/login.sass'
 import * as FaIcons from 'react-icons/fa';
 
 
-function LoginFormModal(props) {
+function LoginFormModal(props, { authenticated, setAuthenticated }) {
 
     const [Visible, setVisible] = useState(true)
     const [errors, setErrors] = useState([]);
