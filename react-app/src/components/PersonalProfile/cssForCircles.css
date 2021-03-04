@@ -10,18 +10,15 @@
 }
 .centerCircle {
     /* margin-left: 75rem; */
-    margin-left: 37.7rem;
-    margin-top: 0%;
+    margin-left: 60%;
+    margin-top: 10%;
     /* z-index: 1; */
     width: 400px;
     height: 400px;
     background-color: lightblue;
-    /* -moz-border-radius: 170px;
+    -moz-border-radius: 170px;
     -webkit-border-radius: 170px;
-    border-radius: 170px; */
-    -moz-border-radius: 4rem;
-    -webkit-border-radius: 4rem;
-    border-radius: 4rem;
+    border-radius: 170px;
 }
 .centerCircle button {
     height: 100%;
