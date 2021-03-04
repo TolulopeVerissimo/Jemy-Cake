@@ -9,15 +9,19 @@
     overflow: hidden;
 }
 .centerCircle {
-    margin-left: 75rem;
+    /* margin-left: 75rem; */
+    margin-left: 37.7rem;
     margin-top: 0%;
     /* z-index: 1; */
     width: 400px;
     height: 400px;
     background-color: lightblue;
-    -moz-border-radius: 170px;
+    /* -moz-border-radius: 170px;
     -webkit-border-radius: 170px;
-    border-radius: 170px;
+    border-radius: 170px; */
+    -moz-border-radius: 4rem;
+    -webkit-border-radius: 4rem;
+    border-radius: 4rem;
 }
 .centerCircle button {
     height: 100%;
@@ -76,6 +80,10 @@
     top: 0px;
     z-index: -0.3;
     overflow: hidden;
+}
+#circlePicture {
+    background-size: cover;
+    background-position: center center;
 }
 
 @keyframes One {

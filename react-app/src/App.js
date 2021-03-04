@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ProtectedRoute from "./components/auth/ProtectedRoute.js";
 import { useDispatch } from "react-redux";
 import { restoreUser } from "./Store/session";
+import ProtectedRoute from "./components/auth/ProtectedRoute.js";
 import SignUpForm from "./components/auth/SignUpForm";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -36,34 +36,25 @@ function App() {
     })();
   }, [dispatch]);
 
-  // if (!loaded) {
-  //   return null;
-  // }
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <>
       <BrowserRouter>
         <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <Switch>
+
           <Route path='/' exact={true}>
-            {/* {authenticated && <LandingPage />} */}
-            {/* {!authenticated && (
-              <Splash
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-              />
-            )} */}
-            <Toast />
-            <CookingPromo />
+            <Toast /> <CookingPromo />
             <ProfileIntro authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            <WeeklyTrends />
-            <LeaderBoards />
-            <PCaro />
+            <WeeklyTrends />  <LeaderBoards /> <PCaro />
             {/* <ContactInfo /> */}
           </Route>
 
           {/* <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}> */}
-          <ProtectedRoute path="/:id/profile" exact={true} authenticated={authenticated}>
+          <ProtectedRoute path="/g" exact={true} authenticated={authenticated}>
             <PersonalProfile />
           </ProtectedRoute>
 
@@ -75,17 +66,10 @@ function App() {
             <UsersList />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            path='/users/:userId'
-            exact={true}
-            authenticated={authenticated}
-          >
+          <ProtectedRoute path='/users/:userId' exact={true} authenticated={authenticated}>
             <User />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
-            <h1>My Home Page</h1>
-          </ProtectedRoute> */}
           <Route path="*">
             <h1 style={{ color: "white" }}>404</h1>
           </Route>

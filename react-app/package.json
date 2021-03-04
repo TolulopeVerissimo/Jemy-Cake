@@ -8,6 +8,7 @@
         "@testing-library/user-event": "^12.8.1",
         "boto3": "0.0.1",
         "http-proxy-middleware": "^1.0.5",
+        "num-words": "^1.2.2",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-icons": "^4.2.0",

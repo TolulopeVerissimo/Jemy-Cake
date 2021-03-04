@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from '../../Context/Modal';
 // import SVG from './SVG.js'
 import gif from './../../saltbae.webp'
@@ -9,12 +9,15 @@ import LoginFormModal from './../Modals/LoginFormModal.js'
 // https://labs.loupbrun.ca/buttons/
 // https://codepen.io/vanderlanth/pen/LZWyGg
 // const ReactCSSTG = CSSTransitionGroup;
+import { useSelector } from "react-redux";
+
 
 
 
 function ProfileIntro({ authenticated, setAuthenticated }) {
     const [showModal, setShowModal] = useState(false);
     const [Visible, setVisible] = useState(true)
+    const user = useSelector(state => state.session.user)
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -68,7 +71,8 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
                         </div>
                     </div>
                     <div className="gifDiv">
-                        <img className="gifBae" src={gif} alt="loading..." />
+                        {authenticated ? <img className="gifBae" src={user.profilePicture}></img> : <img className="gifBae" src={gif} alt="loading..." />
+                        }
                     </div>
                 </div>
                 {showModal &&

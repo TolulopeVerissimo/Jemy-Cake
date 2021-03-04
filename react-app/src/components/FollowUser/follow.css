@@ -1,0 +1,8 @@
+.followUser,
+.unfollowUser {
+    width: 10%;
+    height: 5rem;
+    background-color: rgb(71, 43, 69);
+    color: aliceblue;
+    z-index: -1;
+}

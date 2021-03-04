@@ -7,8 +7,8 @@ import './recipe.css'
 
 function Combo(props) {
 
+    //removed brackets from around recipeList to map thru it
     const [recipeList, setRecipeList] = useState(
-        //removed brackets from around recipeList to map thru it
         [
             {
                 name: 'Pumpkin Pie',
