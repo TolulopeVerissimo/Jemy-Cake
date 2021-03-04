@@ -61,6 +61,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
         <button className="loginForm__button" type="submit">Login</button>
+
       </div>
     </form>
   );

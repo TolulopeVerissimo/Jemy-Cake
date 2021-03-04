@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './nav.css'
+import { logout } from "../../services/auth";
 import { RightNavItems } from './rightNavItems'
-import { NavLink, useHistory, Link } from 'react-router-dom'
-function Nav() {
+import { useHistory, Link } from 'react-router-dom'
+
+function Nav({ authenticated, setAuthenticated }) {
     const [rightCurtain, setRightCurtain] = useState(true)
+    let history = useHistory()
+    const logoutNow = () => {
+        logout()
+        setAuthenticated(false)
+        history.push('/')
+    }
 
     return (
         <>
@@ -27,6 +35,12 @@ function Nav() {
                                 </li>
                             );
                         })}
+                        {authenticated &&
+                            <li className='nav-text' id="underline" onClick={logoutNow}>
+                                <span>LOG OUT</span>
+                            </li>
+
+                        }
                     </ul>
                 </nav>
                 <nav id="left" className={rightCurtain ? 'left-nav-menu' : 'left-nav-menu active'} >

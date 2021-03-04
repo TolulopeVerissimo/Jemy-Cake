@@ -53,20 +53,20 @@ function ContactInfo(params) {
                                         </div>
                                     </address>
                                 </div> <div className="u-w5of32 | u-hide@sm"><h4 className="t-text u-regular u-font-thin">Disrupt</h4> <div className="c-wysiwyg t-text--sm u-marg-t-xs u-color--gray"><p>A digital experience to showcase our approach to building tech</p>
-                                </div> <a href="http://disrupt.ouiwill.com" target="_blank" rel="noopener" className="t-link--primary t-text u-marg-t-md u-inline-block">Visit the site</a></div> <div className="c-footer-biz u-w5of32 | u-fit-w@sm"><h4 className="t-text u-regular u-font-thin u-color--gray">Start a conversation</h4> <a href="mailto:biz@ouiwill.com" target="_blank" rel="noopener" className="t-link--primary t-text--xl u-marg-t-xs u-inline-block">biz@ouiwill.com</a> <p className="t-text--xs u-color--gray u-marg-t-lg | u-hide@sm">Click on "say hi" to start a conversation.</p>
+                                </div> <a href="http://disrupt.ouiwill.com" rel="noopener" className="t-link--primary t-text u-marg-t-md u-inline-block">Visit the site</a></div> <div className="c-footer-biz u-w5of32 | u-fit-w@sm"><h4 className="t-text u-regular u-font-thin u-color--gray">Start a conversation</h4> <a href="mailto:biz@ouiwill.com" rel="noopener" className="t-link--primary t-text--xl u-marg-t-xs u-inline-block">biz@ouiwill.com</a> <p className="t-text--xs u-color--gray u-marg-t-lg | u-hide@sm">Click on "say hi" to start a conversation.</p>
                                 </div>
                                 <div className="u-w3of32"><ul className="c-footer-links t-list">
                                     <li>
-                                        <a href="http://dribbble.com/ouiwill" target="_blank" rel="noopener" className="t-link--primary t-text">Dribbble</a>
+                                        <a href="http://dribbble.com/ouiwill" rel="noopener" className="t-link--primary t-text">Dribbble</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.instagram.com/ouiwill/" target="_blank" rel="noopener" className="t-link--primary t-text">Instagram</a>
+                                        <a href="https://www.instagram.com/ouiwill/" rel="noopener" className="t-link--primary t-text">Instagram</a>
                                     </li>
                                     <li>
-                                        <a href="http://twitter.com/ouiwillagency" target="_blank" rel="noopener" className="t-link--primary t-text">Twitter</a>
+                                        <a href="http://twitter.com/ouiwillagency" rel="noopener" className="t-link--primary t-text">Twitter</a>
                                     </li>
                                     <li>
-                                        <a href="http://behance.net/ouiwill" target="_blank" rel="noopener" className="t-link--primary t-text">Behance</a>
+                                        <a href="http://behance.net/ouiwill" rel="noopener" className="t-link--primary t-text">Behance</a>
                                     </li>
                                 </ul>
                                 </div>

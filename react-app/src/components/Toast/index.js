@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+// import React, { useState, useEffect } from 'react';
 import './toast.css'
 
 
 function Toast() {
-    const [Load, setLoad] = useState(true)
+    // const [Load, setLoad] = useState(true)
 
     // useEffect(() => setLoad(!Load), [Load])
     return (

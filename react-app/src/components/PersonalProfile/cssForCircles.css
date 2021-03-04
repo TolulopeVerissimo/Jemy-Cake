@@ -4,13 +4,13 @@
     overflow-x: hidden;
 }
 .cirContainer {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     overflow: hidden;
 }
 .centerCircle {
     margin-left: 75rem;
-    margin-top: 5%;
+    margin-top: 0%;
     /* z-index: 1; */
     width: 400px;
     height: 400px;
@@ -63,7 +63,7 @@
 }
 .spinner {
     margin-left: 85rem;
-    margin-top: 20%;
+    margin-top: 22%;
     width: 5rem;
     height: 5rem;
     border-style: solid;
@@ -74,7 +74,7 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    z-index: 1;
+    z-index: -0.3;
     overflow: hidden;
 }
 

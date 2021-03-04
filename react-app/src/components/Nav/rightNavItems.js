@@ -21,14 +21,4 @@ export const RightNavItems = [
         path: '/g',
         cName: 'nav-text'
     },
-    {
-        title: 'News',
-        path: '/n',
-        cName: 'nav-text'
-    },
-    {
-        title: 'Contact',
-        path: '/c',
-        cName: 'nav-text'
-    }
 ] 

@@ -12,7 +12,7 @@ import LoginFormModal from './../Modals/LoginFormModal.js'
 
 
 
-function ProfileIntro() {
+function ProfileIntro({ authenticated, setAuthenticated }) {
     const [showModal, setShowModal] = useState(false);
     const [Visible, setVisible] = useState(true)
 
@@ -50,9 +50,9 @@ function ProfileIntro() {
                         we've generated hundreds of data points<pre /> to reflect the people's bellies'.
                         </p>
                         <div className="buttonDiv">
-                            <button className="btn modo" onClick={() => setShowModal(true)}
-                            > PROFILE
-                              <div>
+
+                            <button className="btn modo" onClick={() => { console.log('cleeek'); setShowModal(true) }}> PROFILE
+                                <div>
                                     <span className="icon-right"></span>
                                     <span className="icon-right.after"></span>
                                 </div>
@@ -65,23 +65,22 @@ function ProfileIntro() {
                                 </div>
                             </button>
 
-
-
                         </div>
                     </div>
                     <div className="gifDiv">
                         <img className="gifBae" src={gif} alt="loading..." />
                     </div>
                 </div>
-
-
                 {showModal &&
                     (
                         <Modal onClose={() => setShowModal(false)}>
-                            <LoginFormModal />
+                            <LoginFormModal authenticated={authenticated}
+                                setAuthenticated={setAuthenticated} />
                         </Modal>
                     )
                 }
+
+
 
 
 

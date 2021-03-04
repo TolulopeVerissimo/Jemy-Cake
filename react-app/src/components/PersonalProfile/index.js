@@ -14,7 +14,7 @@ import './photoRecipeGrid.css'
 import './recipeBox.css'
 // http://jsfiddle.net/5w3bE/107/
 
-function PersonalProfile(props) {
+function PersonalProfile() {
 
 
     SwiperCore.use([Navigation])
@@ -23,8 +23,8 @@ function PersonalProfile(props) {
 
     return (
         <>
-            {/* <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})` }}> */}
-            <div className="bodyDiv" >
+            <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})` }}>
+                {/* <div className="bodyDiv" > */}
 
                 <div className="RecipeBox">
                     <Combo />

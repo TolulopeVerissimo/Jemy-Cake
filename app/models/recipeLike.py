@@ -11,7 +11,7 @@ class RecipeLike(db.Model):
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     user = db.relationship("User", back_populates="likes")
-    recipe = db.relationship("Post", back_populates="recipeLikes")
+    recipe = db.relationship("Recipe", back_populates="recipe_like")
 
     def to_list(self):
         return self.userId

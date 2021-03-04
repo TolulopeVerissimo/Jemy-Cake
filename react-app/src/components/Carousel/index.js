@@ -64,36 +64,36 @@ function PCaro() {
 
                                 <SwiperSlide>
                                     <div className="swiper-slide swiper-slide--square swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="4" style={{ marginRight: "40px" }}>
-                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" />
+                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" alt="" />
                                     </div>
                                 </SwiperSlide>
 
                                 <SwiperSlide>
                                     <div className="swiper-slide swiper-slide--portrait swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="5" style={{ marginRight: "40px" }}>
-                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-5-700x1050.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-5-700x1050.jpg" />
+                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-5-700x1050.jpg" alt="" />
                                     </div>
                                 </SwiperSlide>
 
                                 <SwiperSlide>
                                     <div className="swiper-slide swiper-slide--wide" data-swiper-slide-index="6" style={{ marginRight: "40px" }}>
-                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-1a.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-1a.jpg" />
+                                        <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-1a.jpg" alt="" />
                                     </div>
                                 </SwiperSlide>
 
                                 <div className="swiper-slide swiper-slide--portrait" data-swiper-slide-index="7" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" alt="" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" alt="" />
                                 </div>
                                 <div className="swiper-slide swiper-slide--wide" data-swiper-slide-index="8" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://zios.com/media/zios-lifestyle-shots-kitchen-fire.jpg" alt="" src="https://zios.com/media/zios-lifestyle-shots-kitchen-fire.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://zios.com/media/zios-lifestyle-shots-kitchen-fire.jpg" alt="" />
                                 </div>
 
                                 <div className="swiper-slide swiper-slide--portrait swiper-slide-prev" data-swiper-slide-index="9" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-4-700x1050.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-4-700x1050.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/repetition_in_food_photography_symetrical_repetition-4-700x1050.jpg" alt="" />
                                 </div>
 
 
                                 <div className="swiper-slide swiper-slide--square swiper-slide-active" data-swiper-slide-index="10" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy.jpg" alt="" />
                                 </div>
 
 
@@ -103,11 +103,11 @@ function PCaro() {
 
 
                                 <div className="swiper-slide swiper-slide--wide swiper-slide-duplicate" data-swiper-slide-index="12" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-3.jpg" alt="" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-3.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://www.useyournoodles.eu/wp-content/uploads/how-to-take-the-perfect-action-shot-in-food-photograpy-3.jpg" alt="" />
                                 </div>
 
                                 <div className="swiper-slide swiper-slide--portrait swiper-slide-duplicate" data-swiper-slide-index="13" style={{ marginRight: "40px" }}>
-                                    <img className="swiper-slide__img lazyloaded" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" alt="" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" />
+                                    <img className="swiper-slide__img lazyloaded" src="https://cdn.fstoppers.com/wp-content/uploads/2013/12/Action_Food_Styled_bread_pudding.jpg" alt="" />
                                 </div>
 
                                 <div className="swiper-slide swiper-slide--wide swiper-slide-duplicate" data-swiper-slide-index="14" style={{ marginRight: "40px" }}>

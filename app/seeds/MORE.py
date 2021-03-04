@@ -55,5 +55,6 @@ def seed_randomIngredients():
 
 
 def undo_recipes&ingredients():
-    db.session.execute('TRUNCATE posts CASCADE;')
+    db.session.execute('TRUNCATE recipes CASCADE;')
+    db.session.execute('TRUNCATE ingredients CASCADE;')
     db.session.commit()

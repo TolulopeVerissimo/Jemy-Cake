@@ -43,16 +43,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* {authenticated && <Nav setAuthenticated={setAuthenticated} />} */}
-        <Nav />
-        <Toast />
-        <CookingPromo />
-        <ProfileIntro />
-        <WeeklyTrends />
-        <LeaderBoards />
-        <PCaro />
-        {/* <ContactInfo /> */}
-
+        <Nav authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <Switch>
           <Route path='/' exact={true}>
             {/* {authenticated && <LandingPage />} */}
@@ -62,16 +53,22 @@ function App() {
                 setAuthenticated={setAuthenticated}
               />
             )} */}
+            <Toast />
+            <CookingPromo />
+            <ProfileIntro authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <WeeklyTrends />
+            <LeaderBoards />
+            <PCaro />
+            {/* <ContactInfo /> */}
           </Route>
 
-          <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}>
+          {/* <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}> */}
+          <ProtectedRoute path="/:id/profile" exact={true} authenticated={authenticated}>
             <PersonalProfile />
           </ProtectedRoute>
 
           <Route path='/sign-up' exact={true}>
-            <SignUpForm
-              setAuthenticated={setAuthenticated}
-            />
+            <SignUpForm setAuthenticated={setAuthenticated} />
           </Route>
 
           <ProtectedRoute path='/users' exact={true} authenticated={authenticated}>
@@ -89,9 +86,9 @@ function App() {
           {/* <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
           </ProtectedRoute> */}
-          {/* <Route exact={true} path="*">
+          <Route path="*">
             <h1 style={{ color: "white" }}>404</h1>
-          </Route> */}
+          </Route>
 
         </Switch>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 figure {
     position: relative;
     margin: 0;
-    z-index: 1;
+    z-index: -2;
 }
 
 img,
@@ -16,7 +16,7 @@ figure::after {
     width: 100%;
     height: 100%;
     bottom: -1rem;
-    z-index: -1;
+    z-index: -2;
     background-image: var(--image);
     background-size: cover;
     transform: scale(0.9, 1);
@@ -50,8 +50,8 @@ figure::after {
 }
 
 .PhotoGridsContainer {
-    background: #ded;
-    margin: 0;
+    /* background: #ded; */
+    margin-top: 3.7rem;
     text-align: center;
     height: 100%;
     border-radius: 1px, 1px, 0, 0;
@@ -64,9 +64,11 @@ img {
 }
 
 .PhotoGrid {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 1px, 1px, 0, 0;
+    /* background-color: #fff; */
+    /* background-color: #19193d; */
+    background: none;
+    padding: 0rem;
+    border-radius: 1rem, 1rem, 0, 0;
 
     @media screen and (min-width: 30rem) {
         display: inline-block;

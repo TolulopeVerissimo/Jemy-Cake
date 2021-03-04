@@ -16,7 +16,7 @@ function CookingPromo() {
 
     return (
         <>
-            <TrailingPlayButton />
+            {/* <TrailingPlayButton /> */}
 
             <video className="video"
                 style={{ objectFit: 'contain' }} width="100%" height="100%" autoPlay loop
