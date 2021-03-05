@@ -1,6 +1,7 @@
 from app.models import db, User
 from werkzeug.security import generate_password_hash
 from faker import Faker
+from pexels_api import API
 import os
 
 fake = Faker()

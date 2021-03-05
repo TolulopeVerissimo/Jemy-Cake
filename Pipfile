@@ -33,6 +33,7 @@ boto3 = "*"
 faker = "*"
 pexels-api = "*"
 idna = "*"
+requests = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

@@ -3,16 +3,16 @@ import botocore
 from flask import Blueprint, request
 from flask_login import login_required
 
-from app.config import Config
+from app.config import Configuration
 from app.aws_s3 import *
 from app.models import db, User, Ingredient,Pantry, Recipe
 
 
-upload_route = Blueprint('file', __name__)
+upload_routes = Blueprint('file', __name__)
 
-@upload_route.route('/', methods=["POST"])
+@upload_routes.route('/', methods=["POST"])
 @login_required
-def upload_User:
+def upload_User():
     if "file" not in request.files:
         return "No user_file key in request.files"
 
@@ -34,12 +34,12 @@ def upload_User:
          db.session.add(file)  
          db.session.commit()
          return file.to_dict()  
-     else: return No File Attached! 
+    else: return "No File Attached!" 
 
      
-@upload_route.route('/', methods=["POST"])
+@upload_routes.route('/', methods=["POST"])
 @login_required
-def upload_Ingredient:
+def upload_Ingredient():
     if "file" not in request.files:
         return "No user_file key in request.files"
 
@@ -49,20 +49,20 @@ def upload_Ingredient:
          file_url = upload_file_to_s3(file, Config.S3_BUCKET)
 
          file = Ingredient(
-             name=request.form.get('name')
-             content=request.form.get('content')
+             name=request.form.get('name'),
+             content=request.form.get('content'),
              recipeId=request.form.get('recipeId')
 
-             url=file_url
+            #  url=file_url
          )  
          db.session.add(file)  
          db.session.commit()
          return file.to_dict()  
-     else: return No File Attached! 
+    else: return "No File Attached!" 
 
-@upload_route.route('/', methods=["POST"])
+@upload_routes.route('/', methods=["POST"])
 @login_required
-def upload_Pantry:
+def upload_Pantry():
     if "file" not in request.files:
         return "No user_file key in request.files"
 
@@ -72,19 +72,19 @@ def upload_Pantry:
          file_url = upload_file_to_s3(file, Config.S3_BUCKET)
 
          file = Pantry(
-             userId=request.form.get('userId')
-             name=request.form.get('name')
+             userId=request.form.get('userId'),
+             name=request.form.get('name'),
 
-             url=file_url
+            #  url=file_url
          )  
          db.session.add(file)  
          db.session.commit()
          return file.to_dict()  
-     else: return No File Attached! 
+    else: return "No File Attached!" 
 
-@upload_route.route('/', methods=["POST"])
+@upload_routes.route('/', methods=["POST"])
 @login_required
-def upload_Recipe:
+def upload_Recipe():
     if "file" not in request.files:
         return "No user_file key in request.files"
 
@@ -103,10 +103,10 @@ def upload_Recipe:
              imagePath=request.form.get('imagePath'),
              videoPath=request.form.get('videoPath'),
 
-             url=file_url
+            #  url=file_url
          )  
          db.session.add(file)  
          db.session.commit()
          return file.to_dict()  
-     else: return No File Attached! 
+    else: return "No File Attached!" 
 

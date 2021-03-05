@@ -1,8 +1,8 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .more_users import seed_more_users, undo_more_users
-from .MORE import seed_randomRecipe, seed_randomIngredients, undo_recipes&ingredients&pantries
-# from .MORE import seed_Repeater, undo_recipes&ingredients&pantries
+from .MORE import seed_randomRecipe, seed_randomIngredients, undo_recipes_ingredients_pantries
+# from .MORE import seed_Repeater, undo_recipes_ingredients_pantries
 from .recipeLikes import seed_recipeLikes, undo_recipeLikes
 
 seed_commands = AppGroup('seed')
