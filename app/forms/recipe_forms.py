@@ -1,13 +1,21 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, BooleanField, HiddenField
+from wtforms import TextAreaField, BooleanField, HiddenField, StringField
+from wtforms.validators import DataRequired
 
 
 class NewRecipeForm(FlaskForm):
-    description = TextAreaField('description')
-    private = BooleanField('private')
-    imagePath = HiddenField('imagePath')
+    type = StringField('description',validators=[DataRequired()])
+    description = TextAreaField('description',validators=[DataRequired()])
+    instruction = TextAreaField('instruction',validators=[DataRequired()])
+    steps = TextAreaField('steps',validators=[DataRequired()])
+    imagePath = HiddenField('imagePath',validators=[DataRequired()])
+    videoPath = HiddenField('videoPath',validators=[DataRequired()])
 
 
 class EditRecipeForm(FlaskForm):
-    description = TextAreaField('description')
-    private = BooleanField('private')
+    type = StringField('description',validators=[DataRequired()])
+    description = TextAreaField('description',validators=[DataRequired()])
+    instruction = TextAreaField('instruction',validators=[DataRequired()])
+    steps = TextAreaField('steps',validators=[DataRequired()])
+    imagePath = HiddenField('imagePath',validators=[DataRequired()])
+    videoPath = HiddenField('videoPath',validators=[DataRequired()])
