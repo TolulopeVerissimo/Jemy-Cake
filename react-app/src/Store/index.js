@@ -1,11 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-// import recipesReducer from './recipes'
 // import recipeLikesReducer from './recipeLikes'
 // import recipeItemsReducer from './recipeItems'
-// import pantryReducer from "./pantry";
 // import pantryItemsReducer from './pantryItems'
+
+
+
+// import recipesReducer from './recipes'
+// import pantriesReducer from "./pantry";
 // import ingredientsReducer from "./ingredients";
 import usersReducer from "./user";
 import profileReducer from "./profile";
@@ -13,11 +16,14 @@ import followsReducer from "./follow";
 import sessionReducer from "./session";
 
 const rootReducer = combineReducers({
-    // recipes: recipesReducer,
     // recipeLikes: recipeLikesReducer,
     // recipeItems: recipeItemsReducer,
-    // pantry: pantryReducer,
     // pantryItems: pantryItemsReducer,
+
+
+
+    // pantries: pantriesReducer,
+    // recipes: recipesReducer,
     // ingredients: ingredientsReducer,
     users: usersReducer,
     profiles: profileReducer,

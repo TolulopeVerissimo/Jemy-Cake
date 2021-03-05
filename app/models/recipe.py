@@ -22,9 +22,7 @@ class Recipe(db.Model):
 
 
     user = db.relationship("User", back_populates="recipe")
-    recipe_like = db.relationship("RecipeLike", back_populates="recipe")
-    # ingredients = db.relationship("Ingredient", back_populates="recipe")
-   
+    recipe_like = db.relationship("RecipeLike", back_populates="recipe")   
 
     date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(

@@ -30,7 +30,7 @@ function Nav({ authenticated, setAuthenticated }) {
                             return (
                                 <li key={index} className={item.cName} id="underline">
                                     <Link to={item.path} style={{ textDecoration: 'none' }}>
-                                        <span>{item.title}</span>
+                                        <span style={{ textDecoration: 'none' }}>{item.title}</span>
                                     </Link>
                                 </li>
                             );

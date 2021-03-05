@@ -55,7 +55,7 @@
     height: 50px;
     width: 190px;
     font-size: 14px;
-    z-index: 2;
+    z-index: -1;
     transition: 0.01s 0.23s ease-out all;
     overflow: hidden;
 }
