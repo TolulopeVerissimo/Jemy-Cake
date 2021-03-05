@@ -1,4 +1,4 @@
-from app.models import db, Recipe, Ingredients, Pantry
+from app.models import db, Recipe, Ingredient, Pantry
 from random import randint
 import spoonacular as sp
 api = sp.API(os.environ.get('spoonAPI'))
@@ -54,7 +54,8 @@ def seed_randomIngredients():
             )]
 
 
-def undo_recipes&ingredients():
+def undo_recipes&ingredients&pantries():
     db.session.execute('TRUNCATE recipes CASCADE;')
     db.session.execute('TRUNCATE ingredients CASCADE;')
+    db.session.execute('TRUNCATE pantries CASCADE;')
     db.session.commit()
