@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .more_users import seed_more_users, undo_more_users
 from .MORE import seed_randomRecipe, seed_randomIngredients, undo_recipes&ingredients&pantries
+# from .MORE import seed_Repeater, undo_recipes&ingredients&pantries
 from .recipeLikes import seed_recipeLikes, undo_recipeLikes
 
 seed_commands = AppGroup('seed')
@@ -17,6 +18,7 @@ def seed():
     seed_users()
     seed_randomRecipe()
     seed_randomIngredients()
+    # seed_Repeater()
     # seed_recipeLikes
     # seed_recipeLikes()
     # Add other seed functions here
@@ -40,9 +42,6 @@ def seed_data():
     seed_randomIngredients()
     # seed_recipeLikes
 
-# @seed_commands.command('more_posts')
-# def more_posts():
-#     # seed_more_posts()
 
 
 @seed_commands.command('more_users')

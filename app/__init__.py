@@ -11,9 +11,9 @@ from flask_login import LoginManager
 from .models import db, User, Recipe
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-
-# from .api.recipe_routes import recipe_routes
-# from .api.recipeLike_routes import recipeLike_routes
+from .api.recipe_routes import recipe_routes
+from .api.recipeLike_routes import recipeLike_routes
+from .api.upload_routes import upload_routes
 from .seeds import seed_commands
 # from .queries import query_commands
 
@@ -41,8 +41,9 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Configuration)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-# app.register_blueprint(recipe_routes, url_prefix='/api/recipes')
-# app.register_blueprint(recipeLike_routes, url_prefix='/api/recipeLikes')
+app.register_blueprint(recipe_routes, url_prefix='/api/recipes')
+app.register_blueprint(recipeLike_routes, url_prefix='/api/recipeLikes')
+app.register_blueprint(upload_routes, url_prefix='/api/upload')
 
 db.init_app(app)
 Migrate(app, db)
