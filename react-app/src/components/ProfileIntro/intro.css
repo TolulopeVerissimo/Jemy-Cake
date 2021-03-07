@@ -45,7 +45,6 @@
 .flex button {
     /* margin-left: 1rem; */
     font-family: 'Space Mono', monospace;
-    /* background-color: white; */
     letter-spacing: 1vh;
     background: none;
     color: white;
@@ -55,7 +54,7 @@
     height: 50px;
     width: 190px;
     font-size: 14px;
-    z-index: -1;
+    z-index: -0.1;
     transition: 0.01s 0.23s ease-out all;
     overflow: hidden;
 }

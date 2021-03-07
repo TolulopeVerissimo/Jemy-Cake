@@ -31,7 +31,7 @@ def profileGet(id):
     profile = user.to_dict()
     profile['followerCount'] = follower_count
     profile['followingCount'] = following_count
-    profile['postCount'] = recipe_counter
+    profile['recipe_counter'] = recipe_counter
     return profile
 
 

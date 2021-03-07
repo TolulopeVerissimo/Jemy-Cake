@@ -1,8 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .more_users import seed_more_users, undo_more_users
-from .MORE import seed_randomRecipe, seed_randomIngredients, undo_recipes_ingredients_pantries
-# from .MORE import seed_Repeater, undo_recipes_ingredients_pantries
+from .MORE import seed_Repeater, undo_recipes_ingredients_pantries
 from .recipeLikes import seed_recipeLikes, undo_recipeLikes
 
 seed_commands = AppGroup('seed')
@@ -16,11 +15,9 @@ def seed_users_seeds():
 @seed_commands.command('all')
 def seed():
     seed_users()
-    seed_randomRecipe()
-    seed_randomIngredients()
-    # seed_Repeater()
-    # seed_recipeLikes
-    # seed_recipeLikes()
+    seed_more_users()
+    seed_Repeater()
+    seed_recipeLikes
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -30,17 +27,16 @@ def seed():
 def undo():
     undo_users()
     undo_more_users()
-    undo_recipes&ingredients&pantries
-    # undo_recipeLikes
+    undo_recipes_ingredients_pantries
+    undo_recipeLikes
     # Add other undo functions here
 
 
 @seed_commands.command('data')
 def seed_data():
     seed_users()
-    seed_randomRecipe()
-    seed_randomIngredients()
-    # seed_recipeLikes
+    seed_Repeater
+    seed_recipeLikes
 
 
 

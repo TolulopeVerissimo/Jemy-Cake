@@ -21,11 +21,17 @@ def new_recipe():
     data = request.get_json()
     print(data)
     description = data['description']
-    private = data['isPrivate']
+    steps = data['steps']
+    instructions = data['instructions']
     imagePath = data['url']
     userId = data['userId']
-    new_recipe = Recipe(description=description, private=private,
-                    imagePath=imagePath, userId=userId)
+    new_recipe = Recipe(
+        description=description,
+        instructions=instructions,
+        steps=steps,
+        imagePath=imagePath,
+        userId=userId
+    )
     db.session.add(new_recipe)
     db.session.commit()
     return(data)

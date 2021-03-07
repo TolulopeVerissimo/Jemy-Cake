@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Modal } from '../../Context/Modal';
-// import SVG from './SVG.js'
+import { logout } from "../../services/auth";
+import { useHistory } from 'react-router-dom'
 import gif from './../../saltbae.webp'
 import './intro.css'
 import ModalBack from '../../components/Modals/ModalBack.js'
-// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import LoginFormModal from './../Modals/LoginFormModal.js'
+// import SVG from './SVG.js'
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 // https://labs.loupbrun.ca/buttons/
 // https://codepen.io/vanderlanth/pen/LZWyGg
 // const ReactCSSTG = CSSTransitionGroup;
@@ -15,9 +17,16 @@ import { useSelector } from "react-redux";
 
 
 function ProfileIntro({ authenticated, setAuthenticated }) {
+    let history = useHistory()
     const [showModal, setShowModal] = useState(false);
     const [Visible, setVisible] = useState(true)
     const user = useSelector(state => state.session.user)
+
+    const logoutNow = () => {
+        logout()
+        setAuthenticated(false)
+        history.push('/')
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -54,19 +63,29 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
                         </p>
                         <div className="buttonDiv">
 
-                            <button className="btn modo" onClick={() => { console.log('cleeek'); setShowModal(true) }}> PROFILE
-                                <div>
-                                    <span className="icon-right"></span>
-                                    <span className="icon-right.after"></span>
-                                </div>
-                            </button>
+                            {!authenticated ?
+                                <>
+                                    <button className="btn modo" onClick={() => { setShowModal(true) }}> PROFILE
+                                    <div>
+                                            <span className="icon-right"></span>
+                                            <span className="icon-right.after"></span>
+                                        </div>
+                                    </button>
 
-                            <button class="btn user-data">USER DATA
-                                <div>
-                                    {/* <span className="icon-right"></span>
-                                    <span className="icon-right.after"></span> */}
-                                </div>
-                            </button>
+                                </>
+                                :
+                                <>
+                                    <button className="btn modo" onClick={logoutNow}> LOG OUT
+                                        <div>
+                                            <span className="icon-right"></span>
+                                            <span className="icon-right.after"></span>
+                                        </div>
+                                    </button>
+                                    <button class="btn user-data">USER DATA</button>
+                                </>
+                            }
+
+
 
                         </div>
                     </div>

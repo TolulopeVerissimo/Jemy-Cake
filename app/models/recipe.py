@@ -12,9 +12,9 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String(2000))
-    type = db.Column(db.String(10))
+    type = db.Column(db.String(200))
     description = db.Column(db.String(2000))
-    instructions = db.Column(db.String(2000))
+    instructions = db.Column(db.String(5000))
     steps = db.Column(db.String(5000))
     ingredientId = db.Column(db.Integer)
     imagePath = db.Column(db.String(255))
@@ -50,7 +50,10 @@ class Recipe(db.Model):
         return {
             'id': self.id,
             'description': self.description,
-            'private': self.private,
+            'instructions': self.instructions,
+            'steps': self.steps,
+            'type': self.type,
+            'ingredientId': self.ingredientId,
             'imagePath': self.imagePath,
             'userId': self.userId,
             'username': username,

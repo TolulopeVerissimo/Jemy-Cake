@@ -49,7 +49,7 @@ function App() {
           <Route path='/' exact={true}>
             <Toast /> <CookingPromo />
             <ProfileIntro authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            {/* <WeeklyTrends /> */}
+            <WeeklyTrends />
             <PCaro />
             <LeaderBoards />
             {/* <ContactInfo /> */}
