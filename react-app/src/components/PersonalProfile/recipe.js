@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { recipeLike } from "../../Store/recipeLike";
+import './recipe.css'
 
 // if (recipes) {
 // 	for (let key in recipes) {
@@ -14,8 +15,8 @@ const recipesList = []
 SwiperCore.use([Navigation])
 
 
-
-function Recipe({ recipe, user }) {
+function Recipe({ recipe, user, followedUserId }) {
+    const [clicked, setClicked] = useState(true)
 
     const [isLiked, setIsLiked] = useState(false);
     const dispatch = useDispatch();
@@ -43,6 +44,8 @@ function Recipe({ recipe, user }) {
     })
     return (
         <>
+
+            <div className={clicked ? "ellipseToggle" : "ellipseClicked"} onClick={() => setClicked(!clicked)}><h1 className="recipeWordsH1">Click for Recipes</h1></div>
             {/* 
                 <div className="PhotoGridsContainer">
                     <div className="PhotoGrid">

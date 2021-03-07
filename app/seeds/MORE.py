@@ -32,7 +32,6 @@ def seed_Repeater():
 def slicer(spoonURL):
     #ex: "https://spoonacular.com/brussels-sprouts-in-honey-butter-with-chili-flakes-636363"
     numberfromURL = spoonURL 
-    # firstSlice = numberfromURL.rfind('/')
     firstSlice = numberfromURL.rfind('-')
     x = slice(firstSlice+1,-1)
     return numberfromURL[x] # returns 63636
@@ -47,7 +46,7 @@ def seed_randomRecipe(recipeObj):
         instructions=recipeObj["instructions"],
         # steps=recipeObj["analyzedInstructions"][0],
         imagePath=url,
-        userId=randint(1, 10)
+        userId=randint(1, 15)
     )]
     for recipe in recipes:
         db.session.add(recipe)
@@ -57,9 +56,6 @@ def seed_randomIngredients(recipeObj):
 
     ingredientArray = recipeObj["extendedIngredients"]
     list = [i["name"] for i in ingredientArray]
-    # for i in ingredientArray:
-    #     list.append()
-    #     return list
 
     ingredients = [Ingredient(
         name=None,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -21,7 +21,8 @@ import './cssForCircles.css'
 function PersonalProfile() {
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
-    const recipe = useSelector(state => state.recipes)
+    const recipe = useSelector(action => action.recipes)
+    const ingredient = useSelector(state => state.ingredients)
 
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false)
@@ -41,8 +42,7 @@ function PersonalProfile() {
         <>
             {loaded &&
                 <div>
-                    <Profile users={users} user={user} followedUserId={id} />
-                    <Recipe recipe={recipe} />
+                    <Profile users={users} user={user} followedUserId={id} recipe={recipe} ingredient={ingredient} />
                 </div>
             }
         </>

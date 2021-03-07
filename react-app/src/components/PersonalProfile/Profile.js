@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect, useParams } from 'react-router-dom';
+import Recipe from './recipe.js'
 import FollowUser from '../FollowUser'
 import backDrop from "./../../media/410197.jpg"
 // https://codepen.io/Lakston/pen/JgEpog?editors=1100
 import image from "./../../media/poke.jpg"
 
 
-function Profile({ user, users, followedUserId }) {
+function Profile({ user, users, followedUserId, recipe, ingredient }) {
 
     const numWords = require('num-words')
     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
     }
-    console.log("USers", users)
     const followsList = []
     return (
         <>
@@ -23,11 +23,6 @@ function Profile({ user, users, followedUserId }) {
 
                 <h1 style={{ color: 'white' }}>{user.biography}</h1>
 
-
-                {/* 
-                <div className="RecipeBox">
-                    <Combo />
-                </div> */}
 
                 {/* <div className="moveTheFollowButton">
                     <FollowUser followedUserId={id} />
@@ -61,6 +56,10 @@ function Profile({ user, users, followedUserId }) {
                         }
                     </div>
                 </div>
+                <div className="EllipseDrawer">
+                    <Recipe recipe={recipe} followedUserId={followedUserId} />
+                </div>
+
 
             </div>
 

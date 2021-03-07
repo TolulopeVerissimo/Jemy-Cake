@@ -20,7 +20,7 @@ def seed_more_users():
         username=fake.user_name(),
         hashed_password=generate_password_hash('password'),
         biography=fake.sentence(),
-        profilePicture=photos[i].small) for i in range(12)]
+        profilePicture=photos[i].small) for i in range(16)]
 
     for user in users:
         db.session.add(user)

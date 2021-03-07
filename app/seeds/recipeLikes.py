@@ -16,7 +16,7 @@ def seed_recipeLikes():
     for i in range(80):
         users = randomUserSet()
         for user in users:
-            likes.append(PostLike(userId=user, recipeId=(i+1)))
+            likes.append(RecipeLike(userId=user, recipeId=(i+1)))
 
     for like in likes:
         db.session.add(like)
