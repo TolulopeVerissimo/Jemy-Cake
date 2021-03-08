@@ -11,7 +11,7 @@ import image from "./../../media/poke.jpg"
 import './cssForCircles.css'
 import './profile.css'
 
-function Profile({ authenticated, user, profile, users, recipe, ingredient }) {
+function Profile({ authenticated, user, profile, users, recipes, ingredient, pantry }) {
 
     const numWords = require('num-words')
     const capitalize = (s) => {
@@ -24,9 +24,7 @@ function Profile({ authenticated, user, profile, users, recipe, ingredient }) {
     const userRecipes = []
 
     const { id } = useParams()
-    const recipes = useSelector(state => state.recipes)
-    // console.log(recipe)
-    // console.log(recipes)
+    // const recipes = useSelector(state => state.recipes)
 
     if (recipes) {
         for (let key in recipes) {
@@ -42,6 +40,7 @@ function Profile({ authenticated, user, profile, users, recipe, ingredient }) {
             }
         }
     }
+
     return (
         <>
 
@@ -122,7 +121,7 @@ function Profile({ authenticated, user, profile, users, recipe, ingredient }) {
                 </div>
 
                 <div className="EllipseDrawer">
-                    <Recipe recipe={recipe} followedUserId={id} />
+                    <Recipe recipes={recipes} ingredient={ingredient} pantry={pantry} followedUserId={id} />
                 </div>
 
 
