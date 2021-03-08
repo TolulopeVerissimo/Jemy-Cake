@@ -1,20 +1,47 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom';
 import Recipe from './recipe.js'
 import FollowUser from '../FollowUser'
 import backDrop from "./../../media/410197.jpg"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 // https://codepen.io/Lakston/pen/JgEpog?editors=1100
 import image from "./../../media/poke.jpg"
+import './cssForCircles.css'
+import './profile.css'
 
-
-function Profile({ user, users, followedUserId, recipe, ingredient }) {
+function Profile({ authenticated, user, profile, users, recipe, ingredient }) {
 
     const numWords = require('num-words')
     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
     }
+
+    const [tabIndex, setTabIndex] = useState(0);
     const followsList = []
+    const userRecipes = []
+
+    const { id } = useParams()
+    const recipes = useSelector(state => state.recipes)
+    // console.log(recipe)
+    // console.log(recipes)
+
+    if (recipes) {
+        for (let key in recipes) {
+            if (recipes[key].userId == id) {
+                userRecipes.push(recipes[key])
+            }
+        }
+    }
+    if (recipes) {
+        for (let key in recipes) {
+            if (recipes[key].userId == id) {
+                userRecipes.push(recipes[key])
+            }
+        }
+    }
     return (
         <>
 
@@ -24,9 +51,9 @@ function Profile({ user, users, followedUserId, recipe, ingredient }) {
                 <h1 style={{ color: 'white' }}>{user.biography}</h1>
 
 
-                {/* <div className="moveTheFollowButton">
-                    <FollowUser followedUserId={id} />
-                </div> */}
+                {/* {user.id != profile.id && < div className="moveTheFollowButton">
+                    <FollowUser followedUserId={followedUserId} />
+                </div>} */}
 
 
                 {/* <div className="cirContainer" >
@@ -55,9 +82,47 @@ function Profile({ user, users, followedUserId, recipe, ingredient }) {
                             )
                         }
                     </div>
+
                 </div>
+                <div className="recipeTabs">
+                    <Tabs
+                        selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
+                        <TabList className="tabGrid" style={{ listStyleType: 'none' }}>
+                            <Tab><h2>Pantry</h2></Tab>
+                            <Tab className="tabAlign1"><h2>Recipes</h2></Tab>
+                            <Tab className="tabAlign2"><h2>What Can I Make</h2></Tab>
+                        </TabList>
+
+                        <TabPanel>
+                            <h2>TAB 1 CONTENT</h2>
+                        </TabPanel>
+
+                        <TabPanel>
+                            <div className="gridContainer">
+                                {/* {userRecipes &&
+                                    userRecipes.map((post) => <SmallPost post={post} user={user} />)
+                                } */}
+                                {userRecipes &&
+                                    userRecipes.map((post) => {
+                                        return (
+                                            <img src={post.imagePath} key={post.id} alt="ig post" />
+                                        )
+                                    })
+                                }
+                            </div>
+                        </TabPanel>
+
+                        <TabPanel>
+                            <h2>TAB 3 CONTENT</h2>
+                        </TabPanel>
+
+                    </Tabs>
+
+
+                </div>
+
                 <div className="EllipseDrawer">
-                    <Recipe recipe={recipe} followedUserId={followedUserId} />
+                    <Recipe recipe={recipe} followedUserId={id} />
                 </div>
 
 

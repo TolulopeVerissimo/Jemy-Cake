@@ -10,11 +10,11 @@ import * as ingredientActions from "../../Store/ingredients";
 import { getUsers } from '../../Store/user'
 import { getFollowers } from '../../Store/follow.js'
 import Profile from './Profile.js'
+import { getProfile } from '../../Store/profile'
 
 
 
 
-import './cssForCircles.css'
 
 
 // http://jsfiddle.net/5w3bE/107/
@@ -23,6 +23,7 @@ function PersonalProfile() {
     const users = useSelector(state => state.users)
     const recipe = useSelector(action => action.recipes)
     const ingredient = useSelector(state => state.ingredients)
+    const profiles = useSelector(state => state.profiles)
 
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false)
@@ -33,6 +34,7 @@ function PersonalProfile() {
         dispatch(getUsers())
         dispatch(recipeActions.getRecipes());
         dispatch(ingredientActions.getIngredients());
+        dispatch(getProfile(id))
         dispatch(getFollowers(id))
         setLoaded(true)
     }, [dispatch])
@@ -42,7 +44,7 @@ function PersonalProfile() {
         <>
             {loaded &&
                 <div>
-                    <Profile users={users} user={user} followedUserId={id} recipe={recipe} ingredient={ingredient} />
+                    <Profile users={users} user={user} profile={profiles[id]} followedUserId={id} recipe={recipe} ingredient={ingredient} />
                 </div>
             }
         </>

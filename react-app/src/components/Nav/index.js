@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './nav.css'
 import { logout } from "../../services/auth";
+import { useSelector } from 'react-redux'
 import { RightNavItems } from './rightNavItems'
 import { useHistory, Link } from 'react-router-dom'
 
@@ -12,7 +13,10 @@ function Nav({ authenticated, setAuthenticated }) {
         setAuthenticated(false)
         history.push('/')
     }
-
+    const userId = useSelector(state => state.session.user.id)
+    const profileRedirect = () => {
+        history.push(`/profile/${userId}`)
+    }
     return (
         <>
             <div id="nav-container">
@@ -36,9 +40,14 @@ function Nav({ authenticated, setAuthenticated }) {
                             );
                         })}
                         {authenticated &&
-                            <li className='nav-text' id="underline" onClick={logoutNow}>
-                                <span>LOG OUT</span>
-                            </li>
+                            <>
+                                <li className='nav-text' id="underline" onClick={profileRedirect}>
+                                    <span>P R O F I L E</span>
+                                </li>
+                                <li className='nav-text' id="underline" onClick={logoutNow}>
+                                    <span>LOG OUT</span>
+                                </li>
+                            </>
 
                         }
                     </ul>

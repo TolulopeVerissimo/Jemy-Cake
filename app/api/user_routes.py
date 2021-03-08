@@ -10,7 +10,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    return {user.id: {"id": user.id, "username": user.username, "profilePicture": user.profilePicture}
+    return {user.id: {"id": user.id, "username": user.username, "profilePicture": user.profilePicture, "biography":user.biography, "skillLevel":user.skillLevel }
             for user in users}
 
 
@@ -25,13 +25,13 @@ def user(id):
 @login_required
 def profileGet(id):
     user = User.query.get(id)
-    recipe_counter = len(Recipe.query.filter(Recipe.userId == id).all())
+    recipeLikes_counter = len(Recipe.query.filter(Recipe.userId == id).all())
     follower_count = len(user.followers.all())
     following_count = len(user.follows.all())
     profile = user.to_dict()
     profile['followerCount'] = follower_count
     profile['followingCount'] = following_count
-    profile['recipe_counter'] = recipe_counter
+    profile['recipeLikes_counter'] = recipeLikes_counter
     return profile
 
 

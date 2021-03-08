@@ -45,7 +45,7 @@ function Recipe({ recipe, user, followedUserId }) {
     return (
         <>
 
-            <div className={clicked ? "ellipseToggle" : "ellipseClicked"} onClick={() => setClicked(!clicked)}><h1 className="recipeWordsH1">Click for Recipes</h1></div>
+            <div className={clicked ? "ellipseToggle" : "ellipseClicked"} onClick={() => setClicked(!clicked)}>{clicked ? <h1 className="recipeWordsH1">Click for Recipes</h1> : <h1 className="recipeWordsH1">Close Recipes</h1>}</div>
             {/* 
                 <div className="PhotoGridsContainer">
                     <div className="PhotoGrid">
