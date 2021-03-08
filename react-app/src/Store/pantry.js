@@ -82,7 +82,6 @@ export const deletePantry = (id) => async dispatch => {
     }
 }
 
-
 export const getPantries = () => async (dispatch) => {
     const response = await fetch("/api/pantries/");
     if (response.ok) {

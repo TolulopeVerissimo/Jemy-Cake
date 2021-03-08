@@ -39,7 +39,9 @@ function Profile({ authenticated, user, profile, users, recipes, ingredient, pan
                 userRecipes.push(recipes[key])
             }
         }
+
     }
+    console.log(userRecipes)
 
     return (
         <>

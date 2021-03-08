@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { recipeLike } from "../../Store/recipeLike";
 import './recipe.css'
-
+import Maps from './maps.js'
 // if (recipes) {
 // 	for (let key in recipes) {
 // 		if (recipes[key].userId == id) {
@@ -46,6 +46,14 @@ function Recipe({ recipe, user, followedUserId }) {
         <>
 
             <div className={clicked ? "ellipseToggle" : "ellipseClicked"} onClick={() => setClicked(!clicked)}>{clicked ? <h1 className="recipeWordsH1">Click for Recipes</h1> : <h1 className="recipeWordsH1">Close Recipes</h1>}</div>
+            {!clicked &&
+                <>
+                    <div className="mapsMove">
+                        <Maps />
+                    </div>
+                </>
+            }
+
             {/* 
                 <div className="PhotoGridsContainer">
                     <div className="PhotoGrid">

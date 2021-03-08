@@ -6,6 +6,7 @@
     height: 50rem;
     width: 70rem;
     overflow: hidden;
+    z-index: 0;
 }
 .tabGrid {
     color: white;

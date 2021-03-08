@@ -97,11 +97,12 @@ const initialState = {};
 const ingredientsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_INGREDIENTS:
-            const ingredients = action.ingredients.reduce((acc, ele) => {
-                acc[ele.id] = ele;
-                return acc;
-            }, {});
-            return { ...state, ...ingredients };
+            // const ingredients = action.ingredients.reduce((acc, ele) => {
+            //     acc[ele.id] = ele;
+            //     return acc;
+            // }, {});
+            // return { ...state, ...ingredients };
+            return { ...state, ...{ [action.ingredients]: action.ingredients } };
         case CREATE_INGREDIENTS:
             return { ...state, [action.ingredients.id]: action.ingredients };
         case REMOVE_INGREDIENT:
