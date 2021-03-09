@@ -11,6 +11,8 @@ class Pantry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String(4000), nullable=False)
+    image = db.Column(db.String(4000), nullable=False)
+    
 
     user = db.relationship("User", back_populates="pantry")
 
@@ -23,12 +25,10 @@ class Pantry(db.Model):
         lazy="dynamic"
     )
 
-
-
     def to_dict(self):
         return {
             "id": self.id,
-            "ingredientId": self.ingredientId,
             "userId": self.userId,
-            "name": self.name
+            "name": self.name,
+            "image":self.image
         }

@@ -27,7 +27,7 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
         setAuthenticated(false)
         history.push('/')
     }
-
+    const userId = useSelector(state => state.session.user.id)
     const onSubmit = (e) => {
         e.preventDefault();
         this.setState({
@@ -43,6 +43,9 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
         console.log(Visible)
         e.preventDefault()
 
+    }
+    const profileRedirect = () => {
+        history.push(`/profile/${userId}`)
     }
 
     let component = Visible ? <LoginFormModal style={{ position: 'absolute' }} onSubmit={onSubmit} key='modal' /> : <ModalBack onClick={remount} key='bringitback' />
@@ -86,11 +89,11 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
                             }
 
 
-
                         </div>
+
                     </div>
                     <div className="gifDiv">
-                        {authenticated ? <img className="gifBae" src={user.profilePicture}></img> : <img className="gifBae" src={gif} alt="loading..." />
+                        {authenticated ? <img className="gifBae" src={user.profilePicture} style={{ cursor: 'pointer' }} onClick={profileRedirect}></img> : <img className="gifBae" src={gif} alt="loading..." />
                         }
                     </div>
                 </div>

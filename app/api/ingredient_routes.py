@@ -21,11 +21,10 @@ def new_ingredient():
     data = request.get_json()
     print(data)
     name = data['name']
-    content = data['content']
+    image = data['image']
     new_ingredient= Ingredient(
         name=name,
-        instructions=instructions,
-        content=content
+        image=image
     )
     db.session.add(new_ingredient)
     db.session.commit()
@@ -48,7 +47,7 @@ def edit_ingredient(id):
     data = request.get_json()
     ingredient= Ingredient.query.get(id)
     ingredient.name = data['name']
-    ingredient.content = data['content']
+    ingredient.image = data['image']
     db.session.commit()
     return ingredient.to_dict()
 

@@ -30,15 +30,15 @@ def seed_Repeater():
         seed_randomIngredients(recipeObj)
         seed_Pantry(recipeObj)
     
-def slicer(spoonURL):
+def slicer(spoonURL,lastCharacterString):
     #ex: "https://spoonacular.com/brussels-sprouts-in-honey-butter-with-chili-flakes-636363"
     numberfromURL = spoonURL 
-    firstSlice = numberfromURL.rfind('-')
+    firstSlice = numberfromURL.rfind(lastCharacterString)
     x = slice(firstSlice+1,-1)
     return numberfromURL[x] # returns 63636
 
 def seed_randomRecipe(recipeObj):
-    num = slicer(recipeObj["spoonacularSourceUrl"])
+    num = slicer(recipeObj["spoonacularSourceUrl"],'-')
     url = f'https://webknox.com/recipeImages/{num}-556x370.jpg'
     recipes = [Recipe(
         name=recipeObj["title"],
@@ -47,7 +47,7 @@ def seed_randomRecipe(recipeObj):
         instructions=recipeObj["instructions"],
         # steps=recipeObj["analyzedInstructions"][0],
         imagePath=url,
-        userId=randint(1, 15)
+        userId=randint(1, 11)
     )]
     for recipe in recipes:
         db.session.add(recipe)
@@ -57,10 +57,11 @@ def seed_randomIngredients(recipeObj):
 
     ingredientArray = recipeObj["extendedIngredients"]
     list = [i["name"] for i in ingredientArray]
+    item = [f'https://spoonacular.com/cdn/ingredients_500x500/{i["image"]}' for i in ingredientArray]
 
     ingredients = [Ingredient(
-        name=None,
-        content= list,
+        name=list,
+        image= item,
         )]
     for ingredient in ingredients:
         db.session.add(ingredient)
@@ -70,10 +71,13 @@ def seed_Pantry(recipeObj):
 
     ingredientArray = recipeObj["extendedIngredients"]
     list = [i["name"] for i in ingredientArray]
+    item = [f'https://spoonacular.com/cdn/ingredients_500x500/{i["image"]}' for i in ingredientArray]
+
 
     items = [Pantry(
-        userId=randint(1, 15),
-        name= list
+        userId=randint(1, 11),
+        name= list,
+        image = item,
     )]
     for item in items:
         db.session.add(item)

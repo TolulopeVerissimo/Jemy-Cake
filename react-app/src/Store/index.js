@@ -3,10 +3,9 @@ import thunk from "redux-thunk";
 
 // import recipeItemsReducer from './recipeItems'
 // import pantryItemsReducer from './pantryItems'
-// import pantriesReducer from "./pantry";
 
 
-
+import pantriesReducer from "./pantry";
 import recipesReducer from './recipes'
 import ingredientsReducer from "./ingredients";
 import usersReducer from "./user";
@@ -17,8 +16,7 @@ import sessionReducer from "./session";
 const rootReducer = combineReducers({
     // recipeItems: recipeItemsReducer,
     // pantryItems: pantryItemsReducer,
-    // pantries: pantriesReducer,
-
+    pantries: pantriesReducer,
     recipes: recipesReducer,
     ingredients: ingredientsReducer,
     users: usersReducer,

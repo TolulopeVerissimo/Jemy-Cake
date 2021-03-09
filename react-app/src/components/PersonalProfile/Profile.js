@@ -11,27 +11,28 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import image from "./../../media/poke.jpg"
 import './cssForCircles.css'
 import './profile.css'
-function Profile({ user, profile, followedUserId, users, recipes, ingredient, pantry }) {
+function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }) {
 
     const numWords = require('num-words')
     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
     }
-
     const [tabIndex, setTabIndex] = useState(0);
     const followsList = []
     const userRecipes = []
     const { id } = useParams()
+    const user = useSelector(state => state.session.user)
 
-    // if (recipes) {
-    //     for (let key in recipes) {
 
-    //         if (recipes[key].userId == id) {
-    //             userRecipes.push(recipes[key])
-    //         }
-    //     }
-    // }
+    if (pantry) {
+        for (let key in pantry) {
+
+            if (pantry[key].userId == id) {
+                userRecipes.push(pantry[key])
+            }
+        }
+    }
 
     if (recipes) {
         for (let key in recipes) {
@@ -41,6 +42,15 @@ function Profile({ user, profile, followedUserId, users, recipes, ingredient, pa
             }
         }
     }
+
+    // if (recipes) {
+    //     for (let key in recipes) {
+
+    //         if (recipes[key].userId == id) {
+    //             userRecipes.push(recipes[key])
+    //         }
+    //     }
+    // }
     return (
         <>
             {/* <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})` }}> */}
@@ -52,6 +62,7 @@ function Profile({ user, profile, followedUserId, users, recipes, ingredient, pa
 
 
                 {user.id != id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}>
+                    {/* {user.id != profile.id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}> */}
                     <FollowUser followedUserId={followedUserId} />
                 </div>}
 
@@ -108,7 +119,9 @@ function Profile({ user, profile, followedUserId, users, recipes, ingredient, pa
                         {user.id == id &&
                             <>
                                 <TabPanel>
-                                    <h2>TAB 1 CONTENT</h2>
+                                    {/* {userPantries &&
+                                    userPantries.map((items) => <SmallPantry pantry={items} recipes={recipes} users={users} />)
+                                } */}
                                 </TabPanel>
 
                                 <TabPanel>

@@ -28,12 +28,14 @@ export const uploadFile = (fileForm) => async (dispatch) => {
     const {
         userId,
         name,
+        image,
         file // this is the file for uploading
     } = fileForm;
 
     const form = new FormData();
     form.append('userId', userId);
     form.append('name', name);
+    form.append('image', image);
     // repeat as necessary  for each required form field
     form.append('file', file);
 
@@ -44,26 +46,26 @@ export const uploadFile = (fileForm) => async (dispatch) => {
 };
 
 export const createPantry = (pantry) => async dispatch => {
-    const { name, userId } = pantry
+    const { name, userId, image } = pantry
     const options =
     {
         method: 'PANTRY',
         headers: {
             'Content-Type': 'Application/json'
         },
-        body: JSON.stringify({ name, userId })
+        body: JSON.stringify({ name, userId, image })
     }
     const res = await fetch('/api/pantries/', options)
     const json = await res.json()
     dispatch(setPantries([json]))
 }
-export const editPantry = (id, name, userId) => async dispatch => {
+export const editPantry = (id, name, userId, image) => async dispatch => {
     const options = {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, userId })
+        body: JSON.stringify({ name, userId, image })
     }
     const res = await fetch(`/api/pantries/${id}`, options)
     if (res.ok) {
@@ -86,7 +88,7 @@ export const getPantries = () => async (dispatch) => {
     const response = await fetch("/api/pantries/");
     if (response.ok) {
         let res = await response.json();
-        dispatch(setPantries(res.pantries));
+        dispatch(setPantries(res.pantry));
     }
     return response;
 };

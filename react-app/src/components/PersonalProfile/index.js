@@ -14,6 +14,7 @@ function PersonalProfile() {
     const [loaded, setLoaded] = useState(false)
 
     const dispatch = useDispatch()
+
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
     const recipes = useSelector(state => state.recipes)
@@ -26,16 +27,15 @@ function PersonalProfile() {
         dispatch(getProfile(id))
         dispatch(getRecipes(id))
         dispatch(getIngredients(id))
-
-        // dispatch(getPantries(id))
+        dispatch(getPantries(id))
         dispatch(getFollowers(id))
     }, [dispatch])
 
     useEffect(() => {
-        if (recipes && users && ingredient && profiles && users[id]) {
+        if (recipes && users && ingredient && profiles && users[id], pantry) {
             setLoaded(true)
         }
-    }, [recipes, users, ingredient, profiles, id])
+    }, [recipes, users, ingredient, profiles, id, pantry])
 
     if (!loaded) {
         return null

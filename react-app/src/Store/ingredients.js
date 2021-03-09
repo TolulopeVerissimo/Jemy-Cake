@@ -27,13 +27,13 @@ const removeIngredient = (id) => {
 export const uploadFile = (fileForm) => async (dispatch) => {
     const {
         name,
-        content,
+        image,
         file // this is the file for uploading
     } = fileForm;
 
     const form = new FormData();
     form.append('name', name);
-    form.append('content', content);
+    form.append('image', image);
     // repeat as necessary  for each required form field
     form.append('file', file);
 
@@ -44,26 +44,26 @@ export const uploadFile = (fileForm) => async (dispatch) => {
 };
 
 export const createIngredient = (ingredients) => async dispatch => {
-    const { name, content } = ingredients
+    const { name, image } = ingredients
     const options =
     {
         method: 'INGREDIENT',
         headers: {
             'Content-Type': 'Application/json'
         },
-        body: JSON.stringify({ name, content })
+        body: JSON.stringify({ name, image })
     }
     const res = await fetch('/api/ingredients/', options)
     const json = await res.json()
     dispatch(setIngredients([json]))
 }
-export const editIngredient = (id, name, content) => async dispatch => {
+export const editIngredient = (id, name, image) => async dispatch => {
     const options = {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, content })
+        body: JSON.stringify({ name, image })
     }
     const res = await fetch(`/api/ingredients/${id}`, options)
     if (res.ok) {
@@ -87,7 +87,7 @@ export const getIngredients = () => async (dispatch) => {
     const response = await fetch("/api/ingredients/");
     if (response.ok) {
         let res = await response.json();
-        dispatch(setIngredients(res.ingredients));
+        dispatch(setIngredients(res.ingredient));
     }
     return response;
 };
