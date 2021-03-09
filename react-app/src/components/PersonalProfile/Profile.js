@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom';
 import Recipe from './recipe.js'
 import SmallRecipe from './SmallRecipe.js'
+import SmallPantry from './SmallPantry.js'
 import FollowUser from '../FollowUser'
 import backDrop from "./../../media/410197.jpg"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-
 // https://codepen.io/Lakston/pen/JgEpog?editors=1100
 import image from "./../../media/poke.jpg"
 import './cssForCircles.css'
@@ -21,18 +21,44 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
     const [tabIndex, setTabIndex] = useState(0);
     const followsList = []
     const userRecipes = []
+    const userPantries = []
+    const pantryImages = []
+    let imgArr = []
+    const pantryName = []
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
 
-
     if (pantry) {
         for (let key in pantry) {
-
             if (pantry[key].userId == id) {
-                userRecipes.push(pantry[key])
+                pantryName.push(pantry[key].name)
+                userPantries.push(pantry[key])
+                pantryImages.push(pantry[key].image)
+
+
+                if (pantryImages) {
+                    // 'https://spoonacular.com/cdn/ingredients_500x500/beef-brisket.png,https://spoonacular.com/cdn/ingredients_500x500/sliced-carrot.png,https://spoonacular.com/cdn/ingredients_500x500/parsnip.jpg,https://spoonacular.com/cdn/ingredients_500x500/None,https://spoonacular.com/cdn/ingredients_500x500/garlic.png,https://spoonacular.com/cdn/ingredients_500x500/guinness.png,https://spoonacular.com/cdn/ingredients_500x500/beef-broth.png,https://spoonacular.com/cdn/ingredients_500x500/seasoning.png,https://spoonacular.com/cdn/ingredients_500x500/light-brown-sugar.jpg,https://spoonacular.com/cdn/ingredients_500x500/bay-leaves.jpg,https://spoonacular.com/cdn/ingredients_500x500/regular-mustard.jpg';
+                    let str = pantryImages[0]
+                    const regex = /,/g;
+                    for (let i = 0; i < 10; i++) {
+                        const seek = str.search(regex)
+                        imgArr.push(str.slice(0, seek + 1))
+                        str = str.slice(seek + 1)
+                    }
+                    for (let i = 0; i < 1; i++) {
+                        imgArr[0] = imgArr[0].slice(1)
+
+                    }
+                    for (let i = 0; i < imgArr.length; i++) {
+                        imgArr[i] = imgArr[i].slice(0, imgArr[i].length - 1)
+                    }
+                }
+
             }
         }
+
     }
+
 
     if (recipes) {
         for (let key in recipes) {
@@ -43,11 +69,11 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
         }
     }
 
-    // if (recipes) {
-    //     for (let key in recipes) {
+    // if (follows) {
+    //     for (let key in follows) {
 
-    //         if (recipes[key].userId == id) {
-    //             userRecipes.push(recipes[key])
+    //         if (follows[key].userId == id) {
+    //             userRecipes.push(follows[key])
     //         }
     //     }
     // }
@@ -62,7 +88,6 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
 
 
                 {user.id != id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}>
-                    {/* {user.id != profile.id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}> */}
                     <FollowUser followedUserId={followedUserId} />
                 </div>}
 
@@ -119,9 +144,11 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                         {user.id == id &&
                             <>
                                 <TabPanel>
-                                    {/* {userPantries &&
-                                    userPantries.map((items) => <SmallPantry pantry={items} recipes={recipes} users={users} />)
-                                } */}
+                                    <div className="gridContainer2">
+                                        {imgArr &&
+                                            imgArr.map((items) => <SmallPantry pantryName={pantryName} pantry={items} recipes={recipes} users={users} />)
+                                        }
+                                    </div>
                                 </TabPanel>
 
                                 <TabPanel>

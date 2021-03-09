@@ -32,7 +32,7 @@ function PersonalProfile() {
     }, [dispatch])
 
     useEffect(() => {
-        if (recipes && users && ingredient && profiles && users[id], pantry) {
+        if (recipes && users && ingredient && profiles && users[id] && pantry) {
             setLoaded(true)
         }
     }, [recipes, users, ingredient, profiles, id, pantry])

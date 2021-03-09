@@ -3,9 +3,9 @@
     background-color: white;
     position: absolute;
     margin: -55rem 0 0rem 10rem;
-    height: 59rem;
-    width: 70rem;
-    overflow: hidden;
+    height: 75rem;
+    width: 90rem;
+    overflow: scroll;
     z-index: 0;
 }
 .tabGrid {
@@ -32,16 +32,6 @@
     margin-top: 1rem;
     overflow: hidden;
 }
-/* .tabGrid li:hover {
-    background: white;
-    overflow: hidden;
-}
-
-.tabGrid li:hover h2 {
-    font-weight: bold;
-    color: black;
-    overflow: hidden;
-} */
 #react-tabs-0 h2 {
     margin-right: 1rem;
 }
@@ -66,6 +56,12 @@
     grid-row-gap: -1rem;
     /* grid-column-gap: 10rem; */
 }
-.moveTheFollowButton {
-    /* position: absolute; */
+.gridContainer2 {
+    color: white;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    grid-row-gap: -10rem;
+    /* grid-column-gap: -20rem; */
 }

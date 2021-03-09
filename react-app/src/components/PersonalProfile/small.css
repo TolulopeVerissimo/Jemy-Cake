@@ -11,6 +11,19 @@
     margin-left: 5rem;
     margin-top: 2rem;
 }
+.ppContainer2 {
+    background-color: #fff;
+    padding: 1rem;
+    display: inline-block;
+    border-radius: 3rem;
+    box-shadow: 0 1rem 1rem rgba(255, 49, 49, 0.2);
+    margin: 1rem 0;
+    padding: 2rem;
+    height: 20rem;
+    width: 20rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+}
 .card {
     height: 100%;
     width: 100%;
@@ -25,6 +38,12 @@
 }
 
 .ppContainer img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.ppContainer2 img {
     height: 100%;
     width: 100%;
     object-fit: cover;

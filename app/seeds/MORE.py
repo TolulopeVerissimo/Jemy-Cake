@@ -23,7 +23,7 @@ def retrieve_data(url):
     return object
 
 def seed_Repeater():
-    for i in range(30):
+    for i in range(20):
         recipe = retrieve_data(randomRecipeURL)
         recipeObj = recipe["recipes"][0]
         seed_randomRecipe(recipeObj)
@@ -39,7 +39,7 @@ def slicer(spoonURL,lastCharacterString):
 
 def seed_randomRecipe(recipeObj):
     num = slicer(recipeObj["spoonacularSourceUrl"],'-')
-    url = f'https://webknox.com/recipeImages/{num}-556x370.jpg'
+    url = f'https://spoonacular.com/recipeImages/{num}-636x393.jpg'
     recipes = [Recipe(
         name=recipeObj["title"],
         type=recipeObj["dishTypes"],
@@ -47,7 +47,7 @@ def seed_randomRecipe(recipeObj):
         instructions=recipeObj["instructions"],
         # steps=recipeObj["analyzedInstructions"][0],
         imagePath=url,
-        userId=randint(1, 11)
+        userId=randint(1, 10)
     )]
     for recipe in recipes:
         db.session.add(recipe)
@@ -75,7 +75,7 @@ def seed_Pantry(recipeObj):
 
 
     items = [Pantry(
-        userId=randint(1, 11),
+        userId=randint(1, 10),
         name= list,
         image = item,
     )]

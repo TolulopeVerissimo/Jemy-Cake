@@ -3,20 +3,19 @@ import './small.css'
 import { Modal } from '../../Context/Modal'
 // import ModalRecipe from './modalClickPost'
 
-export default function SmallRecipe({ recipes, users }) {
+export default function SmallPantry({ recipes, users, pantry, pantryName }) {
     const [showModal, setShowModal] = useState(false);
     return (
-        <div className="ppContainer2">
+        <div className="ppContainer">
             <article className="card">
                 <figure>
-                    <img src={recipes.imagePath} key={recipes.id} alt="recipe!" onClick={() => { setShowModal(true) }
+                    <img src={pantry} key={pantry.id} alt="Pantry Item!" onClick={() => { setShowModal(true) }
                     } />
                     {showModal
                         && (<Modal onClose={() => { setShowModal(false) }}>
                             {/* <ModalRecipe recipes={recipes} users={users} /> */}
                         </Modal>
                         )}
-
                 </figure>
             </article>
         </div>
