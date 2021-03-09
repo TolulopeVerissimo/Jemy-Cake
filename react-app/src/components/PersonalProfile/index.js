@@ -5,15 +5,15 @@ import Profile from './Profile.js'
 import { getUsers } from '../../Store/user'
 import { getProfile } from '../../Store/profile'
 import { getFollowers } from '../../Store/follow.js'
-
-import * as recipeActions from "../../Store/recipes";
 import { getRecipes } from '../../Store/recipes'
-
-import * as ingredientActions from "../../Store/ingredients";
 import { getIngredients } from '../../Store/ingredients'
 import { getPantries } from '../../Store/pantry'
 // http://jsfiddle.net/5w3bE/107/
 function PersonalProfile() {
+    const { id } = useParams()
+    const [loaded, setLoaded] = useState(false)
+
+    const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.users)
     const recipes = useSelector(state => state.recipes)
@@ -21,25 +21,25 @@ function PersonalProfile() {
     const profiles = useSelector(state => state.profiles)
     const pantry = useSelector(state => state.pantries)
 
-    const dispatch = useDispatch()
-    const [loaded, setLoaded] = useState(false)
-    const { id } = useParams()
-    console.log(recipes)
-
     useEffect(() => {
         dispatch(getUsers())
         dispatch(getProfile(id))
         dispatch(getRecipes(id))
-        // dispatch(recipeActions.getRecipes(id));
-
         dispatch(getIngredients(id))
-        // dispatch(ingredientActions.getIngredients(id));
 
         // dispatch(getPantries(id))
-
         dispatch(getFollowers(id))
-        setLoaded(true)
     }, [dispatch])
+
+    useEffect(() => {
+        if (recipes && users && ingredient && profiles && users[id]) {
+            setLoaded(true)
+        }
+    }, [recipes, users, ingredient, profiles, id])
+
+    if (!loaded) {
+        return null
+    }
     return (
         <>
             {loaded &&

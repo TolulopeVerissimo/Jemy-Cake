@@ -23,11 +23,12 @@ def retrieve_data(url):
     return object
 
 def seed_Repeater():
-    for i in range(11):
+    for i in range(30):
         recipe = retrieve_data(randomRecipeURL)
         recipeObj = recipe["recipes"][0]
         seed_randomRecipe(recipeObj)
         seed_randomIngredients(recipeObj)
+        seed_Pantry(recipeObj)
     
 def slicer(spoonURL):
     #ex: "https://spoonacular.com/brussels-sprouts-in-honey-butter-with-chili-flakes-636363"
@@ -63,6 +64,19 @@ def seed_randomIngredients(recipeObj):
         )]
     for ingredient in ingredients:
         db.session.add(ingredient)
+    db.session.commit()
+
+def seed_Pantry(recipeObj):
+
+    ingredientArray = recipeObj["extendedIngredients"]
+    list = [i["name"] for i in ingredientArray]
+
+    items = [Pantry(
+        userId=randint(1, 15),
+        name= list
+    )]
+    for item in items:
+        db.session.add(item)
     db.session.commit()
 
 

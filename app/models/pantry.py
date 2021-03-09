@@ -10,7 +10,7 @@ class Pantry(db.Model):
     __tablename__ = 'pantries'
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    name = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(4000), nullable=False)
 
     user = db.relationship("User", back_populates="pantry")
 

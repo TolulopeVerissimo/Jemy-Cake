@@ -14,6 +14,7 @@ function Nav({ authenticated, setAuthenticated }) {
         history.push('/')
     }
     const userId = useSelector(state => state.session.user.id)
+    // const userId = 1
     const profileRedirect = () => {
         history.push(`/profile/${userId}`)
     }

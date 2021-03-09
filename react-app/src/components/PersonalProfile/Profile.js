@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect, useParams } from 'react-router-dom';
 import Recipe from './recipe.js'
+import SmallRecipe from './SmallRecipe.js'
 import FollowUser from '../FollowUser'
 import backDrop from "./../../media/410197.jpg"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -10,8 +11,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import image from "./../../media/poke.jpg"
 import './cssForCircles.css'
 import './profile.css'
-
-function Profile({ authenticated, user, profile, users, recipes, ingredient, pantry }) {
+function Profile({ user, profile, followedUserId, users, recipes, ingredient, pantry }) {
 
     const numWords = require('num-words')
     const capitalize = (s) => {
@@ -22,39 +22,38 @@ function Profile({ authenticated, user, profile, users, recipes, ingredient, pan
     const [tabIndex, setTabIndex] = useState(0);
     const followsList = []
     const userRecipes = []
-
     const { id } = useParams()
-    // const recipes = useSelector(state => state.recipes)
+
+    // if (recipes) {
+    //     for (let key in recipes) {
+
+    //         if (recipes[key].userId == id) {
+    //             userRecipes.push(recipes[key])
+    //         }
+    //     }
+    // }
 
     if (recipes) {
         for (let key in recipes) {
+
             if (recipes[key].userId == id) {
                 userRecipes.push(recipes[key])
             }
         }
     }
-    if (recipes) {
-        for (let key in recipes) {
-            if (recipes[key].userId == id) {
-                userRecipes.push(recipes[key])
-            }
-        }
-
-    }
-    console.log(userRecipes)
-
     return (
         <>
-
             {/* <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})` }}> */}
-            <div className="bodyDiv" >
-
-                <h1 style={{ color: 'white' }}>{user.biography}</h1>
 
 
-                {/* {user.id != profile.id && < div className="moveTheFollowButton">
+            < div className="bodyDiv" >
+
+                <h1 style={{ color: 'white' }}>{users[id].biography}</h1>
+
+
+                {user.id != id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}>
                     <FollowUser followedUserId={followedUserId} />
-                </div>} */}
+                </div>}
 
 
                 {/* <div className="cirContainer" >
@@ -70,13 +69,13 @@ function Profile({ authenticated, user, profile, users, recipes, ingredient, pan
 
                 <div className="cirContainer" >
 
-                    <div className="centerCircle" style={{ backgroundImage: `url(${user.profilePicture})`, backgroundSize: "cover", backgroundPosition: "center center" }}>
+                    <div className="centerCircle" style={{ backgroundImage: `url(${users[id].profilePicture})`, backgroundSize: "cover", backgroundPosition: "center center" }}>
                         {
                             followsList && followsList.map((el, idx) => {
                                 return (
                                     // <div className=`spinner ${idx}` > <img id="pictureCircle" src={el.ProfilePicture}>
                                     <div className={`spinner ${capitalize(numWords(idx + 1))}`} >
-                                        <img id="pictureCircle" src={el.ProfilePicture} />
+                                        <img id="pictureCircle" src={el.ProfilePicture} alt={el.username} />
                                     </div>
                                 )
                             }
@@ -85,41 +84,38 @@ function Profile({ authenticated, user, profile, users, recipes, ingredient, pan
                     </div>
 
                 </div>
+
                 <div className="recipeTabs">
                     <Tabs
                         selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
                         <TabList className="tabGrid" style={{ listStyleType: 'none' }}>
-                            <Tab><h2>Pantry</h2></Tab>
                             <Tab className="tabAlign1"><h2>Recipes</h2></Tab>
-                            <Tab className="tabAlign2"><h2>What Can I Make</h2></Tab>
+                            {user.id == id &&
+                                <>
+                                    <Tab><h2>Pantry</h2></Tab>
+                                    <Tab className="tabAlign2"><h2>What Can I Make</h2></Tab>
+                                </>
+                            }
                         </TabList>
 
                         <TabPanel>
-                            <h2>TAB 1 CONTENT</h2>
-                        </TabPanel>
-
-                        <TabPanel>
                             <div className="gridContainer">
-                                {/* {userRecipes &&
-                                    userRecipes.map((post) => <SmallPost post={post} user={user} />)
-                                } */}
                                 {userRecipes &&
-                                    userRecipes.map((post) => {
-                                        return (
-                                            <img src={post.imagePath} key={post.id} alt="ig post" />
-                                        )
-                                    })
+                                    userRecipes.map((recipes) => <SmallRecipe recipes={recipes} users={users} />)
                                 }
                             </div>
                         </TabPanel>
+                        {user.id == id &&
+                            <>
+                                <TabPanel>
+                                    <h2>TAB 1 CONTENT</h2>
+                                </TabPanel>
 
-                        <TabPanel>
-                            <h2>TAB 3 CONTENT</h2>
-                        </TabPanel>
-
+                                <TabPanel>
+                                    <h2>TAB 3 CONTENT</h2>
+                                </TabPanel>
+                            </>}
                     </Tabs>
-
-
                 </div>
 
                 <div className="EllipseDrawer">

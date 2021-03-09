@@ -11,29 +11,29 @@ def seed_users():
         hashed_password=generate_password_hash('demo'),
         username='demoUser',
         biography="Am I a Demo User?",
-        profilePicture='https://unsplash.com/photos/DN2HD1Pp_Qo',
+        profilePicture='https://images.unsplash.com/photo-1560579183-b7c69367cb00?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         skillLevel=10
     )
 
     gen = User(
-        name='Gen',
-        email='gen@aa.io',
+        name='Squirrel',
+        email='squirrel@aa.io',
         hashed_password=generate_password_hash('gen'),
         phoneNumber=5551234567,
-        username='genagain',
-        biography='Hilarious guy, getting by, teaching at a/A',
-        profilePicture='https://unsplash.com/photos/AS80CJTzM5Q',
+        username='notgenagain',
+        biography='A51 Escapee. A1 sauce on my nuts. I\'m a talking Squirrel.',
+        profilePicture='https://images.unsplash.com/photo-1560794081-cb99dfca74ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80',
         skillLevel=1
     )
 
     ed = User(
-        name='Ed',
-        email='ed@aa.io',
+        name='NotEd',
+        email='noted@aa.io',
         hashed_password=generate_password_hash('ed'),
-        username='edagain',
+        username='notedagain',
         phoneNumber=5551234567,
-        biography='Teaching code/growing plants',
-        profilePicture='https://unsplash.com/photos/LpjpApXzB3M',
+        biography='That call me Left Hook because my favorite game is PunchOut. I\'ll knock ya lights out!',
+        profilePicture='https://images.unsplash.com/photo-1573878415613-fe2a3f769cab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
         skillLevel=3
     )
 

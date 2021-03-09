@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f47fae6766fa
+Revision ID: ccba44b2357c
 Revises: 
-Create Date: 2021-03-07 14:37:58.376513
+Create Date: 2021-03-08 19:25:23.708343
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f47fae6766fa'
+revision = 'ccba44b2357c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,7 +50,7 @@ def upgrade():
     op.create_table('pantries',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('name', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=4000), nullable=False),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -60,7 +60,7 @@ def upgrade():
     sa.Column('name', sa.String(length=2000), nullable=True),
     sa.Column('type', sa.String(length=200), nullable=True),
     sa.Column('description', sa.String(length=2000), nullable=True),
-    sa.Column('instructions', sa.String(length=2000), nullable=True),
+    sa.Column('instructions', sa.String(length=5000), nullable=True),
     sa.Column('steps', sa.String(length=5000), nullable=True),
     sa.Column('ingredientId', sa.Integer(), nullable=True),
     sa.Column('imagePath', sa.String(length=255), nullable=True),

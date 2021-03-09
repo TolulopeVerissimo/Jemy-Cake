@@ -2,8 +2,8 @@
     color: black;
     background-color: white;
     position: absolute;
-    margin: -50rem 0 0rem 10rem;
-    height: 50rem;
+    margin: -55rem 0 0rem 10rem;
+    height: 59rem;
     width: 70rem;
     overflow: hidden;
     z-index: 0;
@@ -63,9 +63,9 @@
     display: grid;
     grid-template-columns: repeat(2, 50%);
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-    grid-gap: 0.5rem;
-    align-items: center;
-    width: 66%;
-    margin-left: 30rem;
-    margin-top: 10rem;
+    grid-row-gap: -1rem;
+    /* grid-column-gap: 10rem; */
+}
+.moveTheFollowButton {
+    /* position: absolute; */
 }

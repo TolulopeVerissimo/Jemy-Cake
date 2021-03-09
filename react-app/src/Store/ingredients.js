@@ -102,6 +102,7 @@ const ingredientsReducer = (state = initialState, action) => {
             //     return acc;
             // }, {});
             // return { ...state, ...ingredients };
+            // return { ...state, ...{ [action.ingredients.id]: action.ingredients } };
             return { ...state, ...{ [action.ingredients]: action.ingredients } };
         case CREATE_INGREDIENTS:
             return { ...state, [action.ingredients.id]: action.ingredients };

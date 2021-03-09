@@ -26,12 +26,6 @@ export default function FollowUser({ followedUserId }) {
   }, [setIsFollowed, follows, userId]);
   return (
     <div className="follow">
-      {/* {follows &&
-        <form onSubmit={isFollowed ? unfollow : follow}>
-          <input name="follower_id" type="hidden" value={userId} />
-          <button className={isFollowed ? "unfollowUser" : "followUser"} type="submit">{isFollowed ? 'Unfollow' : 'Follow'}</button>
-        </form>
-      } */}
       <form onSubmit={isFollowed ? unfollow : follow}>
         <input name="follower_id" type="hidden" value={userId} />
         <button id="followButton" className={isFollowed ? "unfollowUser" : "followUser"} type="submit">{isFollowed ? 'Unfollow' : 'Follow Me'}</button>

@@ -14,7 +14,7 @@ import CookingPromo from './components/CookingPromo'
 import ProfileIntro from './components/ProfileIntro'
 import WeeklyTrends from './components/WeeklyTrends'
 import LeaderBoards from './components/LeaderBoards'
-import ContactInfo from './components/ContactInfo'
+// import ContactInfo from './components/ContactInfo'
 import PCaro from './components/Carousel';
 // import NavTransitions from './components/NavTransitions';
 import PersonalProfile from './components/PersonalProfile';
