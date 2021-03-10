@@ -6,8 +6,8 @@
     height: 75rem;
     width: 90rem;
     overflow: scroll;
-    z-index: 0;
 }
+
 .tabGrid {
     color: white;
     height: 5rem;
@@ -17,6 +17,7 @@
     grid-template-columns: repeat(3, 33%);
     overflow: hidden;
     box-shadow: 0 0.2rem 10px 0.2rem rgb(255, 255, 255);
+    z-index: -1;
 }
 .tabGrid li {
     overflow: hidden;
@@ -31,6 +32,9 @@
     font-style: italic;
     margin-top: 1rem;
     overflow: hidden;
+}
+.tabGrid .tabcontent {
+    overflow: scroll;
 }
 #react-tabs-0 h2 {
     margin-right: 1rem;

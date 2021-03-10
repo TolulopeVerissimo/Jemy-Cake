@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth.js';
 import CakeLogo from './CakeLogo'
-import Input from './Input'
 
 function SignUpFormModal({ authenticated, setAuthenticated }) {
     const [showModal, setShowModal] = useState(false);

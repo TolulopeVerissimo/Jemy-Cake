@@ -29,7 +29,6 @@ export const uploadFile = (fileForm) => async (dispatch) => {
         description,
         instructions,
         steps,
-        ingredientId,
         imagePath,
         videoPath,
         file // this is the file for uploading
@@ -41,7 +40,6 @@ export const uploadFile = (fileForm) => async (dispatch) => {
     form.append('description', description);
     form.append('instructions', instructions);
     form.append('steps', steps);
-    form.append('ingredientId', ingredientId);
     form.append('imagePath', imagePath);
     form.append('videoPath', videoPath);
     // repeat as necessary  for each required form field
@@ -54,26 +52,26 @@ export const uploadFile = (fileForm) => async (dispatch) => {
 };
 
 export const createRecipe = (recipe) => async dispatch => {
-    const { isPrivate, description, url, userId } = recipe
+    const { type, instructions, steps, imagePath, videoPath, description, url, userId } = recipe
     const options =
     {
         method: 'RECIPE',
         headers: {
             'Content-Type': 'Application/json'
         },
-        body: JSON.stringify({ isPrivate, description, url, userId })
+        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, url, userId })
     }
     const res = await fetch('/api/recipes/', options)
     const json = await res.json()
     dispatch(setRecipes([json]))
 }
-export const editRecipe = (id, description, isPrivate) => async dispatch => {
+export const editRecipe = (id, type, instructions, steps, imagePath, videoPath, description, url, userId) => async dispatch => {
     const options = {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ description, isPrivate })
+        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, url, userId })
     }
     const res = await fetch(`/api/recipes/${id}`, options)
     if (res.ok) {
@@ -110,6 +108,16 @@ export const getRecipes = () => async (dispatch) => {
     }
     return response;
 };
+export const getMissingItems = (recipeId) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/${recipeId}`);
+    if (response.ok) {
+        let res = await response.json();
+        console.log("getMissingItems", res)
+        dispatch(setRecipes(res));
+    }
+    return response;
+};
+
 
 const initialState = {};
 

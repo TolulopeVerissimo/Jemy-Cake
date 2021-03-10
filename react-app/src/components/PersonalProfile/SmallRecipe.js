@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import './small.css'
+import './style/small.css'
+// import './smallRecipe.css'
 import { Modal } from '../../Context/Modal'
-// import ModalRecipe from './modalClickPost'
+import ModalRecipe from './ModalRecipe.js'
 
 export default function SmallRecipe({ recipes, users }) {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,7 @@ export default function SmallRecipe({ recipes, users }) {
                     } />
                     {showModal
                         && (<Modal onClose={() => { setShowModal(false) }}>
-                            {/* <ModalRecipe recipes={recipes} users={users} /> */}
+                            <ModalRecipe recipes={recipes} users={users} />
                         </Modal>
                         )}
 

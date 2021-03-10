@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Recipe
+from app.models import db, Recipe, Pantry, Ingredient,User
 from flask_login import login_required
 from app.forms import NewRecipeForm, EditRecipeForm
 recipe_routes = Blueprint('recipes', __name__)
@@ -65,3 +65,33 @@ def delete_recipe(id):
     db.session.delete(recipe)
     db.session.commit()
     return 'Recipe Deleted'
+
+@recipe_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def missing():
+    user = User.query.get(id)
+    # recipe = Recipe.query.get(id)
+    # pantry = Pantry.query.get(id)
+    # ingredient = Ingredient.query.get(id)
+
+    pantries = Pantry.query.all()
+    recipes = Recipe.query.all()
+    ingredients = Ingredient.query.all()
+
+    #I want to filter recipe ingredients by a user's pantry ingredients
+    for i in range(len(recipes)):
+        if(recipes[i].userId == user):
+            #object of food items
+            inHouseItems = filter(pantries[i].name, ingredients[i].name)
+            pantryItemImage = pantries[i].image 
+
+            goBuyItems = filter(not pantries[i].name, ingredients[i].name)
+            ingredientItemImage= ingredients[i].image 
+
+    return {
+        'inHouse':inHouseItems,
+        'houseImages':pantryItemImage,
+        'buyImages':ingredientItemImage,
+        'goBuy':goBuyItems
+        }
+            

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './nav.css'
 import { logout } from "../../services/auth";
 import { useSelector } from 'react-redux'
 import { RightNavItems } from './rightNavItems'
 import { useHistory, Link } from 'react-router-dom'
 
+import './nav.css'
 function Nav({ authenticated, setAuthenticated }) {
     const [rightCurtain, setRightCurtain] = useState(true)
     let history = useHistory()
@@ -13,11 +13,12 @@ function Nav({ authenticated, setAuthenticated }) {
         setAuthenticated(false)
         history.push('/')
     }
-    const userId = useSelector(state => state.session.user.id)
-    // const userId = 1
+    const userId = useSelector(state => state.session.user?.id)
+
     const profileRedirect = () => {
         history.push(`/profile/${userId}`)
     }
+
     return (
         <>
             <div id="nav-container">
@@ -29,7 +30,6 @@ function Nav({ authenticated, setAuthenticated }) {
                     <span className="bar" id={rightCurtain ? '' : 'pushed'}></span>
                 </div>
                 <nav id="right" className={rightCurtain ? 'nav-menu' : 'nav-menu active'}>
-                    { /*take out after testing---> onClick={() => setRightCurtain(!rightCurtain)} */}
                     <ul className='nav-menu-items' onClick={() => setRightCurtain(!rightCurtain)}>
                         {RightNavItems.map((item, index) => {
                             return (

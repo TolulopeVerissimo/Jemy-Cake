@@ -16,7 +16,6 @@ class Recipe(db.Model):
     description = db.Column(db.String(2000))
     instructions = db.Column(db.String(5000))
     steps = db.Column(db.String(5000))
-    ingredientId = db.Column(db.Integer)
     imagePath = db.Column(db.String(255))
     videoPath = db.Column(db.String(255))
 
@@ -50,15 +49,14 @@ class Recipe(db.Model):
         return {
             'id': self.id,
             'description': self.description,
+            'name': self.name,
             'instructions': self.instructions,
             'steps': self.steps,
             'type': self.type,
-            'ingredientId': self.ingredientId,
             'imagePath': self.imagePath,
             'userId': self.userId,
             'username': username,
             'profilePicture': profilePicture,
             'likesUsers': likesUsers,
             'date_created': date
-            # 'comments': self.comments,
         }

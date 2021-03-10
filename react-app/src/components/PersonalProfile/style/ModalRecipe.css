@@ -1,0 +1,60 @@
+.modContainer {
+    /* display: flex; */
+    height: 75rem;
+    width: 90rem;
+    position: absolute;
+    background-color: lightgray;
+    margin: -89rem 0 0 10rem;
+}
+.modTab .tabGrid {
+    width: 100%;
+    position: absolute;
+    display: grid;
+
+    /* grid-template-columns: repeat(4, 25%); */
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: auto auto;
+}
+.headline {
+    margin: 3rem 0 3rem 30rem;
+}
+.modContainer .data {
+    display: flex;
+}
+.modContainer .like {
+    width: 7rem;
+    height: 7rem;
+    position: absolute;
+    margin: 1.6rem 0 0 55rem;
+}
+.modContainer .data .likes-count {
+    position: absolute;
+    margin: 7rem 0 0 70rem;
+}
+.modContainer .data .createdAt {
+    position: absolute;
+    margin: 6.6rem 0 0rem 32rem;
+}
+.tabDivider {
+    display: flex;
+    /* background-color: blue; */
+    margin: 0 0 0 0;
+}
+.tabDivider .tabContent {
+    display: flex;
+    margin: 10rem 0 0 0;
+}
+.tabDivider .tabContent .left {
+    width: 35rem;
+    height: 39rem;
+    margin: 0 2rem 0 2rem;
+}
+.tabDivider .tabContent .left img {
+    width: 100%;
+    height: 100%;
+}
+.tabDivider .tabContent .right {
+    width: 50rem;
+    height: 39rem;
+    margin: 0 2rem 0 0;
+}

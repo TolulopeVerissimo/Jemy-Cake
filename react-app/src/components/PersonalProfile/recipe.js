@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { recipeLike } from "../../Store/recipeLike";
-import './recipe.css'
+import './style/recipe.css'
 import Maps from './maps.js'
 import SwipeCaro from './SwipeCaro';
 
@@ -46,7 +46,6 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
         }
     }, [recipe, ingredient])
 
-    // console.log("user", user)
     return (
         <>
             { userId == id ?
@@ -63,13 +62,13 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                             </div>
                         </>
                     }
-
                 </>
                 :
                 <>
                     <div className="sCar">
                         <SwipeCaro recipe={recipe} />
                     </div>
+                    {/* <div></div> */}
                 </>
             }
         </>

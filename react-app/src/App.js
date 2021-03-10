@@ -12,10 +12,10 @@ import Nav from './components/Nav'
 import Toast from './components/Toast'
 import CookingPromo from './components/CookingPromo'
 import ProfileIntro from './components/ProfileIntro'
-import WeeklyTrends from './components/WeeklyTrends'
-import LeaderBoards from './components/LeaderBoards'
-// import ContactInfo from './components/ContactInfo'
 import PCaro from './components/Carousel';
+// import WeeklyTrends from './components/WeeklyTrends'
+// import LeaderBoards from './components/LeaderBoards'
+// import ContactInfo from './components/ContactInfo'
 // import NavTransitions from './components/NavTransitions';
 import PersonalProfile from './components/PersonalProfile';
 
@@ -24,7 +24,6 @@ function App() {
   const dispatch = useDispatch()
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
 
   useEffect(() => {
     (async () => {
@@ -39,7 +38,6 @@ function App() {
   if (!loaded) {
     return null;
   }
-
   return (
     <>
       <BrowserRouter>
@@ -49,16 +47,12 @@ function App() {
           <Route path='/' exact={true}>
             <Toast /> <CookingPromo />
             <ProfileIntro authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            <WeeklyTrends />
             <PCaro />
-            <LeaderBoards />
+            {/* <WeeklyTrends /> */}
+            {/* <LeaderBoards /> */}
             {/* <ContactInfo /> */}
           </Route>
 
-          {/* <ProtectedRoute path="/:username" exact={true} authenticated={authenticated}> */}
-          {/* <ProtectedRoute path="/g" exact={true} authenticated={authenticated}>
-            <PersonalProfile />
-          </ProtectedRoute> */}
           <ProtectedRoute path="/profile/:id" exact={true} authenticated={authenticated}>
             <PersonalProfile />
           </ProtectedRoute>
@@ -76,7 +70,7 @@ function App() {
           </ProtectedRoute>
 
           <Route path="*">
-            <h1 style={{ color: "white" }}>404</h1>
+            <h1 style={{ color: "white", margin: '35rem 0 0 0rem', fontSize: '10rem', textAlign: 'center' }}>404 <pre />Page Not Found</h1>
           </Route>
 
         </Switch>

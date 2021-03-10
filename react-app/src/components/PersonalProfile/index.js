@@ -5,7 +5,7 @@ import Profile from './Profile.js'
 import { getUsers } from '../../Store/user'
 import { getProfile } from '../../Store/profile'
 import { getFollowers } from '../../Store/follow.js'
-import { getRecipes } from '../../Store/recipes'
+import { getRecipes, getMissingItems } from '../../Store/recipes'
 import { getIngredients } from '../../Store/ingredients'
 import { getPantries } from '../../Store/pantry'
 // http://jsfiddle.net/5w3bE/107/
@@ -28,6 +28,7 @@ function PersonalProfile() {
         dispatch(getRecipes(id))
         dispatch(getIngredients(id))
         dispatch(getPantries(id))
+        // dispatch(getMissingItems(id))
         dispatch(getFollowers(id))
     }, [dispatch])
 

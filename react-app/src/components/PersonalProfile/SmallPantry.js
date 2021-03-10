@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import './small.css'
+import './style/small.css'
+// import './style/smallPantry.css'
 import { Modal } from '../../Context/Modal'
-// import ModalRecipe from './modalClickPost'
+// import ModalPantry from './ModalPantry.js'
 
 export default function SmallPantry({ recipes, users, pantry, pantryName }) {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,7 @@ export default function SmallPantry({ recipes, users, pantry, pantryName }) {
                     } />
                     {showModal
                         && (<Modal onClose={() => { setShowModal(false) }}>
-                            {/* <ModalRecipe recipes={recipes} users={users} /> */}
+                            {/* <ModalPantry recipes={recipes} users={users} /> */}
                         </Modal>
                         )}
                 </figure>

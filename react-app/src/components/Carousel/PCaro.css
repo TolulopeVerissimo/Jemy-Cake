@@ -4,9 +4,9 @@
 .space {
     overflow: visible;
     background-color: black;
-    padding-top: 10rem;
-    margin-bottom: 30rem;
-    height: 10vh;
+    /* padding-top: 10rem; */
+    /* margin-bottom: 30rem; */
+    /* height: 10vh; */
     width: 100%;
     z-index: -1;
 }

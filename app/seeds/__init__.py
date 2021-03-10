@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .more_users import seed_more_users, undo_more_users
 from .MORE import seed_Repeater, undo_recipes_ingredients_pantries
+from .recipes import seed_RecipeRepeat, undo_default
 from .recipeLikes import seed_recipeLikes, undo_recipeLikes
 
 seed_commands = AppGroup('seed')
@@ -16,6 +17,7 @@ def seed_users_seeds():
 def seed():
     seed_users()
     seed_more_users()
+    seed_RecipeRepeat
     seed_Repeater()
     seed_recipeLikes
     # Add other seed functions here
@@ -27,6 +29,7 @@ def seed():
 def undo():
     undo_users()
     undo_more_users()
+    undo_default
     undo_recipes_ingredients_pantries
     undo_recipeLikes
     # Add other undo functions here

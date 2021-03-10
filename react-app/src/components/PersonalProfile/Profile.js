@@ -9,8 +9,8 @@ import backDrop from "./../../media/410197.jpg"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // https://codepen.io/Lakston/pen/JgEpog?editors=1100
 import image from "./../../media/poke.jpg"
-import './cssForCircles.css'
-import './profile.css'
+import './style/cssForCircles.css'
+import './style/profile.css'
 function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }) {
 
     const numWords = require('num-words')
@@ -134,7 +134,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                             }
                         </TabList>
 
-                        <TabPanel>
+                        <TabPanel className="tabcontent">
                             <div className="gridContainer">
                                 {userRecipes &&
                                     userRecipes.map((recipes) => <SmallRecipe recipes={recipes} users={users} />)
@@ -143,7 +143,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                         </TabPanel>
                         {user.id == id &&
                             <>
-                                <TabPanel>
+                                <TabPanel className="tabcontent">
                                     <div className="gridContainer2">
                                         {imgArr &&
                                             imgArr.map((items) => <SmallPantry pantryName={pantryName} pantry={items} recipes={recipes} users={users} />)
@@ -151,7 +151,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                                     </div>
                                 </TabPanel>
 
-                                <TabPanel>
+                                <TabPanel className="tabcontent">
                                     <h2>TAB 3 CONTENT</h2>
                                 </TabPanel>
                             </>}
