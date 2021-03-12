@@ -1,4 +1,5 @@
 .env
+read.md
 __pycache__/
 *.py[cod]
 .venv
