@@ -26,12 +26,6 @@ const setSession = (user) => {
     };
 };
 
-
-[cooking_promo] ./docs/media/vidPromo.mp4
-[carousel_imp] ./docs/media/carousel.mp4
-
-
-
 export const login = (email, password) => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
         method: 'POST',
