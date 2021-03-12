@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { recipeLike } from "../../Store/recipeLike";
 import './style/recipe.css'
 import Maps from './maps.js'
@@ -13,6 +13,8 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
 
     const dispatch = useDispatch();
     const { id } = useParams()
+    let history = useHistory();
+
 
     const likeHandler = () => {
         const like = { userId: user.id, recipeId: recipe.id };
@@ -32,6 +34,9 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
     const user = useSelector(state => state.session.user)
     const userId = useSelector(state => state.session.user.id)
     const follows = useSelector(state => state.follows)
+    const profileReroute = () => {
+        history.push(`/profile/${userId}`)
+    }
 
     useEffect(() => {
         if (recipe) {
@@ -52,7 +57,7 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                 <>
                     <div className={clicked ? "ellipseToggle" : "ellipseClicked"}
                         onClick={() => setClicked(!clicked)}>
-                        {clicked ? <h1 className="recipeWordsH1">Click for Recipes</h1> : <h1 className="recipeWordsH1">Close Recipes</h1>}
+                        {clicked ? <h1 className="recipeWordsH1">Click for Recipe Map</h1> : <h1 className="recipeWordsH1">Close Recipes</h1>}
                     </div>
 
                     {!clicked &&
@@ -65,10 +70,15 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                 </>
                 :
                 <>
+                    <div className={clicked ? "ellipseToggle" : "ellipseClicked"} onClick={profileReroute}>
+                        <h1 className="recipeWordsH1" onClick={profileReroute}>Reroute to your profile!</h1>
+                    </div>
+
+
                     {/* <div className="sCar">
                         <SwipeCaro recipe={recipe} />
                     </div> */}
-                    <div></div>
+
                 </>
             }
         </>

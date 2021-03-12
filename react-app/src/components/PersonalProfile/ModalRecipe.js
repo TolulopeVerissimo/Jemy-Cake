@@ -81,6 +81,9 @@ export default function ModalRecipe({ recipes }) {
                                     <p style={{ textAlign: 'center' }}>Description</p>
                                     <p>{recipes.description}</p>
                                 </div>
+                                <div className="closeButton" onClick={() => setShowModal(false)}>
+                                    <h2>Close Tab</h2>
+                                </div>
                             </div>
                         </div>
                     </TabPanel>
@@ -97,7 +100,6 @@ export default function ModalRecipe({ recipes }) {
                                     <p>{recipes.instructions}</p>
                                 </div>
                             </div>
-
                         </div>
                     </TabPanel>
 
@@ -146,6 +148,7 @@ export default function ModalRecipe({ recipes }) {
                         <h4 style={{ position: 'absolute', margin: "10.3rem 0 0 0" }}>ADD RECIPE</h4>
                     </div>
                 */}
+
                     <div className="exit" onClick={removeRecipe}>
                         <span class="left">
                             <span class="circle-left"></span>
@@ -160,8 +163,8 @@ export default function ModalRecipe({ recipes }) {
 
                     <EditRecipeModal />
 
-                </Tabs>
 
+                </Tabs>
             </div>
 
         </>

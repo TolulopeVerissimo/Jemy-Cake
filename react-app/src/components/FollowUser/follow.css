@@ -1,3 +1,6 @@
+.follow {
+    position: absolute;
+}
 .followUser,
 .unfollowUser {
     width: 7rem;

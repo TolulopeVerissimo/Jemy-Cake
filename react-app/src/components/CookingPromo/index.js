@@ -19,7 +19,7 @@ function CookingPromo() {
             {/* <TrailingPlayButton /> */}
 
             <video className="video"
-                style={{ objectFit: 'contain' }} width="100%" height="100%" autoPlay loop
+                style={{ objectFit: 'contain' }} width="100%" height="100%" autoPlay loop muted
                 id={VideoBoolean ? "" : "clicked"} //to lock video in place with overflow-y :hidden
             >
                 <source src={promoVid} type="video/mp4"

@@ -1,8 +1,8 @@
 .modContainer {
     /* display: flex; */
-    height: 75rem;
+    height: 65rem;
     width: 90rem;
-    position: relative;
+    position: absolute;
     background-color: lightgray;
     margin: -89rem 0 0 10rem;
 }
@@ -44,17 +44,40 @@
     margin: 10rem 0 0 0;
 }
 .tabDivider .tabContent .left {
-    width: 35rem;
-    height: 39rem;
-    margin: -5rem 2rem 0 2rem;
+    width: 29rem;
+    height: 29rem;
+    margin: -5rem 2rem 0 3rem;
 }
 .tabDivider .tabContent .left img {
     width: 100%;
     height: 100%;
-    border-radius: 1rem;
+    border-radius: 10rem;
 }
 .tabDivider .tabContent .right {
-    width: 50rem;
+    width: 53rem;
     height: 39rem;
-    margin: 0 2rem 0 0;
+    margin: -6rem 2rem 0 0;
+    background-color: white;
+    border-radius: 10%;
+    overflow: scroll;
+    scrollbar-width: thin;
+}
+
+.tabDivider .tabContent .right p {
+    margin: 2rem 2rem 0 2rem;
+}
+.closeButton {
+    color: black;
+    height: 3rem;
+    width: 43rem;
+    background-color: whitesmoke;
+    position: absolute;
+    /* position: relative; */
+    margin: 35rem 0 0 38rem;
+    cursor: pointer;
+    border-radius: 25%;
+}
+
+.closeButton h2 {
+    text-align: center;
 }

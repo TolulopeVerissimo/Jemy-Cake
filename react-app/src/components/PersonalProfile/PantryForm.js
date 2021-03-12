@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom';
+
 import { useHistory } from 'react-router-dom'
 import { getSignedRequest } from '../../services/upload'
 import { createPantry, editPantry } from '../../Store/pantry'
@@ -12,6 +14,7 @@ function PantryForm({ edit, pantry, pantryName, setShowModal }) {
     const [src, setSrc] = useState('')
     const [photo, setPhoto] = useState('')
     const [name, setName] = useState('')
+    const { id } = useParams()
     const user = useSelector(state => state.session.user)
     let userId
     if (user) {
@@ -27,7 +30,7 @@ function PantryForm({ edit, pantry, pantryName, setShowModal }) {
             await dispatch(createPantry({ userId, name, url }));
         }
         setShowModal(false)
-        history.push(`/profile/${userId}`);
+        history.push(`/profile/${id}`);
     };
     const readUrl = (e) => {
         if (e.target.files[0]) {

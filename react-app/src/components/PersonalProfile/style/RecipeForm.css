@@ -1,11 +1,11 @@
 .recipesform__container {
     background-color: white;
     position: absolute;
-    width: 51rem;
+    width: 55rem;
     height: 40rem;
     font-size: 1.2rem;
     border-radius: 1rem;
-    margin: -58rem 0 0 48rem;
+    margin: -72rem 0 0 43rem;
 }
 .recipesform__header {
     margin-bottom: 10rem;

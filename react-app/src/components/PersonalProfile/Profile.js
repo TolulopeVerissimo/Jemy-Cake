@@ -87,9 +87,9 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                 <h1 style={{ color: 'white' }}>{users[id].biography}</h1>
 
 
-                {user.id != id && < div className="moveTheFollowButton" style={{ position: 'absolute' }}>
+                {user.id != id &&
                     <FollowUser followedUserId={followedUserId} />
-                </div>}
+                }
 
 
                 {/* <div className="cirContainer" >
