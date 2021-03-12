@@ -70,7 +70,7 @@ def delete_recipe(id):
 @login_required
 def missing():
     user = User.query.get(id)
-    # recipe = Recipe.query.get(id)
+    recipe = Recipe.query.get(id)
     # pantry = Pantry.query.get(id)
     # ingredient = Ingredient.query.get(id)
 

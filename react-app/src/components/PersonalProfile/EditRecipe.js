@@ -24,7 +24,7 @@ function EditPostModal({ recipes }) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <RecipeForm recipes={recipes} edit={true} />
+                    <RecipeForm recipes={recipes} edit={true} setShowModal={setShowModal} />
                 </Modal>
             )}
         </>

@@ -65,10 +65,10 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                 </>
                 :
                 <>
-                    <div className="sCar">
+                    {/* <div className="sCar">
                         <SwipeCaro recipe={recipe} />
-                    </div>
-                    {/* <div></div> */}
+                    </div> */}
+                    <div></div>
                 </>
             }
         </>

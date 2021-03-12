@@ -78,6 +78,10 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 7. Push your docker container to heroku from the root directory of your project.
    This will build the dockerfile and push the image to your heroku container registry
 
+    ```to reset
+    heroku pg:reset -a jemycake
+    ```
+
     ```bash
     heroku container:push web -a {NAME_OF_HEROKU_APP}
     ```

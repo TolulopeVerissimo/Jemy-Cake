@@ -1,0 +1,9 @@
+.hoverPantryItem {
+    position: absolute;
+    margin: -14rem 0 0 10rem;
+    height: 10rem;
+    width: 1rem;
+}
+.modPantryContainer .add {
+    margin-right: 1.5rem;
+}

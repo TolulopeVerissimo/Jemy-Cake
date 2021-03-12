@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getSignedRequest } from '../../services/upload'
 import { createRecipe, editRecipe, deleteRecipe } from '../../Store/recipes'
-// import './style/RecipeForm.css'
+import './style/RecipeForm.css'
 
 
 function RecipeForm({ edit, recipes, setShowModal }) {
@@ -22,8 +22,9 @@ function RecipeForm({ edit, recipes, setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
-      await dispatch(editRecipe(recipes.id, description,));
-    } else {
+      await dispatch(editRecipe(recipes?.id, description,));
+    }
+    else {
       const url = await getSignedRequest(photo);
       await dispatch(createRecipe({ userId, description, instructions, type, url }));
     }
@@ -37,9 +38,6 @@ function RecipeForm({ edit, recipes, setShowModal }) {
       setPhoto(e.target.files[0])
     }
   }
-  const removeRecipe = async (e) => {
-    await dispatch(deleteRecipe(recipes.id));
-  };
   return (
     <div className='recipesform__container'>
       <h2 className='recipesform__header'>{edit ? "Edit Recipe" : "New Recipe"}</h2>
@@ -57,7 +55,7 @@ function RecipeForm({ edit, recipes, setShowModal }) {
             </label>
           </div>
         )}
-
+        <h2>Type</h2>
         <textarea
           rows='5'
           cols='33'
@@ -66,7 +64,9 @@ function RecipeForm({ edit, recipes, setShowModal }) {
           placeholder='Enter the type of recipe this is...'
           onChange={(e) => setType(e.target.value)}
         />
+        <h2>Description</h2>
         <textarea
+
           rows='5'
           cols='33'
           type='textarea'
@@ -74,6 +74,7 @@ function RecipeForm({ edit, recipes, setShowModal }) {
           placeholder='Enter the description for this recipe...'
           onChange={(e) => setDescription(e.target.value)}
         />
+        <h2>Instructions</h2>
         <textarea
           rows='5'
           cols='33'
@@ -88,12 +89,6 @@ function RecipeForm({ edit, recipes, setShowModal }) {
           <button type='submit' className='recipesform__button'>
             {edit ? "Edit Recipe" : "Share Recipe"}
           </button>
-
-          {edit && (
-            <a onClick={removeRecipe} style={{ color: 'white', position: 'absolute', margin: '-10rem 20rem 0 0' }} className='recipesform__delete'>
-              Delete Recipe
-            </a>
-          )}
         </div>
       </form>
     </div>

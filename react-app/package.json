@@ -3,11 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@reach/combobox": "^0.13.2",
         "@react-google-maps/api": "^2.1.1",
         "@testing-library/jest-dom": "^5.11.9",
         "@testing-library/react": "^11.2.5",
         "@testing-library/user-event": "^12.8.1",
         "boto3": "0.0.1",
+        "date-fns": "^2.19.0",
         "http-proxy-middleware": "^1.0.5",
         "num-words": "^1.2.2",
         "react": "^17.0.1",
@@ -22,6 +24,7 @@
         "redux-thunk": "^2.3.0",
         "sass": "^1.32.8",
         "swiper": "^6.4.15",
+        "use-places-autocomplete": "^1.9.1",
         "web-vitals": "^1.1.0"
     },
     "scripts": {
