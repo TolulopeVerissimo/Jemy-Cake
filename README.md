@@ -9,12 +9,12 @@ Scans a PSQL database for pantry items to aggregate recipe search data and optio
 ![login_modal]
 
 ##### Cooking Promo Video
-![cooking_promo]
+![cooking_promo](./docs/media/promo.gif)
 
 ##### Carousel Implementation
-![carousel_imp]
+![carousel_imp](./docs/media/caro.gif)
 
-[login_modal]: ./docs/media/login.mp4
+[login_modal](./docs/media/login.gif)
 
 Redux was used to handle user session state on the frontend while flask simply handles routing.
 ```
