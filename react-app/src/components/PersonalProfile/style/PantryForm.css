@@ -1,16 +1,24 @@
 .pantriesform__container {
     background-color: white;
-    position: relative;
-    width: 20rem;
-    height: 20rem;
+    position: fixed;
+    width: 40rem;
+    height: 35rem;
     font-size: 1.2rem;
     border-radius: 1rem;
-    margin: -58rem 0 0 48rem;
+    margin: -70rem 0 0 35rem;
+    z-index: 1;
 }
 .pantriesform__header {
     margin-bottom: 10rem;
 }
 
+.pantriesform textarea {
+    margin: 0 0 0 5rem;
+}
+.pantriesform input {
+    width: 10rem;
+    height: 3rem;
+}
 .pantriesform:hover {
     color: black;
 }

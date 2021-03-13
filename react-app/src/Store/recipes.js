@@ -51,7 +51,7 @@ export const uploadFile = (fileForm) => async (dispatch) => {
     });
 };
 
-export const createRecipe = (recipe) => async dispatch => {
+export const createRecipe = (recipe, id) => async dispatch => {
     const { type, instructions, steps, imagePath, videoPath, description, url, userId } = recipe
     const options =
     {
@@ -61,7 +61,7 @@ export const createRecipe = (recipe) => async dispatch => {
         },
         body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, url, userId })
     }
-    const res = await fetch('/api/recipes/', options)
+    const res = await fetch(`/api/recipes/${id}`, options)
     const json = await res.json()
     dispatch(setRecipes([json]))
 }

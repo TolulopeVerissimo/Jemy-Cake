@@ -20,7 +20,9 @@ function EditPantryModal({ recipes }) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <PantryForm recipes={recipes} edit={true} setShowModal={setShowModal} />
+                    <div className="hov">
+                        <PantryForm recipes={recipes} edit={true} setShowModal={setShowModal} />
+                    </div>
                 </Modal>
             )}
         </>

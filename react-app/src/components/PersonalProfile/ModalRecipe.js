@@ -99,6 +99,9 @@ export default function ModalRecipe({ recipes }) {
                                     <p style={{ textAlign: 'center' }}>Instructions</p>
                                     <p>{recipes.instructions}</p>
                                 </div>
+                                <div className="closeButton" onClick={() => setShowModal(false)}>
+                                    <h2>Close Tab</h2>
+                                </div>
                             </div>
                         </div>
                     </TabPanel>

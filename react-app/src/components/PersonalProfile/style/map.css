@@ -1,0 +1,29 @@
+.googleMapContainer__title {
+    position: absolute;
+    top: 2%;
+    z-index: 10;
+    font-size: 130%;
+}
+
+.centerCompass {
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    z-index: 10;
+    right: 0%;
+}
+.centerCompass img {
+    height: 100%;
+    width: 100%;
+}
+.googleMapContainer__searchBar input {
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10rem;
+}
+.googleMapContainer__searchBar {
+    position: absolute;
+    top: 1%;
+    left: 30%;
+    z-index: 10;
+}
