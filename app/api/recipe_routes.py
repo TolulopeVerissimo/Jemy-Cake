@@ -21,14 +21,18 @@ def new_recipe():
     data = request.get_json()
     print(data)
     description = data['description']
-    steps = data['steps']
+    type = data['type']
+    name = data['name']
     instructions = data['instructions']
-    imagePath = data['url']
+    # steps = data['steps']
+    imagePath = data['imagePath']
     userId = data['userId']
     new_recipe = Recipe(
+        name=name,
+        type=type,
         description=description,
         instructions=instructions,
-        steps=steps,
+        # steps=steps,
         imagePath=imagePath,
         userId=userId
     )
@@ -53,7 +57,10 @@ def edit_recipe(id):
     data = request.get_json()
     recipe = Recipe.query.get(id)
     recipe.description = data['description']
-    recipe.private = data['isPrivate']
+    recipe.userId = data['userId']
+    recipe.type = data['type']
+    recipe.instructions = data['instructions']
+    # recipe.imagePath = data['imagePath']
     db.session.commit()
     return recipe.to_dict()
 

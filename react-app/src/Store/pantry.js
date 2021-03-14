@@ -49,7 +49,7 @@ export const createPantry = (pantry) => async dispatch => {
     const { name, userId, image } = pantry
     const options =
     {
-        method: 'PANTRY',
+        method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
         },

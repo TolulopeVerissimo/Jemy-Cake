@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { recipeLike } from "../../Store/recipeLike";
 import blank from '../../media/blank.png'
 import full from '../../media/full.png'
 import EditRecipeModal from "./EditRecipe.js"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { getSignedRequest } from '../../services/upload'
+import { createRecipe, editRecipe, deleteRecipe } from '../../Store/recipes'
+
+
 import './style/ModalRecipe.css'
 import './style/addplus.scss'
-import { deleteRecipe } from '../../Store/recipes'
 
 export default function ModalRecipe({ recipes }) {
     const [tabIndex, setTabIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [photo, setPhoto] = useState('')
+    let history = useHistory()
 
     const [isLiked, setIsLiked] = useState(false);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
+    const { id } = useParams()
     const likeHandler = () => {
         const like = { userId: user.id, recipeId: recipes.id };
         setIsLiked(!isLiked);
@@ -40,11 +47,30 @@ export default function ModalRecipe({ recipes }) {
         }
     }, [setIsLiked, recipes, user]);
 
+    const stealRecipe = async () => {
+        let userId
+        if (user) {
+            userId = user.id
+        }
+        const description = recipes.description
+        const instructions = recipes.instructions
+        const type = recipes.type
+        const name = recipes.name
+        const imagePath = recipes.imagePath
+        const date_created = recipes.date_created
+        // await dispatch(editRecipe(recipes?.id, description));
+        // const url = await getSignedRequest(photo);
+        // await dispatch(createRecipe({ userId, description, instructions, type, url }));
+        await dispatch(createRecipe({ userId, description, instructions, imagePath, type, name, date_created }));
+        setShowModal(false)
+        history.push(`/profile/${user.id}`);
+    };
+
+
     return (
         <>
             <div className="modContainer">
                 <div className="data">
-
                     <h2 className="headline">{recipes.name}</h2>
                     <img
                         className="like"
@@ -139,32 +165,38 @@ export default function ModalRecipe({ recipes }) {
                         </div>
                     </TabPanel> */}
 
-                    {/* <div className="add" >
-                        <span class="left2">
-                            <span class="circle-left2"></span>
-                            <span class="circle-right2"></span>
-                        </span>
-                        <span class="right2">
-                            <span class="circle-left2"></span>
-                            <span class="circle-right2"></span>
-                        </span>
-                        <h4 style={{ position: 'absolute', margin: "10.3rem 0 0 0" }}>ADD RECIPE</h4>
-                    </div>
-                */}
+                    {user.id == id ?
 
-                    <div className="exit" onClick={removeRecipe}>
-                        <span class="left">
-                            <span class="circle-left"></span>
-                            <span class="circle-right"></span>
-                        </span>
-                        <span class="right">
-                            <span class="circle-left"></span>
-                            <span class="circle-right"></span>
-                        </span>
-                        <h4 style={{ position: 'absolute', margin: "10.3rem 0 0 0" }}>CUT RECIPE</h4>
-                    </div>
+                        <>< div className="exit" onClick={removeRecipe}>
+                            <span class="left">
+                                <span class="circle-left"></span>
+                                <span class="circle-right"></span>
+                            </span>
+                            <span class="right">
+                                <span class="circle-left"></span>
+                                <span class="circle-right"></span>
+                            </span>
+                            <h4 style={{ position: 'absolute', margin: "10.3rem 0 0 0" }}>CUT RECIPE</h4>
+                        </div>
 
-                    <EditRecipeModal />
+                            <EditRecipeModal />
+                        </>
+                        :
+                        <>
+                            <div className="add" onClick={stealRecipe}>
+                                <span class="left2">
+                                    <span class="circle-left2"></span>
+                                    <span class="circle-right2"></span>
+                                </span>
+                                <span class="right2">
+                                    <span class="circle-left2"></span>
+                                    <span class="circle-right2"></span>
+                                </span>
+                                <h4 style={{ position: 'absolute', margin: "10.3rem 0 0 1rem" }}>STEAL RECIPE</h4>
+                            </div>
+
+                        </>
+                    }
 
 
                 </Tabs>

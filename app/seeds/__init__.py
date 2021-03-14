@@ -17,9 +17,9 @@ def seed_users_seeds():
 def seed():
     seed_users()
     seed_more_users()
-    seed_RecipeRepeat
+    seed_RecipeRepeat()
     seed_Repeater()
-    seed_recipeLikes
+    seed_recipeLikes()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -29,9 +29,9 @@ def seed():
 def undo():
     undo_users()
     undo_more_users()
-    undo_default
-    undo_recipes_ingredients_pantries
-    undo_recipeLikes
+    undo_default()
+    undo_recipes_ingredients_pantries()
+    undo_recipeLikes()
     # Add other undo functions here
 
 
@@ -43,6 +43,7 @@ def seed_data():
 
 
 
-@seed_commands.command('more_users')
+@seed_commands.command('more')
 def more_users():
-    seed_more_users()
+    seed_recipeLikes()
+    seed_RecipeRepeat()

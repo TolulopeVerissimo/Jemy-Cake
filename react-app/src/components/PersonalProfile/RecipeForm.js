@@ -11,6 +11,7 @@ function RecipeForm({ edit, recipes, setShowModal }) {
   const dispatch = useDispatch()
   const [src, setSrc] = useState('')
   const [photo, setPhoto] = useState('')
+  const [vid, setVid] = useState('')
   const [type, setType] = useState('')
   const [instructions, setInstructions] = useState('')
   const [description, setDescription] = useState('')
@@ -22,11 +23,12 @@ function RecipeForm({ edit, recipes, setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
-      await dispatch(editRecipe(recipes?.id, description,));
+      await dispatch(editRecipe(recipes?.id, description, instructions, type, userId));
     }
     else {
       const url = await getSignedRequest(photo);
-      await dispatch(createRecipe({ userId, description, instructions, type, url }));
+      // const videoPath = await getSignedRequest(photo);
+      await dispatch(createRecipe({ userId, description, instructions, type, }));
     }
     setShowModal(false)
     history.push(`/profile/${userId}`);
@@ -37,16 +39,29 @@ function RecipeForm({ edit, recipes, setShowModal }) {
       setSrc(src)
       setPhoto(e.target.files[0])
     }
+    if (e.target.files[1]) {
+      const src = URL.createObjectURL(e.target.files[1])
+      setSrc(src)
+      setVid(e.target.files[1])
+    }
   }
   return (
     <div className='recipesform__container'>
       <h2 className='recipesform__header'>{edit ? "Edit Recipe" : "New Recipe"}</h2>
       <form className='recipesform' onSubmit={handleSubmit}>
         {src && <img className="recipesform__image" src={src} />}
-        {!edit && (
+        {edit && (
           <div className='fileInput__container'>
             <label className='recipesform__label fileInput__label'>
-              Choose a Photo
+              Upload Photo
+              <input
+                type='file'
+                className='recipesform__input fileInput'
+                onChange={readUrl}
+              />
+            </label>
+            <label className='recipesform__label fileInput__label'>
+              Upload Video
               <input
                 type='file'
                 className='recipesform__input fileInput'

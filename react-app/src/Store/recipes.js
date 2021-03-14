@@ -51,17 +51,17 @@ export const uploadFile = (fileForm) => async (dispatch) => {
     });
 };
 
-export const createRecipe = (recipe, id) => async dispatch => {
-    const { type, instructions, steps, imagePath, videoPath, description, url, userId } = recipe
+export const createRecipe = (recipe) => async dispatch => {
+    const { type, instructions, steps, imagePath, videoPath, description, url, userId, name, date_created } = recipe
     const options =
     {
-        method: 'RECIPE',
+        method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
         },
-        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, url, userId })
+        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, userId, name, date_created })
     }
-    const res = await fetch(`/api/recipes/${id}`, options)
+    const res = await fetch(`/api/recipes/`, options)
     const json = await res.json()
     dispatch(setRecipes([json]))
 }
@@ -71,7 +71,7 @@ export const editRecipe = (id, type, instructions, steps, imagePath, videoPath, 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, url, userId })
+        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, userId })
     }
     const res = await fetch(`/api/recipes/${id}`, options)
     if (res.ok) {

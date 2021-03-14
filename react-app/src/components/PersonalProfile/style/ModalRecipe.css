@@ -16,15 +16,18 @@
 }
 .headline {
     margin: 3rem 0 3rem 30rem;
+    text-align: center;
 }
 .modContainer .data {
     display: flex;
+    /* width: 40rem;
+    height: 10rem; */
 }
 .modContainer .like {
     width: 7rem;
     height: 7rem;
     position: absolute;
-    margin: 1.6rem 0 0 55rem;
+    margin: 1rem 0 0 15rem;
 }
 .modContainer .data .likes-count {
     position: absolute;

@@ -18,7 +18,7 @@ def seed_more_users():
         name=fake.name(),
         email=fake.email(),
         username=fake.user_name(),
-        hashed_password=generate_password_hash('password'),
+        hashed_password=generate_password_hash('pass'),
         biography=fake.sentence(),
         profilePicture=photos[i].small) for i in range(7)]
 

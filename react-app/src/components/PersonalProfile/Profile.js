@@ -27,6 +27,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
     const pantryName = []
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
+    const follows = useSelector(state => state.follows)
 
     if (pantry) {
         for (let key in pantry) {
@@ -69,14 +70,20 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
         }
     }
 
-    // if (follows) {
-    //     for (let key in follows) {
+    if (follows) {
+        for (let key in follows) {
 
-    //         if (follows[key].userId == id) {
-    //             userRecipes.push(follows[key])
-    //         }
-    //     }
-    // }
+            if (follows[key].userId == id) {
+                console.log(follows[key])
+
+                // for (let [k, v] of Object.entries(followsList[key]) 
+                //     console.log(v)
+
+                followsList.push(follows[key])
+            }
+        }
+    }
+
     return (
         <>
             {/* <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})` }}> */}

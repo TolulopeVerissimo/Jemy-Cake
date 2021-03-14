@@ -6,6 +6,7 @@ export async function getSignedRequest(photo) {
     } else {
         console.error('could not get url')
     }
+    console.log(res.data)
     return res.data.url + res.data.fields.key
 }
 
