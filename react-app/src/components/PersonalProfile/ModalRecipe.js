@@ -58,9 +58,7 @@ export default function ModalRecipe({ recipes }) {
         const name = recipes.name
         const imagePath = recipes.imagePath
         const date_created = recipes.date_created
-        // await dispatch(editRecipe(recipes?.id, description));
-        // const url = await getSignedRequest(photo);
-        // await dispatch(createRecipe({ userId, description, instructions, type, url }));
+
         await dispatch(createRecipe({ userId, description, instructions, imagePath, type, name, date_created }));
         setShowModal(false)
         history.push(`/profile/${user.id}`);

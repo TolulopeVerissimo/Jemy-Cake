@@ -65,19 +65,36 @@ export const createRecipe = (recipe) => async dispatch => {
     const json = await res.json()
     dispatch(setRecipes([json]))
 }
-export const editRecipe = (id, type, instructions, steps, imagePath, videoPath, description, url, userId) => async dispatch => {
-    const options = {
+
+
+
+export const editRecipe = (recipes) => async dispatch => {
+    // const options = {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ type, instructions, steps, imagePath, description })
+    // }
+    // const res = await fetch(`/api/recipes/${id}`, options)
+
+    const { type, instructions, imagePath, description, userId } = recipes
+    const formData = new FormData();
+    formData.append('type', type);
+    formData.append('instructions', instructions);
+    formData.append('imagePath', imagePath);
+    formData.append('description', description);
+    formData.append('userId', userId);
+    const res = await fetch(`/api/recipes/${userId}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ type, instructions, steps, imagePath, videoPath, description, userId })
-    }
-    const res = await fetch(`/api/recipes/${id}`, options)
+        body: formData,
+
+    })
     if (res.ok) {
         const newRecipe = await res.json()
         dispatch(setRecipes([newRecipe]))
     }
+
 }
 
 export const deleteRecipe = (id) => async dispatch => {

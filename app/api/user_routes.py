@@ -43,7 +43,7 @@ def get_user_follows(id):
     user = User.query.filter(User.id == id).first()
     followers = user.followers.all()
     return {user.id: {follower.id:
-                      {"id": follower.id, "username": follower.username, "profilePicture":follower.profilePicture}
+                      {"id": follower.id, "username": follower.username, "profilePicture":follower.profilePicture, 'userId':user.id}
                       for follower in user.followers.all()}}
 
 

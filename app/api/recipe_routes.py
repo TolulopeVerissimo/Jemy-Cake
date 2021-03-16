@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+
 from flask_login import login_required
 from app.models import db, Recipe, Pantry, Ingredient,User
 from flask_login import login_required
@@ -54,13 +55,15 @@ def recipe(id):
 @recipe_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_recipe(id):
-    data = request.get_json()
+    data = request.form
+
+    print(data) 
     recipe = Recipe.query.get(id)
-    recipe.description = data['description']
-    recipe.userId = data['userId']
-    recipe.type = data['type']
-    recipe.instructions = data['instructions']
-    # recipe.imagePath = data['imagePath']
+    recipe.type = request.form.getlist('type')
+    recipe.instructions = request.form.getlist('instructions')
+    recipe.imagePath = request.form.getlist('imagePath')
+    recipe.description = request.form.getlist('description')
+    recipe.userId = request.form.getlist('userId')
     db.session.commit()
     return recipe.to_dict()
 

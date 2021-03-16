@@ -20,6 +20,20 @@ function PantryForm({ edit, pantry, pantryName, setShowModal }) {
     if (user) {
         userId = user.id;
     }
+    console.log(pantry)
+    console.log(pantryName)
+    const addCopy = async (e) => {
+        let userId
+        if (user) {
+            userId = user.id
+        }
+        const name = pantry.name
+        const image = pantry.image
+        await dispatch(createPantry({ name, userId, image }))
+        setShowModal(false)
+        history.push(`/profile/${user.id}`)
+
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (edit) {
@@ -71,6 +85,9 @@ function PantryForm({ edit, pantry, pantryName, setShowModal }) {
                 <div className='pantriesform__button-container'>
                     <button type='submit' className='pantriesform__button'>
                         {edit ? "Edit ingredient" : "Share ingredient"}
+                    </button>
+                    <button type='submit' className='pantriesform__button' onClick={addCopy}>
+                        {edit ? "Add Copy" : "Share ingredient"}
                     </button>
                 </div>
             </form>

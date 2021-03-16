@@ -8,7 +8,6 @@ import { getFollowers } from '../../Store/follow.js'
 import { getRecipes, getMissingItems } from '../../Store/recipes'
 import { getIngredients } from '../../Store/ingredients'
 import { getPantries } from '../../Store/pantry'
-// http://jsfiddle.net/5w3bE/107/
 function PersonalProfile() {
     const { id } = useParams()
     const [loaded, setLoaded] = useState(false)

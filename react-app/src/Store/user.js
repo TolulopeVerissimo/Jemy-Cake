@@ -1,4 +1,3 @@
-
 const SET_USERS = 'users/USERS';
 const CREATE_USER = 'users/CREATE_USER';
 
@@ -18,7 +17,6 @@ const createUsers = (user) => {
 export const getUsers = () => async (dispatch) => {
     const response = await fetch('/api/users/');
     if (response.ok) {
-
         const users = await response.json()
         dispatch(setUsers(users));
         return users;
@@ -43,7 +41,6 @@ export const formUsers = (user) => async (dispatch) => {
             'Content-Type': 'multipart/form-data',
         },
     });
-
     dispatch(createUsers(response.data.user));
     return response.data.user;
 };
@@ -60,9 +57,7 @@ export const updateUser = ({ id, name, email, phoneNumber, username, biography, 
     const response = await fetch(`/api/users/${id}`, {
         method: 'PUT',
         body: formData,
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
+        headers: { 'Content-Type': 'multipart/form-data' },
     });
     dispatch(createUsers(response.data.user));
     return response.data.user;

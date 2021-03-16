@@ -15,9 +15,7 @@ function ContactInfo(params) {
                     <div className="u-relative u-fit u-flex u-align-items-c is-inverse is-white">
                         <div className="u-absolute u-pos-tl is-cursor-active" style={{ transform: "translateX(236.96px) translateY(425.98px) translateZ(0px)" }}>
                             <div className="c-transition c-hoverimage-cursor u-relative u-overflow-h u-force-3d">
-                                {/* <div className="c-footer-img">
-                                <img src="https://images.prismic.io/ouiwillportfolio%2F068bd087-6dee-410b-96c8-756ca9be39ef_salut.gif?auto=compress,format" srcSet="https://images.prismic.io/ouiwillportfolio%2F068bd087-6dee-410b-96c8-756ca9be39ef_salut.gif?auto=compress,format 2x" className="u-absolute u-pos-tl u-fit u-force-3d" />
-                            </div> */}
+
                                 <div className="u-absolute u-pos-tl u-fit">
                                     <div className="js-object-fit c-transition-content u-absolute u-pos-tl" style={{ width: "416px", height: "297px", transform: "translate(-109px, 0px) translateZ(0px)" }}>
                                         <div className="u-absolute u-pos-tl u-fit">
@@ -87,7 +85,7 @@ function ContactInfo(params) {
                 <div id="text" className="portfolio">
                     <h4>Jemy</h4>
                     <p>A digital experience to showcase my two passions: <br />Food and Programming </p>
-                    <a href="/">Visit my portfolio</a>
+                    <a href="https://www.linkedin.com/in/tolu-v-924b94174/">Visit my portfolio</a>
                 </div>
 
             </div>

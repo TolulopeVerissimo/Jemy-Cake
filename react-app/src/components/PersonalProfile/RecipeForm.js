@@ -23,12 +23,12 @@ function RecipeForm({ edit, recipes, setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
-      await dispatch(editRecipe(recipes?.id, description, instructions, type, userId));
+      await dispatch(editRecipe({ description, instructions, type, userId }));
     }
     else {
       const url = await getSignedRequest(photo);
       // const videoPath = await getSignedRequest(photo);
-      await dispatch(createRecipe({ userId, description, instructions, type, }));
+      await dispatch(createRecipe({ userId, description, instructions, type }));
     }
     setShowModal(false)
     history.push(`/profile/${userId}`);

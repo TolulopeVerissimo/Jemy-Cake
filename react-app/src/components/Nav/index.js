@@ -61,7 +61,7 @@ function Nav({ authenticated, setAuthenticated }) {
                     <div id="text" className="portfolio">
                         <h4>Jemy</h4>
                         <p>A digital experience to showcase my two passions: <br />Food and Programming </p>
-                        <a className="portfolioAnchor" href="/">Visit my portfolio</a>
+                        <a className="portfolioAnchor" href="https://www.linkedin.com/in/tolu-v-924b94174/">Visit my portfolio</a>
                     </div>
                     <div id="text" className="location">
                         <h4>Greater Philadelphia Area</h4><br />

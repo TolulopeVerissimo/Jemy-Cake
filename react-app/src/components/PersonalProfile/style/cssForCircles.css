@@ -64,19 +64,19 @@
     animation: Five 150s infinite linear;
 }
 .spinner {
-    margin-left: 85rem;
-    margin-top: 22%;
-    width: 5rem;
-    height: 5rem;
+    /* margin-left: 120rem; */
+    /* margin-top: 22%; */
+    width: 6rem;
+    height: 6rem;
     border-style: solid;
     border-color: white;
     -moz-border-radius: 500px;
     -webkit-border-radius: 500px;
     border-radius: 100px;
     position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -0.3;
+    right: 26%;
+    top: 40rem;
+    z-index: 0;
     overflow: hidden;
 }
 #circlePicture {

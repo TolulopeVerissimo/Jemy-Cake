@@ -57,7 +57,7 @@ function ProfileIntro({ authenticated, setAuthenticated }) {
                                             <span className="icon-right.after"></span>
                                         </div>
                                     </button>
-                                    <button class="btn user-data">USER DATA</button>
+                                    {/* <button class="btn user-data">USER DATA</button> */}
                                 </>
                             }
                         </div>

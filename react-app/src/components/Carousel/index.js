@@ -1,5 +1,4 @@
 import React from 'react'
-// https://swiperjs.com/react#installation
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
@@ -11,12 +10,6 @@ import './PCaro.css'
 
 function PCaro() {
 
-    // const swiper = new Swiper('.swiper-container', {
-    //     speed: 400,
-    //     spaceBetween: 100,
-    // });
-    // const swiper = document.querySelector('.swiper-container').swiper;
-    // swiper.slideNext();
     SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
     return (
         <div className="space">

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer, DirectionsService, DistanceMatrixService } from "@react-google-maps/api"
-
 import { formatRelative } from 'date-fns'
 
 import usePlacesAutoComplete, { getGeocode, getLatLng } from "use-places-autocomplete"
@@ -28,12 +27,15 @@ const options = {
 }
 
 export default function Maps() {
+    const google = window.google;
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.googsApi,
+        id: process.env.googsClientId,
+        secret: process.env.googsClientSecret,
+
         libraries,
 
     })
-    console.log(process.env.googsApi)
     const onMapClick = useCallback(e => {
         setMark((curr) =>
             [
@@ -48,7 +50,8 @@ export default function Maps() {
     )
     const [mark, setMark] = useState([])
     const [select, setSelect] = useState(null)
-    const [directions, setDirections] = useState({})
+    const [directions, setDirections] = useState("")
+    const [origin, setOrigin] = useState("")
 
     const mapRef = useRef()
     const onMapLoad = useCallback((el) => {
@@ -60,13 +63,37 @@ export default function Maps() {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14)
 
+        ////
+        if (Search({ panTo })) {
+            setDirections({ lat, lng })
+        }
+        setOrigin({ lat, lng })
+        ////
+
     }, [])
+
+    if (window.google) {
+        const directionsService = new google.maps.DirectionsService()
+
+        directionsService.route(
+            {
+                origin: origin,
+                destination: directions,
+                travelMode: google.maps.TravelMode.DRIVING,
+            },
+            (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    setDirections(result)
+                }
+                console.error(`${result} direction not fetched`)
+            }
+        )
+    }
 
 
 
     if (loadError) return "ErrorLoadingMaps"
     if (!isLoaded) return "Loading Maps"
-
 
     return (
         <div className="googleMapContainer">
@@ -104,7 +131,8 @@ export default function Maps() {
                                 setSelect(el)
                             }}
                         />
-                    ))}
+                    ))
+                }
                 {select ? (
                     <InfoWindow position={{ lat: select.lat, lng: select.lng }}
                         onCloseClick={() => { setSelect(null) }}>
@@ -112,9 +140,10 @@ export default function Maps() {
                             <h5>din din!</h5>
                             <p>{formatRelative(select.time, new Date())}</p>
                         </div>
-                    </InfoWindow>) : null}
+                    </InfoWindow>) : null
+                }
 
-                {/* <DirectionsRenderer directions={directions} /> */}
+                {directions && <DirectionsRenderer directions={directions} />}
             </GoogleMap>
         </div >
     )
@@ -137,40 +166,7 @@ function Locate({ panTo }) {
     )
 }
 
-// function passDirections() {
-//     useEffect(async () => {
-//         const directionsService = new google.maps.DirectionsService()
-//         const origin = center
-//         const locate = navigator.geolocation.getCurrentPosition(
-//             position => {
-//                 lat = position.coords.latitude
-//                 lng = position.coords.longitude
 
-//             })
-//         origin = { lat, lng }
-//         const destination = directions
-//         const [lat2, lng2] = destination
-
-//         directionsService.route(
-//             {
-//                 origin: origin,
-//                 destination: destination,
-//                 travelMode: google.maps.TravelMode.DRIVING,
-//                 waypoints: [
-//                     { location: new google.maps.LatLng(lat, lng) },
-//                     { location: new google.maps.LatLng(lat2, lng2) },
-//                 ]
-//             },
-//             (result, status) => {
-//                 if (status === google.maps.DirectionsStatus.OK) {
-//                     setDirections(result)
-//                 }
-//                 console.error(`${result} direction not fetched`)
-//             }
-//         )
-
-//     }, [directions, origin])
-// }
 
 function Search(panTo) {
     const { ready, value, suggestions: { status, data }, setValue, clearSuggestion } = usePlacesAutoComplete({
@@ -182,6 +178,8 @@ function Search(panTo) {
             radius: 200 * 1000,
         }
     })
+
+
 
     return (
         <div className="googleMapContainer__searchBar">
@@ -196,8 +194,7 @@ function Search(panTo) {
                     const results = await getGeocode({ address })
                     const { lat, lng } = await getLatLng(results[0])
                     panTo({ lat, lng })
-                    //Wanted to pass the lat,lng into coords after a search.
-                    // setDirections({ lat, lng })
+
                 }
                 catch (error) {
                     console.log("error!")
@@ -205,7 +202,7 @@ function Search(panTo) {
 
             }}>
                 <ComboboxInput value={value} onChange={e => setValue(e.target.value)} disabled={!ready} placeholder="Enter address" />
-                <ComboboxPopover>pip
+                <ComboboxPopover>
                     <ComboboxList>
                         {status == "OK" && data.map(({ id, description }) => (
                             <ComboboxOption key={id} value={description} />
