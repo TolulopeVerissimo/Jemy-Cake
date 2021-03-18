@@ -46,3 +46,14 @@ export const signUp = async (name, username, email, password) => {
     });
     return await response.json();
 }
+
+export const getMapToken = async () => {
+    const response = await fetch('/api/auth/map-token', {
+        headers: {
+            'Content-Type': '*/*',
+            'Accept': '*/*',
+        }
+    })
+    const data = await response.json()
+    return data
+}

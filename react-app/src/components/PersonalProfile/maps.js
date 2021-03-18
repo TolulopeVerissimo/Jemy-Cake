@@ -63,12 +63,10 @@ export default function Maps() {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14)
 
-        ////
         if (Search({ panTo })) {
             setDirections({ lat, lng })
         }
         setOrigin({ lat, lng })
-        ////
 
     }, [])
 

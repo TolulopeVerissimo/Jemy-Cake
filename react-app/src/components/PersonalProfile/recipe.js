@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { recipeLike } from "../../Store/recipeLike";
 import './style/recipe.css'
 import Maps from './maps.js'
+import MapBox from './mapbox.js'
 import SwipeCaro from './SwipeCaro';
 
 function Recipe({ recipe, ingredient, users, followedUserId }) {
@@ -63,7 +64,14 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                     {!clicked &&
                         <>
                             <div className="mapsMove">
-                                <Maps />
+                                <div id='map'>
+                                    <MapBox />
+                                </div>
+                                <div class="sidebar">
+                                    <h1>Reports</h1>
+                                    <div id="reports"></div>
+                                </div>
+
                             </div>
                         </>
                     }

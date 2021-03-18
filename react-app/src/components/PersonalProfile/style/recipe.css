@@ -30,9 +30,10 @@
 .mapsMove {
     position: absolute;
     /* background-color: black; */
+
     margin-top: -84.6rem;
-    margin-left: 100rem;
-    z-index: -0.99;
+    margin-left: 100.5rem;
+    z-index: 10;
 }
 .sCar {
     margin-top: 7rem;

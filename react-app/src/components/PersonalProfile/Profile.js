@@ -80,6 +80,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
     return (
         <>
             <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})`, zIndex: '-3' }}>
+                {/* <div className="bodyDiv" > */}
 
 
                 <h1 style={{ color: 'white' }}>{users[id].biography}</h1>

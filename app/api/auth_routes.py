@@ -3,6 +3,7 @@ from datetime import timedelta
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
+from ..config import Configuration
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -83,3 +84,8 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@auth_routes.route("/map-token")
+def get_react_map_token():
+    return {"token": Configuration.REACT_APP_MAP_TOKEN}
