@@ -67,9 +67,11 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                                 <div id='map'>
                                     <MapBox />
                                 </div>
-                                <div class="sidebar">
-                                    <h1>Reports</h1>
-                                    <div id="reports"></div>
+                                <div class='sidebar'>
+                                    <div class='heading'>
+                                        <h1>Our locations</h1>
+                                    </div>
+                                    <div id='listings' class='listings'></div>
                                 </div>
 
                             </div>

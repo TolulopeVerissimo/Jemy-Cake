@@ -100,3 +100,40 @@
 .card-details {
     padding: 3px 6px;
 }
+
+.heading {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+}
+.heading h1 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 20px 2px;
+}
+
+.heading a {
+    color: #404040;
+    text-decoration: none;
+}
+.heading a:hover {
+    color: #101010;
+}
+
+.mapboxgl-ctrl-geocoder {
+    border: 0;
+    border-radius: 0;
+    position: relative;
+    top: 0;
+    width: 8rem;
+    margin-top: 0;
+}
+
+.mapboxgl-ctrl-geocoder > div {
+    min-width: 50%;
+    margin-left: 0;
+}
