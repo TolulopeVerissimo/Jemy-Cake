@@ -1,13 +1,8 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
-import Script from 'react-load-script'
-
-
 import 'mapbox-gl/dist/mapbox-gl.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import { getMapToken } from "../../services/auth"
-import Geocoder from 'react-map-gl-geocoder'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import './style/mapbox.css'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -15,44 +10,14 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 
 export default function MapBox() {
-    const [lat, setLat] = useState(null)
-    const [lng, setLng] = useState(null)
-    const [directions, setDirections] = useState({ lat, lng })
-
     const [mark, setMark] = useState([])
     const [mapToken, setMapToken] = useState(null)
-    const [popup, setPopup] = useState(false)
-    const [errors, setErrors] = useState(null)
 
     const [center, setCenter] = useState({
         latitude: 39.2904,
         longitude: -76.6122,
         zoom: 8
     })
-    const mapRef = useRef();
-    const viewChange = useCallback(
-        el => setCenter(el), []
-    )
-    const geoViewChange = useCallback(el => {
-        const geo = { transitionDuration: 1000 }
-        return viewChange({ ...el, ...geo })
-    }, [viewChange]
-    )
-
-    const [scriptCreate, setScriptCreate] = useState(true)
-    const [scriptError, setScriptError] = useState(true)
-    const [scriptLoad, setScriptLoad] = useState(true)
-
-    const urlMap = [
-        "https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js",
-        "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js",
-        "https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-directions@4.1.0/src/index.min.js",
-        // "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/mapbox-polyline/1.1.1/polyline.js",
-        "https://npmcdn.com/@turf/turf/turf.min.js",
-        "https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js",
-    ]
-
     useEffect(() => {
         (async () => {
             const token = await getMapToken()
@@ -80,18 +45,257 @@ export default function MapBox() {
 function Directions(mapToken) {
     const MapboxDirections = window.MapboxDirections
     const MapboxGeocoder = window.MapboxGeocoder
+    const turf = window.turf
 
     mapboxgl.accessToken = mapToken.mapToken;
-    // console.log(mapToken.mapToken)
 
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
-        // center: [-79.4512, 43.6568],
-
+        //Washington DC Coords
         center: [-77.034084, 38.909671],
         zoom: 13
     });
+    var stores = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.034084142948,
+                        38.909671288923
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 234-7336",
+                    "phone": "2022347336",
+                    "address": "1471 P St NW",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "at 15th St NW",
+                    "postalCode": "20005",
+                    "state": "D.C."
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.049766,
+                        38.900772
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 507-8357",
+                    "phone": "2025078357",
+                    "address": "2221 I St NW",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "at 22nd St NW",
+                    "postalCode": "20037",
+                    "state": "D.C."
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.043929,
+                        38.910525
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 387-9338",
+                    "phone": "2023879338",
+                    "address": "1512 Connecticut Ave NW",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "at Dupont Circle",
+                    "postalCode": "20036",
+                    "state": "D.C."
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.0672,
+                        38.90516896
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 337-9338",
+                    "phone": "2023379338",
+                    "address": "3333 M St NW",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "at 34th St NW",
+                    "postalCode": "20007",
+                    "state": "D.C."
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.002583742142,
+                        38.887041080933
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 547-9338",
+                    "phone": "2025479338",
+                    "address": "221 Pennsylvania Ave SE",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "btwn 2nd & 3rd Sts. SE",
+                    "postalCode": "20003",
+                    "state": "D.C."
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -76.933492720127,
+                        38.99225245786
+                    ]
+                },
+                "properties": {
+                    "address": "8204 Baltimore Ave",
+                    "city": "College Park",
+                    "country": "United States",
+                    "postalCode": "20740",
+                    "state": "MD"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.097083330154,
+                        38.980979
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(301) 654-7336",
+                    "phone": "3016547336",
+                    "address": "4831 Bethesda Ave",
+                    "cc": "US",
+                    "city": "Bethesda",
+                    "country": "United States",
+                    "postalCode": "20814",
+                    "state": "MD"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.359425054188,
+                        38.958058116661
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(571) 203-0082",
+                    "phone": "5712030082",
+                    "address": "11935 Democracy Dr",
+                    "city": "Reston",
+                    "country": "United States",
+                    "crossStreet": "btw Explorer & Library",
+                    "postalCode": "20190",
+                    "state": "VA"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.10853099823,
+                        38.880100922392
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(703) 522-2016",
+                    "phone": "7035222016",
+                    "address": "4075 Wilson Blvd",
+                    "city": "Arlington",
+                    "country": "United States",
+                    "crossStreet": "at N Randolph St.",
+                    "postalCode": "22203",
+                    "state": "VA"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -75.28784,
+                        40.008008
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(610) 642-9400",
+                    "phone": "6106429400",
+                    "address": "68 Coulter Ave",
+                    "city": "Ardmore",
+                    "country": "United States",
+                    "postalCode": "19003",
+                    "state": "PA"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -75.20121216774,
+                        39.954030175164
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(215) 386-1365",
+                    "phone": "2153861365",
+                    "address": "3925 Walnut St",
+                    "city": "Philadelphia",
+                    "country": "United States",
+                    "postalCode": "19104",
+                    "state": "PA"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        -77.043959498405,
+                        38.903883387232
+                    ]
+                },
+                "properties": {
+                    "phoneFormatted": "(202) 331-3355",
+                    "phone": "2023313355",
+                    "address": "1901 L St. NW",
+                    "city": "Washington DC",
+                    "country": "United States",
+                    "crossStreet": "at 19th St",
+                    "postalCode": "20036",
+                    "state": "D.C."
+                }
+            }
+        ]
+    };
 
     var directions = new MapboxDirections({
         accessToken: mapboxgl.accessToken,
@@ -308,245 +512,8 @@ function Directions(mapToken) {
 
         }
 
-        var stores = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.034084142948,
-                            38.909671288923
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 234-7336",
-                        "phone": "2022347336",
-                        "address": "1471 P St NW",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "at 15th St NW",
-                        "postalCode": "20005",
-                        "state": "D.C."
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.049766,
-                            38.900772
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 507-8357",
-                        "phone": "2025078357",
-                        "address": "2221 I St NW",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "at 22nd St NW",
-                        "postalCode": "20037",
-                        "state": "D.C."
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.043929,
-                            38.910525
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 387-9338",
-                        "phone": "2023879338",
-                        "address": "1512 Connecticut Ave NW",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "at Dupont Circle",
-                        "postalCode": "20036",
-                        "state": "D.C."
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.0672,
-                            38.90516896
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 337-9338",
-                        "phone": "2023379338",
-                        "address": "3333 M St NW",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "at 34th St NW",
-                        "postalCode": "20007",
-                        "state": "D.C."
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.002583742142,
-                            38.887041080933
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 547-9338",
-                        "phone": "2025479338",
-                        "address": "221 Pennsylvania Ave SE",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "btwn 2nd & 3rd Sts. SE",
-                        "postalCode": "20003",
-                        "state": "D.C."
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -76.933492720127,
-                            38.99225245786
-                        ]
-                    },
-                    "properties": {
-                        "address": "8204 Baltimore Ave",
-                        "city": "College Park",
-                        "country": "United States",
-                        "postalCode": "20740",
-                        "state": "MD"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.097083330154,
-                            38.980979
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(301) 654-7336",
-                        "phone": "3016547336",
-                        "address": "4831 Bethesda Ave",
-                        "cc": "US",
-                        "city": "Bethesda",
-                        "country": "United States",
-                        "postalCode": "20814",
-                        "state": "MD"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.359425054188,
-                            38.958058116661
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(571) 203-0082",
-                        "phone": "5712030082",
-                        "address": "11935 Democracy Dr",
-                        "city": "Reston",
-                        "country": "United States",
-                        "crossStreet": "btw Explorer & Library",
-                        "postalCode": "20190",
-                        "state": "VA"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.10853099823,
-                            38.880100922392
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(703) 522-2016",
-                        "phone": "7035222016",
-                        "address": "4075 Wilson Blvd",
-                        "city": "Arlington",
-                        "country": "United States",
-                        "crossStreet": "at N Randolph St.",
-                        "postalCode": "22203",
-                        "state": "VA"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -75.28784,
-                            40.008008
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(610) 642-9400",
-                        "phone": "6106429400",
-                        "address": "68 Coulter Ave",
-                        "city": "Ardmore",
-                        "country": "United States",
-                        "postalCode": "19003",
-                        "state": "PA"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -75.20121216774,
-                            39.954030175164
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(215) 386-1365",
-                        "phone": "2153861365",
-                        "address": "3925 Walnut St",
-                        "city": "Philadelphia",
-                        "country": "United States",
-                        "postalCode": "19104",
-                        "state": "PA"
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -77.043959498405,
-                            38.903883387232
-                        ]
-                    },
-                    "properties": {
-                        "phoneFormatted": "(202) 331-3355",
-                        "phone": "2023313355",
-                        "address": "1901 L St. NW",
-                        "city": "Washington DC",
-                        "country": "United States",
-                        "crossStreet": "at 19th St",
-                        "postalCode": "20036",
-                        "state": "D.C."
-                    }
-                }
-            ]
-        };
+
     })
+
+    return (<></>)
 }
