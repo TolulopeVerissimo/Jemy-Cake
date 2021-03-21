@@ -69,11 +69,12 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                                 </div>
                                 <div class='sidebar'>
                                     <div class='heading'>
-                                        <h1>Our locations</h1>
+                                        {/* <h1>Our locations</h1> */}
                                     </div>
-                                    <div id='listings' class='listings'></div>
-                                </div>
 
+                                    <div id='listings' class='listings'>
+                                    </div>
+                                </div>
                             </div>
                         </>
                     }

@@ -36,13 +36,17 @@ export default function MapBox() {
                     JEMY{" "}
                     <span className="MapContainer__emoji" role="img" aria-label="lid">😋🍽😋</span>
                 </h5> */}
-                <Directions mapToken={mapToken} />
+
+
+
+
+                <MapEverything mapToken={mapToken} />
             </div>
         </>
     )
 
 }
-function Directions(mapToken) {
+function MapEverything(mapToken) {
     const MapboxDirections = window.MapboxDirections
     const MapboxGeocoder = window.MapboxGeocoder
     const turf = window.turf
@@ -52,7 +56,7 @@ function Directions(mapToken) {
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
-        //Washington DC Coords
+        // Washington DC Coords
         center: [-77.034084, 38.909671],
         zoom: 13
     });
@@ -297,22 +301,24 @@ function Directions(mapToken) {
         ]
     };
 
-    var directions = new MapboxDirections({
-        accessToken: mapboxgl.accessToken,
-        unit: "metric",
-        profile: "mapbox/driving",
-        alternatives: false,
-        geometries: "geojson",
-        controls: { instructions: false },
-        flyTo: false
-    });
+    map.addControl(new mapboxgl.FullscreenControl());
+
     map.on('load', function (e) {
+
 
         map.addSource('places', {
             'type': 'geojson',
             'data': stores
         });
-
+        var directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken,
+            unit: "metric",
+            profile: "mapbox/driving",
+            alternatives: false,
+            geometries: "geojson",
+            controls: { instructions: false },
+            flyTo: false
+        });
         var geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl,
@@ -320,200 +326,194 @@ function Directions(mapToken) {
             bbox: [-77.210763, 38.803367, -76.853675, 39.052643]
         });
 
-        buildLocationList(stores);
+        // buildLocationList(stores);
         map.addControl(geocoder, 'top-left');
+        map.addControl(directions, "top-right");
+        map.scrollZoom.enable();
         addMarkers();
 
-        geocoder.on('result', function (ev) {
-            var searchResult = ev.result.geometry;
+        // geocoder.on('result', function (ev) {
+        //     var searchResult = ev.result.geometry;
 
-            var options = { units: 'miles' };
-            stores.features.forEach(function (store) {
-                Object.defineProperty(store.properties, 'distance', {
-                    value: turf.distance(searchResult, store.geometry, options),
-                    writable: true,
-                    enumerable: true,
-                    configurable: true
-                });
-            });
-            stores.features.sort(function (a, b) {
-                if (a.properties.distance > b.properties.distance) {
-                    return 1;
-                }
-                if (a.properties.distance < b.properties.distance) {
-                    return -1;
-                }
-                return 0; // a must be equal to b
-            });
-            var listings = document.getElementById('listings');
-            while (listings.firstChild) {
-                listings.removeChild(listings.firstChild);
-            }
-            buildLocationList(stores);
-            createPopUp(stores.features[0]);
-            var activeListing = document.getElementById(
-                'listing-' + stores.features[0].properties.id
-            );
-            activeListing.classList.add('active');
+        //     var options = { units: 'miles' };
+        //     stores.features.forEach(function (store) {
+        //         Object.defineProperty(store.properties, 'distance', {
+        //             value: turf.distance(searchResult, store.geometry, options),
+        //             writable: true,
+        //             enumerable: true,
+        //             configurable: true
+        //         });
+        //     });
+        //     stores.features.sort(function (a, b) {
+        //         if (a.properties.distance > b.properties.distance) {
+        //             return 1;
+        //         }
+        //         if (a.properties.distance < b.properties.distance) {
+        //             return -1;
+        //         }
+        //         return 0;
+        //     });
+        //     var listings = document.getElementById('listings');
+        //     while (listings.firstChild) {
+        //         listings.removeChild(listings.firstChild);
+        //     }
+        //     buildLocationList(stores);
+        //     createPopUp(stores.features[0]);
+        //     var activeListing = document.getElementById(
+        //         'listing-' + stores.features[0].properties.id
+        //     );
+        //     activeListing.classList.add('active');
 
-            var bbox = getBbox(stores, 0, searchResult);
-            map.fitBounds(bbox, {
-                padding: 100
-            });
-        });
-
-
-
-        function getBbox(sortedStores, storeIdentifier, searchResult) {
-            var lats = [
-                sortedStores.features[storeIdentifier].geometry.coordinates[1],
-                searchResult.coordinates[1]
-            ];
-            var lons = [
-                sortedStores.features[storeIdentifier].geometry.coordinates[0],
-                searchResult.coordinates[0]
-            ];
-            var sortedLons = lons.sort(function (a, b) {
-                if (a > b) {
-                    return 1;
-                }
-                if (a.distance < b.distance) {
-                    return -1;
-                }
-                return 0;
-            });
-            var sortedLats = lats.sort(function (a, b) {
-                if (a > b) {
-                    return 1;
-                }
-                if (a.distance < b.distance) {
-                    return -1;
-                }
-                return 0;
-            });
-            return [
-                [sortedLons[0], sortedLats[0]],
-                [sortedLons[1], sortedLats[1]]
-            ];
-        }
+        //     var bbox = getBbox(stores, 0, searchResult);
+        //     map.fitBounds(bbox, {
+        //         padding: 100
+        //     });
+        // });
 
 
-        function addMarkers() {
 
-            stores.features.forEach(function (marker) {
-
-                var el = document.createElement('div');
-
-                el.id = 'marker-' + marker.properties.id;
-
-                el.className = 'marker';
-
-                new mapboxgl.Marker(el, { offset: [0, -23] })
-                    .setLngLat(marker.geometry.coordinates)
-                    .addTo(map);
-
-
-                el.addEventListener('click', function (e) {
-                    flyToStore(marker);
-                    createPopUp(marker);
-                    var activeItem = document.getElementsByClassName('active');
-                    e.stopPropagation();
-                    if (activeItem[0]) {
-                        activeItem[0].classList.remove('active');
-                    }
-                    var listing = document.getElementById(
-                        'listing-' + marker.properties.id
-                    );
-                    listing.classList.add('active');
-                });
-            });
-        }
-
-
-        function buildLocationList(data) {
-            data.features.forEach(function (store, i) {
-
-                var prop = store.properties;
+        // function getBbox(sortedStores, storeIdentifier, searchResult) {
+        //     var lats = [
+        //         sortedStores.features[storeIdentifier].geometry.coordinates[1],
+        //         searchResult.coordinates[1]
+        //     ];
+        //     var lons = [
+        //         sortedStores.features[storeIdentifier].geometry.coordinates[0],
+        //         searchResult.coordinates[0]
+        //     ];
+        //     var sortedLons = lons.sort(function (a, b) {
+        //         if (a > b) {
+        //             return 1;
+        //         }
+        //         if (a.distance < b.distance) {
+        //             return -1;
+        //         }
+        //         return 0;
+        //     });
+        //     var sortedLats = lats.sort(function (a, b) {
+        //         if (a > b) {
+        //             return 1;
+        //         }
+        //         if (a.distance < b.distance) {
+        //             return -1;
+        //         }
+        //         return 0;
+        //     });
+        //     return [
+        //         [sortedLons[0], sortedLats[0]],
+        //         [sortedLons[1], sortedLats[1]]
+        //     ];
+        // }
 
 
-                var listings = document.getElementById('listings');
-                var listing = listings.appendChild(document.createElement('div'));
+        // function addMarkers() {
 
-                listing.id = 'listing-' + prop.id;
+        //     stores.features.forEach(function (marker) {
 
-                listing.className = 'item';
+        //         var el = document.createElement('div');
 
+        //         el.id = 'marker-' + marker.properties.id;
 
-                var link = listing.appendChild(document.createElement('a'));
-                link.href = '#';
-                link.className = 'title';
-                link.id = 'link-' + prop.id;
-                link.innerHTML = prop.address;
+        //         el.className = 'marker';
 
-
-                var details = listing.appendChild(document.createElement('div'));
-                details.innerHTML = prop.city;
-                if (prop.phone) {
-                    details.innerHTML += ' &middot; ' + prop.phoneFormatted;
-                }
-                if (prop.distance) {
-                    var roundedDistance = Math.round(prop.distance * 100) / 100;
-                    details.innerHTML +=
-                        '<p><strong>' + roundedDistance + ' miles away</strong></p>';
-                }
+        //         new mapboxgl.Marker(el, { offset: [0, -23] })
+        //             .setLngLat(marker.geometry.coordinates)
+        //             .addTo(map);
 
 
-                link.addEventListener('click', function (e) {
-                    for (var i = 0; i < data.features.length; i++) {
-                        if (this.id === 'link-' + data.features[i].properties.id) {
-                            var clickedListing = data.features[i];
-                            flyToStore(clickedListing);
-                            createPopUp(clickedListing);
-                        }
-                    }
-                    var activeItem = document.getElementsByClassName('active');
-                    if (activeItem[0]) {
-                        activeItem[0].classList.remove('active');
-                    }
-                    this.parentNode.classList.add('active');
-                });
-            });
-        }
-
-        function flyToStore(currentFeature) {
-            map.flyTo({
-                center: currentFeature.geometry.coordinates,
-                zoom: 15
-            });
-        }
+        //         el.addEventListener('click', function (e) {
+        //             flyToStore(marker);
+        //             createPopUp(marker);
+        //             var activeItem = document.getElementsByClassName('active');
+        //             e.stopPropagation();
+        //             if (activeItem[0]) {
+        //                 activeItem[0].classList.remove('active');
+        //             }
+        //             var listing = document.getElementById(
+        //                 'listing-' + marker.properties.id
+        //             );
+        //             listing.classList.add('active');
+        //         });
+        //     });
+        // }
 
 
-        function createPopUp(currentFeature) {
-            var popUps = document.getElementsByClassName('mapboxgl-popup');
-            if (popUps[0]) popUps[0].remove();
+        // function buildLocationList(data) {
+        //     data.features.forEach(function (store, i) {
 
-            var popup = new mapboxgl.Popup({ closeOnClick: false })
-                .setLngLat(currentFeature.geometry.coordinates)
-                .setHTML(
-                    '<h3>Sweetgreen</h3>' +
-                    '<h4>' +
-                    currentFeature.properties.address +
-                    '</h4>'
-                )
-                .addTo(map);
+        //         var prop = store.properties;
 
-            map.addControl(directions, "top-right");
-            map.addControl(geocoder, "top-left")
-            map.scrollZoom.enable();
-            return (
-                <>
-                </>
-            )
 
-        }
+        //         var listings = document.getElementById('listings');
+        //         var listing = listings.appendChild(document.createElement('div'));
+
+        //         listing.id = 'listing-' + prop.id;
+
+        //         listing.className = 'item';
+
+
+        //         var link = listing.appendChild(document.createElement('a'));
+        //         link.href = '#';
+        //         link.className = 'title';
+        //         link.id = 'link-' + prop.id;
+        //         link.innerHTML = prop.address;
+
+
+        //         var details = listing.appendChild(document.createElement('div'));
+        //         details.innerHTML = prop.city;
+        //         if (prop.phone) {
+        //             details.innerHTML += ' &middot; ' + prop.phoneFormatted;
+        //         }
+        //         if (prop.distance) {
+        //             var roundedDistance = Math.round(prop.distance * 100) / 100;
+        //             details.innerHTML +=
+        //                 '<p><strong>' + roundedDistance + ' miles away</strong></p>';
+        //         }
+        //         link.addEventListener('click', function (e) {
+        //             for (var i = 0; i < data.features.length; i++) {
+        //                 if (this.id === 'link-' + data.features[i].properties.id) {
+        //                     var clickedListing = data.features[i];
+        //                     flyToStore(clickedListing);
+        //                     createPopUp(clickedListing);
+        //                 }
+        //             }
+        //             var activeItem = document.getElementsByClassName('active');
+        //             if (activeItem[0]) {
+        //                 activeItem[0].classList.remove('active');
+        //             }
+        //             this.parentNode.classList.add('active');
+        //         });
+        //     });
+        // }
+
+        // function flyToStore(currentFeature) {
+        //     map.flyTo({
+        //         center: currentFeature.geometry.coordinates,
+        //         zoom: 15
+        //     });
+        // }
+
+
+        // function createPopUp(currentFeature) {
+        //     var popUps = document.getElementsByClassName('mapboxgl-popup');
+        //     if (popUps[0]) popUps[0].remove();
+
+        //     var popup = new mapboxgl.Popup({ closeOnClick: false })
+        //         .setLngLat(currentFeature.geometry.coordinates)
+        //         .setHTML(
+        //             '<h3>Sweetgreen</h3>' +
+        //             '<h4>' +
+        //             currentFeature.properties.address +
+        //             '</h4>'
+        //         )
+        //         .addTo(map);
+        // }
 
 
     })
 
-    return (<></>)
+    return (
+        <>
+        </>
+    )
 }

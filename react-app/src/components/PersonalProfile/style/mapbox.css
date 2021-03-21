@@ -104,9 +104,9 @@
 .heading {
     background: #fff;
     border-bottom: 1px solid #eee;
-    height: 60px;
-    line-height: 60px;
-    padding: 0 10px;
+    height: 1rem;
+    line-height: 1rem;
+    /* padding: 0 10px; */
 }
 .heading h1 {
     font-size: 22px;
@@ -136,4 +136,35 @@
 .mapboxgl-ctrl-geocoder > div {
     min-width: 50%;
     margin-left: 0;
+}
+.listings {
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+.listings .item {
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.listings .item:last-child {
+    border-bottom: none;
+}
+.listings .item .title {
+    display: block;
+    color: #00853e;
+    font-weight: 700;
+}
+
+.listings .item .title small {
+    font-weight: 400;
+}
+.listings .item.active .title,
+.listings .item .title:hover {
+    color: #8cc63f;
+}
+.listings .item.active {
+    background-color: #f8f8f8;
 }
