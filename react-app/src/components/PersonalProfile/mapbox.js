@@ -63,7 +63,6 @@ export default function MapBox() {
     if (!mapToken) {
         return null
     }
-
     return (
         <>
             <div className="MapContainer">
