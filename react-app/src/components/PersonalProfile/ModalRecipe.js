@@ -6,8 +6,7 @@ import blank from '../../media/blank.png'
 import full from '../../media/full.png'
 import EditRecipeModal from "./EditRecipe.js"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { getSignedRequest } from '../../services/upload'
-import { createRecipe, editRecipe, deleteRecipe } from '../../Store/recipes'
+import { createRecipe, deleteRecipe } from '../../Store/recipes'
 
 
 import './style/ModalRecipe.css'
@@ -98,7 +97,7 @@ export default function ModalRecipe({ recipes }) {
                         <div class="tabDivider">
                             <div className="tabContent">
                                 <div className="left">
-                                    <img src={recipes.imagePath} onClick={() => setShowModal(false)} />
+                                    <img src={recipes.imagePath} alt="recipe image" onClick={() => setShowModal(false)} />
 
                                 </div>
                                 <div className="right">
@@ -117,7 +116,7 @@ export default function ModalRecipe({ recipes }) {
                             <div className="tabContent">
 
                                 <div className="left">
-                                    <img src={recipes.imagePath} />
+                                    <img src={recipes.imagePath} alt="recipe image" />
                                 </div>
                                 <div className="right">
                                     <p style={{ textAlign: 'center' }}>Instructions</p>

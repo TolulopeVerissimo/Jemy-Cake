@@ -60,6 +60,7 @@ function RecipeForm({ edit, recipes, setShowModal }) {
                 onChange={readUrl}
               />
             </label>
+            <br />
             <label className='recipesform__label fileInput__label'>
               Upload Video
               <input

@@ -4,7 +4,7 @@ import './styles/logo.sass'
 function CakeLogo() {
     return (
         <div className="cake">
-            <img src={placeHolderLogo}></img>
+            <img src={placeHolderLogo} alt="logo"></img>
             <br /><br /><span>SAY JEMY!</span>
         </div>
     )

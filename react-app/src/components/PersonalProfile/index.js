@@ -27,7 +27,7 @@ function PersonalProfile() {
         dispatch(getRecipes(id))
         dispatch(getIngredients(id))
         dispatch(getPantries(id))
-        // dispatch(getMissingItems(id))
+        dispatch(getMissingItems(id))
         dispatch(getFollowers(id))
     }, [dispatch])
 

@@ -125,12 +125,13 @@ export const getRecipes = () => async (dispatch) => {
     }
     return response;
 };
+
 export const getMissingItems = (recipeId) => async (dispatch) => {
     const response = await fetch(`/api/recipes/${recipeId}`);
     if (response.ok) {
         let res = await response.json();
         console.log("getMissingItems", res)
-        dispatch(setRecipes(res));
+        dispatch(setRecipes(res.recipe));
     }
     return response;
 };
@@ -141,11 +142,12 @@ const initialState = {};
 const recipesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_RECIPES:
-            const recipes = action.recipes.reduce((acc, ele) => {
-                acc[ele.id] = ele;
-                return acc;
-            }, {});
-            return { ...state, ...recipes };
+            // const recipes = action.recipes.reduce((acc, ele) => {
+            //     acc[ele.id] = ele;
+            //     return acc;
+            // }, {});
+            // return { ...state, ...recipes };
+            return { ...state, ...action.recipes };
         case CREATE_RECIPES:
             return { ...state, [action.drink.id]: action.drink };
         case REMOVE_RECIPE:

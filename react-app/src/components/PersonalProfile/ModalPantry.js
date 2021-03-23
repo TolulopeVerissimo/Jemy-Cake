@@ -9,7 +9,7 @@ import EditPantry from './EditPantry'
 export default function ModalPantry({ pantry, pantryName, ingredient }) {
 
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.session.user);
+    // const user = useSelector((state) => state.session.user);
 
     const removePantry = async (e) => {
         await dispatch(deletePantry(pantry.id));

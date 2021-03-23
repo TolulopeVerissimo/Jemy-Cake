@@ -55,16 +55,23 @@ def recipe(id):
 @recipe_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_recipe(id):
-    data = request.form
-
-    print(data) 
+    # data = request.form
+    data = request.get_json(force=True)
+    print("DATADATADATADATADATADATADATADATA" ,data) 
     recipe = Recipe.query.get(id)
-    recipe.type = request.form.getlist('type')
-    recipe.instructions = request.form.getlist('instructions')
-    recipe.imagePath = request.form.getlist('imagePath')
-    recipe.description = request.form.getlist('description')
-    recipe.userId = request.form.getlist('userId')
-    db.session.commit()
+    recipe.type=data['type']
+    recipe.instructions=data['instructions']
+    recipe.imagePath=data['imagePath']
+    recipe.description=data['description']
+    recipe.userId=data['userId']
+
+    # recipe = Recipe.query.get(id)
+    # # recipe.type = request.form.getlist('type')
+    # recipe.instructions = request.form.getlist('instructions')
+    # recipe.imagePath = request.form.getlist('imagePath')
+    # recipe.description = request.form.getlist('description')
+    # recipe.userId = request.form.getlist('userId')
+    # db.session.commit()
     return recipe.to_dict()
 
 
@@ -99,9 +106,11 @@ def missing():
             ingredientItemImage= ingredients[i].image 
 
     return {
-        'inHouse':inHouseItems,
-        'houseImages':pantryItemImage,
-        'buyImages':ingredientItemImage,
-        'goBuy':goBuyItems
+        # 'inHouse':inHouseItems,
+        # 'houseImages':pantryItemImage,
+        # 'buyImages':ingredientItemImage,
+        # 'goBuy':goBuyItems
+        'pantries':pantries,
+        'recipes':recipes
         }
             
