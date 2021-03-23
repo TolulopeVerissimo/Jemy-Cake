@@ -86,7 +86,22 @@ function LoginFormModal({ authenticated, setAuthenticated }) {
 
                         <button className="shrink"> Sign In</button>
                     </form>
-                    <button className="bubble" onClick={<SignUpFormModal />}> Sign Up</button>
+                    <button className="bubble" style={{ cursor: 'pointer' }} onClick={() => {
+                        {
+                            showModal &&
+                                (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <SignUpFormModal authenticated={authenticated}
+                                            setAuthenticated={setAuthenticated} />
+                                    </Modal>
+                                )
+                        }
+
+                    }
+
+
+                    }> Sign Up</button>
+
                     <button className="bubble" type="submit" onClick={loginDemo} style={{ backgroundColor: 'green' }}>Demo</button>
 
                     <a href="#">Reset Password</a>

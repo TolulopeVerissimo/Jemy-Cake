@@ -1,10 +1,10 @@
 .modContainer {
     /* display: flex; */
     height: 65rem;
-    width: 90rem;
+    width: 91rem;
     position: absolute;
     background-color: lightgray;
-    margin: -89rem 0 0 10rem;
+    margin: -489rem 0 0 -96rem;
 }
 .modTab .tabGrid {
     width: 100%;

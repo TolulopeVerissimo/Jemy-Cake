@@ -1,11 +1,11 @@
 .pantriesform__container {
     background-color: white;
-    position: fixed;
+    position: absolute;
     width: 40rem;
     height: 35rem;
     font-size: 1.2rem;
     border-radius: 1rem;
-    margin: -70rem 0 0 35rem;
+    margin: -470rem 0 -995rem;
     z-index: 1;
 }
 .pantriesform__header {

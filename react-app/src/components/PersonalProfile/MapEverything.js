@@ -10,6 +10,7 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 export default function MapEverything(mapToken) {
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
+    const [center, setCenter] = useState([-77.034084, 38.909671])
     const MapboxDirections = window.MapboxDirections
     const MapboxGeocoder = window.MapboxGeocoder
     const turf = window.turf
@@ -20,7 +21,7 @@ export default function MapEverything(mapToken) {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v10',
         // Washington DC Coords
-        center: [-77.034084, 38.909671],
+        center: center,
         zoom: 13
     });
     var stores = {
@@ -308,6 +309,7 @@ export default function MapEverything(mapToken) {
         geolocate.on('geolocate', (position) => {
             setLat(position.coords.latitude);
             setLng(position.coords.longitude);
+            setCenter([lat, lng])
             console.log('lat, lng', lat, lng);
         });
         map.scrollZoom.enable();

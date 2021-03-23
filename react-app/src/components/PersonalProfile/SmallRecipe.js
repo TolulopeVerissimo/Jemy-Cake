@@ -10,12 +10,15 @@ export default function SmallRecipe({ recipes, users }) {
         <div className="ppContainer2">
             <article className="card">
                 <figure>
-                    <img src={recipes.imagePath} key={recipes.id} alt="recipe!" onClick={() => { setShowModal(true) }
+                    <img src={recipes.imagePath} key={recipes.id} alt="recipe!" onClick={() => {
+                        setShowModal(true)
+                    }
                     } />
                     {showModal
-                        && (<Modal onClose={() => { setShowModal(false) }}>
-                            <ModalRecipe recipes={recipes} users={users} />
-                        </Modal>
+                        && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                <ModalRecipe recipes={recipes} users={users} />
+                            </Modal>
                         )}
 
                 </figure>

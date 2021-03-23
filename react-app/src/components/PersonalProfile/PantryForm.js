@@ -20,8 +20,8 @@ function PantryForm({ edit, pantry, pantryName, setShowModal }) {
     if (user) {
         userId = user.id;
     }
-    console.log(pantry)
-    console.log(pantryName)
+    // console.log(pantry)
+    // console.log(pantryName)
     const addCopy = async (e) => {
         let userId
         if (user) {
