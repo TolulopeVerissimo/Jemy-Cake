@@ -2,6 +2,7 @@ const SET_RECIPES = "recipes/SET_RECIPES";
 const CREATE_RECIPES = "recipes/CREATE_RECIPES";
 const REMOVE_RECIPE = "recipes/REMOVE_RECIPE";
 const UPDATE_RECIPE = "recipes/UPDATE_RECIPE";
+const SET_MISSING = "recipes/SET_MISSING";
 
 const setRecipes = (recipes) => {
     return {
@@ -19,6 +20,12 @@ const updateRecipes = (recipe) => {
 const removeRecipe = (id) => {
     return {
         type: REMOVE_RECIPE,
+        id
+    }
+}
+const setMissing = (id) => {
+    return {
+        type: SET_MISSING,
         id
     }
 }
@@ -126,12 +133,12 @@ export const getRecipes = () => async (dispatch) => {
     return response;
 };
 
-export const getMissingItems = (recipeId) => async (dispatch) => {
-    const response = await fetch(`/api/recipes/${recipeId}`);
+export const getMissingItems = (id) => async (dispatch) => {
+    const response = await fetch(`/api/recipes/${id}/missing`);
     if (response.ok) {
         let res = await response.json();
         console.log("getMissingItems", res)
-        dispatch(setRecipes(res.recipe));
+        dispatch(setMissing(res));
     }
     return response;
 };
@@ -142,14 +149,11 @@ const initialState = {};
 const recipesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_RECIPES:
-            // const recipes = action.recipes.reduce((acc, ele) => {
-            //     acc[ele.id] = ele;
-            //     return acc;
-            // }, {});
-            // return { ...state, ...recipes };
+            return { ...state, ...action.recipes };
+        case SET_MISSING:
             return { ...state, ...action.recipes };
         case CREATE_RECIPES:
-            return { ...state, [action.drink.id]: action.drink };
+            return { ...state, [action.recipes.id]: action.recipes };
         case REMOVE_RECIPE:
             const newState = { ...state };
             delete newState[action.id];

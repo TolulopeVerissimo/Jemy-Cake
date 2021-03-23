@@ -19,7 +19,6 @@ class Recipe(db.Model):
     imagePath = db.Column(db.String(255))
     videoPath = db.Column(db.String(255))
 
-
     user = db.relationship("User", back_populates="recipe")
     recipe_like = db.relationship("RecipeLike", back_populates="recipe")   
 
@@ -27,14 +26,11 @@ class Recipe(db.Model):
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(
     ), onupdate=db.func.current_timestamp())
 
+    ingredients = db.relationship(
+        'Ingredient',
+        secondary='recipeItems',
+        back_populates='recipes')
 
-    recipe_item = db.relationship(
-        "Recipe",
-        secondary=recipeItems,
-        primaryjoin=(recipeItems.c.ingredientId == id),
-        secondaryjoin=(recipeItems.c.recipeId == id),
-        backref=db.backref("recipeItems")
-    )
     def to_dict(self):
         user = self.user.to_dict()
         username = user["username"]

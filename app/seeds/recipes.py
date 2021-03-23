@@ -28,7 +28,7 @@ def seed_RecipeRepeat():
         recipeObj = recipe["recipes"][0]
         seed_defaultRecipe(recipeObj)
         seed_defaultIngredients(recipeObj)
-        seed_Pantry(recipeObj)
+        seed_defaultPantry(recipeObj)
     
 def slicer(spoonURL,lastCharacterString):
     #ex: "https://spoonacular.com/brussels-sprouts-in-honey-butter-with-chili-flakes-636363"

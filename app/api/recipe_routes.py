@@ -83,34 +83,26 @@ def delete_recipe(id):
     db.session.commit()
     return 'Recipe Deleted'
 
-@recipe_routes.route('/<int:id>', methods=['GET'])
+@recipe_routes.route('/<int:id>/missing', methods=['GET'])
 @login_required
-def missing():
-    user = User.query.get(id)
-    recipe = Recipe.query.get(id)
-    # pantry = Pantry.query.get(id)
-    # ingredient = Ingredient.query.get(id)
+def missing(id):
+    recipes = Recipe.query.filter(Recipe.userId==id).all()
+    pantries = Pantry.query.filter(Pantry.userId==id).all()
 
-    pantries = Pantry.query.all()
-    recipes = Recipe.query.all()
-    ingredients = Ingredient.query.all()
-
-    #I want to filter recipe ingredients by a user's pantry ingredients
-    for i in range(len(recipes)):
-        if(recipes[i].userId == user):
-            #object of food items
-            inHouseItems = filter(pantries[i].name, ingredients[i].name)
-            pantryItemImage = pantries[i].image 
-
-            goBuyItems = filter(not pantries[i].name, ingredients[i].name)
-            ingredientItemImage= ingredients[i].image 
-
-    return {
-        # 'inHouse':inHouseItems,
-        # 'houseImages':pantryItemImage,
-        # 'buyImages':ingredientItemImage,
-        # 'goBuy':goBuyItems
-        'pantries':pantries,
-        'recipes':recipes
-        }
-            
+    # inHouseIngredients = set(Ingredient.query.filter(pantries.ingredients==id).all())
+        
+    setInHouseItems = set() 
+    setRequiredItems = set() 
+    
+    [setInHouseItems.update(p.ingredients) for p in pantries]  
+    [setRequiredItems.update(r.ingredients) for r in recipes]
+        
+    goBuyItems= setRequiredItems.difference(setInHouseItems)
+    print([item.to_dict() for item in setInHouseItems])
+    print([item.to_dict() for item in goBuyItems])
+    return jsonify({
+        'inHouse':[item.to_dict() for item in setInHouseItems],
+        'goBuy':[item.to_dict() for item in goBuyItems],
+        # 'buyImages':[item.imagePath for item in recipes],
+        # 'inStockItemImages':[item.image for item in pantries],
+        })
