@@ -40,23 +40,31 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                 pantryName.push(pantry[key].name)
                 userPantries.push(pantry[key])
                 pantryImages.push(pantry[key].image)
-
                 if (pantryImages) {
-                    // 'https://spoonacular.com/cdn/ingredients_500x500/beef-brisket.png,https://spoonacular.com/cdn/ingredients_500x500/sliced-carrot.png,https://spoonacular.com/cdn/ingredients_500x500/parsnip.jpg,https://spoonacular.com/cdn/ingredients_500x500/None,https://spoonacular.com/cdn/ingredients_500x500/garlic.png,https://spoonacular.com/cdn/ingredients_500x500/guinness.png,https://spoonacular.com/cdn/ingredients_500x500/beef-broth.png,https://spoonacular.com/cdn/ingredients_500x500/seasoning.png,https://spoonacular.com/cdn/ingredients_500x500/light-brown-sugar.jpg,https://spoonacular.com/cdn/ingredients_500x500/bay-leaves.jpg,https://spoonacular.com/cdn/ingredients_500x500/regular-mustard.jpg';
+                    // console.log(pantryImages[0])
                     let str = pantryImages[0]
-                    const regex = /,/g;
+                    str = str.replace(/[{()}]/g, "")
+                    let stringSplit = str.split(",")
                     for (let i = 0; i < 10; i++) {
-                        const seek = str.search(regex)
-                        imgArr.push(str.slice(0, seek + 1))
-                        str = str.slice(seek + 1)
+                        imgArr.push(stringSplit[i])
                     }
-                    for (let i = 0; i < 1; i++) {
-                        imgArr[0] = imgArr[0].slice(1)
 
-                    }
-                    for (let i = 0; i < imgArr.length; i++) {
-                        imgArr[i] = imgArr[i].slice(0, imgArr[i].length - 1)
-                    }
+                    // 'https://spoonacular.com/cdn/ingredients_500x500/beef-brisket.png,https://spoonacular.com/cdn/ingredients_500x500/sliced-carrot.png,https://spoonacular.com/cdn/ingredients_500x500/parsnip.jpg,https://spoonacular.com/cdn/ingredients_500x500/None,https://spoonacular.com/cdn/ingredients_500x500/garlic.png,https://spoonacular.com/cdn/ingredients_500x500/guinness.png,https://spoonacular.com/cdn/ingredients_500x500/beef-broth.png,https://spoonacular.com/cdn/ingredients_500x500/seasoning.png,https://spoonacular.com/cdn/ingredients_500x500/light-brown-sugar.jpg,https://spoonacular.com/cdn/ingredients_500x500/bay-leaves.jpg,https://spoonacular.com/cdn/ingredients_500x500/regular-mustard.jpg';
+                    // let str = pantryImages[0]
+
+                    // const regex = /,/g;
+                    // for (let i = 0; i < 10; i++) {
+                    //     const seek = str.search(regex)
+                    //     imgArr.push(str.slice(0, seek + 1))
+                    //     str = str.slice(seek + 1)
+                    // }
+                    // // for (let i = 0; i < 1; i++) {
+                    // //     imgArr[0] = imgArr[0].slice(1)
+
+                    // // }
+                    // for (let i = 0; i < imgArr.length; i++) {
+                    //     imgArr[i] = imgArr[i].slice(0, imgArr[i].length - 1)
+                    // }
                 }
 
             }

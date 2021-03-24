@@ -14,3 +14,5 @@ class Configuration:
     S3_LOCATION = f"http://{S3_BUCKET}.s3.amazonaws.com/"
 
     REACT_APP_MAP_TOKEN = os.environ.get('REACT_APP_MAP_TOKEN')
+
+    
