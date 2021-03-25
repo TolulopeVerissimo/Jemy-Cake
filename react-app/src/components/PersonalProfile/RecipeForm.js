@@ -23,7 +23,7 @@ function RecipeForm({ edit, recipes, setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (edit) {
-      await dispatch(editRecipe({ description, instructions, type, userId }));
+      await dispatch(editRecipe({ description, instructions, type, userId, imagePath: src }));
     }
     else {
       const url = await getSignedRequest(photo);

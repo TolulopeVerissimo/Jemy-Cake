@@ -66,11 +66,14 @@ def edit_recipe(id):
     # recipe.userId=data['userId']
 
     recipe = Recipe.query.get(id)
-    recipe.type = request.form.getlist('type')
-    recipe.instructions = request.form.getlist('instructions')
-    recipe.imagePath = request.form.getlist('imagePath')
-    recipe.description = request.form.getlist('description')
-    recipe.userId = request.form.getlist('userId')
+    recipe.type = request.form.get('type')
+    
+    recipe.instructions = request.form.get('instructions')
+    if(request.form.get('imagePath')):
+        recipe.imagePath = request.form.get('imagePath')
+
+    recipe.description = request.form.get('description')
+    recipe.userId = request.form.get('userId')
     db.session.commit()
     return recipe.to_dict()
 

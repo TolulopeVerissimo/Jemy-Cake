@@ -22,17 +22,17 @@ function PantryForm({ edit, pantryName, setShowModal, pantryId }) {
     console.log(pantry)
 
     const addCopy = async (e) => {
-        const name = pantry.pantryId.name
-        const image = pantry.pantryId.image
+        const name = pantry[pantryId].name
+        const image = pantry[pantryId].image
         await dispatch(createPantry({ name, userId, image }))
         setShowModal(false)
         history.push(`/profile/${user.id}`)
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const name = pantry.pantryId.name
-        const image = pantry.pantryId.image
-        if (edit) await dispatch(editPantry(userId, name, image));
+        const name = pantry[pantryId].name
+        const image = pantry[pantryId].image
+        if (edit) await dispatch(editPantry(pantryId, name, userId, image));
 
         else {
             const url = await getSignedRequest(photo);
