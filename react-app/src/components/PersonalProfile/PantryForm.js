@@ -8,7 +8,7 @@ import { createPantry, editPantry } from '../../Store/pantry'
 import './style/PantryForm.css'
 
 
-function PantryForm({ edit, pantry, pantryName, setShowModal, pantryId }) {
+function PantryForm({ edit, pantryName, setShowModal, pantryId }) {
     const history = useHistory()
     const dispatch = useDispatch()
     const [src, setSrc] = useState('')
@@ -16,21 +16,23 @@ function PantryForm({ edit, pantry, pantryName, setShowModal, pantryId }) {
     const [name, setName] = useState('')
     const { id } = useParams()
     const user = useSelector(state => state.session.user)
+    const pantry = useSelector(state => state.pantries)
     let userId
     if (user) userId = user.id;
+    console.log(pantry)
 
     const addCopy = async (e) => {
-        let userId
-        if (user) userId = user.id
-        const name = pantryName
-        const image = pantry
+        const name = pantry.pantryId.name
+        const image = pantry.pantryId.image
         await dispatch(createPantry({ name, userId, image }))
         setShowModal(false)
         history.push(`/profile/${user.id}`)
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (edit) await dispatch(editPantry(userId, name));
+        const name = pantry.pantryId.name
+        const image = pantry.pantryId.image
+        if (edit) await dispatch(editPantry(userId, name, image));
 
         else {
             const url = await getSignedRequest(photo);

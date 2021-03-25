@@ -13,7 +13,6 @@ class Pantry(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String(4000), nullable=False)
     image = db.Column(db.String(4000), nullable=False)
-
     user = db.relationship("User", back_populates="pantry")
 
     ingredients = db.relationship(

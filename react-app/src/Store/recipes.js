@@ -76,15 +76,6 @@ export const createRecipe = (recipe) => async dispatch => {
 
 
 export const editRecipe = (recipes) => async dispatch => {
-    // const options = {
-    //     method: 'PUT',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({ type, instructions, steps, imagePath, description })
-    // }
-    // const res = await fetch(`/api/recipes/${id}`, options)
-
     const { type, instructions, imagePath, description, userId } = recipes
     const formData = new FormData();
     formData.append('type', type);
@@ -95,13 +86,12 @@ export const editRecipe = (recipes) => async dispatch => {
     const res = await fetch(`/api/recipes/${userId}`, {
         method: 'PUT',
         body: formData,
-
     })
+    console.log(res)
     if (res.ok) {
         const newRecipe = await res.json()
         dispatch(setRecipes([newRecipe]))
     }
-
 }
 
 export const deleteRecipe = (id) => async dispatch => {
