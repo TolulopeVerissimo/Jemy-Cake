@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal } from '../../Context/Modal'
 import PantryForm from './PantryForm'
 
-function EditPantryModal({ recipes }) {
+function EditPantryModal({ recipes, pantryId }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -21,7 +21,11 @@ function EditPantryModal({ recipes }) {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className="hov">
-                        <PantryForm recipes={recipes} edit={true} setShowModal={setShowModal} />
+                        <PantryForm
+                            pantryId={pantryId}
+                            recipes={recipes}
+                            edit={true}
+                            setShowModal={setShowModal} />
                     </div>
                 </Modal>
             )}

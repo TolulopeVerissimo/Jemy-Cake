@@ -96,15 +96,15 @@ def missing(id):
     setRequiredItems = set() 
     
 
-    # [setInHouseItems.update(p['ingredients']) for p in pantries]  
-    # [setRequiredItems.update(r['ingredients']) for r in recipes]
+    [setInHouseItems.update(p['ingredients']) for p in pantries]  
+    [setRequiredItems.update(r['ingredients']) for r in recipes]
     # print("LOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTELOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTERLOBSTER"
     # ,setInHouseItems)
     # goBuyItems= setRequiredItems.difference(setInHouseItems)
     
     return jsonify({
-        # 'inHouse':[item.to_dict() for item in setInHouseItems],
-        # 'goBuy':[item.to_dict() for item in goBuyItems],
+        'inHouse':[item.to_dict() for item in setInHouseItems],
+        'goBuy':[item.to_dict() for item in goBuyItems],
 
         # 'buyImages':[item.imagePath for item in recipes],
         # 'inStockItemImages':[item.image for item in pantries],

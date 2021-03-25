@@ -11,8 +11,6 @@ import './style/cssForCircles.css'
 import './style/profile.css'
 function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }) {
     let history = useHistory()
-
-
     const numWords = require('num-words')
     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
@@ -24,20 +22,23 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
     const userPantries = []
     const pantryImages = []
     let imgArr = []
-    const pantryName = []
+    // const pantryName = []
     const { id } = useParams()
     const userId = useSelector(state => state.session.user?.id)
     const user = useSelector(state => state.session.user)
     const follows = useSelector(state => state.follows)
 
-    const profileRedirect = () => {
-        history.push(`/profile/${id}`)
-    }
+    const [pantryId, setPantryId] = useState()
+    const [pantryName, setPantryName] = useState()
 
     if (pantry) {
+        // console.log(pantry.id)
         for (let key in pantry) {
             if (pantry[key].userId == id) {
-                pantryName.push(pantry[key].name)
+                // pantryName.push(pantry[key].name)
+                if (!pantryId) setPantryId(key)
+                if (!pantryName) setPantryName(pantry[key].name)
+
                 userPantries.push(pantry[key])
                 pantryImages.push(pantry[key].image)
                 if (pantryImages) {
@@ -140,7 +141,7 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                                 <TabPanel className="tabcontent">
                                     <div className="gridContainer2">
                                         {imgArr &&
-                                            imgArr.map((items) => <SmallPantry pantryName={pantryName} pantry={items} recipes={recipes} users={users} />)
+                                            imgArr.map((items) => <SmallPantry pantryId={pantryId} pantryName={pantryName} pantry={items} recipes={recipes} users={users} />)
                                         }
                                     </div>
                                 </TabPanel>

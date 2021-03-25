@@ -48,6 +48,7 @@ def edit_pantry(id):
     data = request.get_json()
     pantry= Pantry.query.get(id)
     pantry.name = data['name']
+    print(pantry.name)
     pantry.userId = data['userId']
     pantry.image = data['image']
     db.session.commit()

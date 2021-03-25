@@ -6,22 +6,18 @@ import './style/ModalPantry.css'
 import { deletePantry } from '../../Store/pantry'
 import EditPantry from './EditPantry'
 
-export default function ModalPantry({ pantry, pantryName, ingredient }) {
+export default function ModalPantry({ pantry, pantryName, ingredient, pantryId }) {
 
     const dispatch = useDispatch();
-    // const user = useSelector((state) => state.session.user);
-
     const removePantry = async (e) => {
-        await dispatch(deletePantry(pantry.id));
+        await dispatch(deletePantry(pantryId));
     };
-
     return (
         <>
             <div className="hoverPantryItem">
                 <div className="modPantryContainer">
 
-                    <EditPantry />
-
+                    <EditPantry pantryId={pantryId} pantryName={pantryName} pantry={pantry} />
                     <div className="exit" onClick={removePantry}>
                         <span class="left">
                             <span class="circle-left"></span>
