@@ -24,15 +24,12 @@ class User(db.Model, UserMixin):
     date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-
     recipe = db.relationship("Recipe", back_populates="user")
     likes = db.relationship("RecipeLike", back_populates="user")
-    pantry = db.relationship("Pantry", back_populates="user", uselist=False)
-
+    pantry = db.relationship("Pantry", back_populates="user")
     # Send = db.relationship("Share", back_populates="userSend", lazy='dynamic')
     # Receive = db.relationship("Notification", back_populates="userReceive", lazy='dynamic')
     # notifications = db.relationship('Notification', back_populates='user', lazy='dynamic')
-
     followers = db.relationship(
         "User",
         secondary=follows,

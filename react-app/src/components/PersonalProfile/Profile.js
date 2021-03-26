@@ -90,16 +90,11 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
         <>
             <div className="bodyDiv" style={{ backgroundImage: `url(${backDrop})`, zIndex: '-3' }}>
                 {/* <div className="bodyDiv" > */}
-
-
                 <h1 style={{ color: 'white' }}>{users[id].biography}</h1>
-
 
                 {user.id != id &&
                     <FollowUser followedUserId={followedUserId} />
                 }
-
-
                 <div className="cirContainer">
                     <div className="centerCircle" style={{ backgroundImage: `url(${users[id].profilePicture})`, backgroundSize: "cover", backgroundPosition: "center center" }}>
                         {
@@ -156,8 +151,6 @@ function Profile({ profile, followedUserId, users, recipes, ingredient, pantry }
                 <div className="EllipseDrawer">
                     <Recipe recipes={recipes} ingredient={ingredient} pantry={pantry} followedUserId={id} />
                 </div>
-
-
             </div>
 
         </>

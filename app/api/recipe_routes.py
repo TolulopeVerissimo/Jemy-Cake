@@ -87,21 +87,27 @@ def delete_recipe(id):
     return 'Recipe Deleted'
 
 @recipe_routes.route('/<int:id>/missing', methods=['GET'])
-@login_required
+# @login_required
 def missing(id):
     recipes = Recipe.query.filter(Recipe.userId==id).all()
     pantries = Pantry.query.filter(Pantry.userId==id).all()
 
-    setInHouseItems = set() 
-    setRequiredItems = set() 
+    setInHouseItems = [p for p in pantries]
+    print("SETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSESETINHOUSE",
+    setInHouseItems)
     
-    [setInHouseItems.update(p['ingredients']) for p in pantries]  
-    [setRequiredItems.update(r['ingredients']) for r in recipes]
+    # setRequiredItems = [r['ingredients'] for r in recipes]
+
+    # setInHouseItemsId = set() 
+    # setRequiredItemsId = set() 
     
-    goBuyItems= setRequiredItems.difference(setInHouseItems)
+    # [setInHouseItems.update(p['ingredients']) for p in pantries]  
+    # [setRequiredItems.update(r['ingredients']) for r in recipes]
+    
+    # goBuyItems= setRequiredItems.difference(setInHouseItems)
     return jsonify({
-        'inHouse':[item.to_dict() for item in setInHouseItems],
-        'goBuy':[item.to_dict() for item in goBuyItems],
+        # 'inHouse':[item.to_dict() for item in setInHouseItems],
+        # 'goBuy':[item.to_dict() for item in goBuyItems],
 
         # 'buyImages':[item.imagePath for item in recipes],
         # 'inStockItemImages':[item.image for item in pantries],
