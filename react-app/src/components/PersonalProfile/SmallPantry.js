@@ -11,7 +11,7 @@ export default function SmallPantry({ recipes, users, pantry, pantryName, pantry
             onMouseLeave={() => setIsShown(false)}>
             <article className="card">
                 <figure>
-                    <img src={pantry} alt="Pantry Item!" key={pantry.id} />
+                    <img src={pantry} alt="Pantry Item!" key={pantry?.id} />
                     {isShown &&
                         <ModalPantry pantry={pantry} pantryId={pantryId} pantryName={pantryName} setShowModal={setShowModal} />
                     }
@@ -20,3 +20,4 @@ export default function SmallPantry({ recipes, users, pantry, pantryName, pantry
         </div>
     )
 }
+

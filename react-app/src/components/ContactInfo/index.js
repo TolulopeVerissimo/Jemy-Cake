@@ -85,7 +85,7 @@ function ContactInfo(params) {
                 <div id="text" className="portfolio">
                     <h4>Jemy</h4>
                     <p>A digital experience to showcase my two passions: <br />Food and Programming </p>
-                    <a href="https://www.linkedin.com/in/tolu-v-924b94174/">Visit my portfolio</a>
+                    <a href="https://tolulopeverissimo.github.io/">Visit my portfolio</a>
                 </div>
 
             </div>
