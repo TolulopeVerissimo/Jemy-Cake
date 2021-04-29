@@ -1,8 +1,8 @@
 # Jemy Cake
-Is an idea I've been thinking about for a long time. This web app is a teaser for the mobile version that was created to focus on my skills with Flask and React.js
+This is an idea I've been thinking about for a long time. This web app is a teaser for the mobile version that was created to focus on my skills with Flask and React.JS.
 
 
-Scans a PSQL database for pantry items to aggregate recipe search data and optionally use mapping API to pathway for missing ingredients.
+The app scans a PSQL database for pantry items to aggregate recipe search data and optionally use mapping API to pathway for missing ingredients.
 
 
 ##### Login Modal
