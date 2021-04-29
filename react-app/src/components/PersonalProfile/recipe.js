@@ -61,7 +61,8 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                         {clicked ? <h1 className="recipeWordsH1">Click for Recipe Map</h1> : <h1 className="recipeWordsH1">Close Recipes</h1>}
                     </div>
 
-                    {!clicked &&
+                    {/* {
+                        !clicked &&
                         <>
                             <div className="mapsMove">
                                 <div id='map'>
@@ -69,7 +70,7 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                                 </div>
                                 <div class='sidebar'>
                                     <div class='heading'>
-                                        {/* <h1>Our locations</h1> */}
+                                        <h1>Our locations</h1>
                                     </div>
 
                                     <div id='listings' class='listings'>
@@ -77,7 +78,7 @@ function Recipe({ recipe, ingredient, users, followedUserId }) {
                                 </div>
                             </div>
                         </>
-                    }
+                    } */}
                 </>
                 :
                 <>
